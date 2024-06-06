@@ -102,6 +102,11 @@ fn main() {
     println!("apres {}",a);
     // on constate que ca a changé
 
+    let  mut a: u32 =  12;
+    println!("avant {}",a);
+    ma_fonction_ref_2(&mut a);
+    println!("apres {}",a);
+    // on constate que ca a changé
 
 }
 
@@ -129,6 +134,13 @@ fn ma_fonction_3(mut x:u32) {
 }
 
 fn ma_fonction_ref( x: &mut u32) {
+    println!("entree = {}", x);
+    *x = 54;
+    println!("nouvelle entree = {}", x);
+
+}
+
+fn ma_fonction_ref_2( x: &mut u32) {
     println!("entree = {}", x);
     *x = 54;
     println!("nouvelle entree = {}", x);
