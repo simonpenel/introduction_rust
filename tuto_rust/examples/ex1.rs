@@ -16,7 +16,7 @@ fn main() {
     // cette instruction engendre une erreur:
     // a = a + 10;
 
-    let mut b = 42;
+    let mut b = 32;
     println!("{}",b);
 
     // cette instruction est correcte:
@@ -26,5 +26,5 @@ fn main() {
     // cette instruction est correcte:
     b = b + 10;
     println!("{}",b);    
-        
+
 }
