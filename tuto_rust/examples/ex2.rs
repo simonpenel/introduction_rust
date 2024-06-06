@@ -1,23 +1,23 @@
 
 fn main() {
-    println!("Hello, world!"); 
+	println!("Hello, world!"); 
 
 	// ==================================
 	// Variables mutables et non mutables
 	// ==================================
-    
-    let a = 32;
-    println!("{}",a);
 
-  	// cette instruction engendre une erreur:
-   	// a = 42;
+	let a = 32;
+	println!("{}",a);
 
-    let mut b = 42;
-    println!("{}",b);
+	// cette instruction engendre une erreur:
+	// a = 42;
 
-  	// cette instruction est correcte:
-   	b = 42;
-    println!("{}",b);
+	let mut b = 42;
+	println!("{}",b);
+
+	// cette instruction est correcte:
+	b = 42;
+	println!("{}",b);
 
 
 	// ==================================
@@ -31,7 +31,7 @@ fn main() {
 	let coucou = hello;
 
 	println!("{}",coucou);	
-  	// cette instruction engendre une erreur:
+	// cette instruction engendre une erreur:
 	// println!("{}",hello);
 
 	// ==================================
@@ -51,7 +51,6 @@ fn main() {
 	println!("{}",hello);
 	let coucou = hello;
 	println!("{}",coucou);	
-  	// cette instruction marche:
+	// cette instruction marche:
 	println!("{}",hello);
-
 }
