@@ -1,5 +1,5 @@
-// Implementer un trait pour une structure
-// =======================================
+// Implementer une fonction pour une structure
+// ============================================
 
 #[derive(Debug)]
 pub enum JourSemaine {
