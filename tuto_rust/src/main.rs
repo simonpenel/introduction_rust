@@ -7,13 +7,14 @@ use crate::agenda::read_agenda;
 use crate::agenda::programme_du_jour_map_fold;
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    if args.len() != 2 {
+    // CLI tres rudimentaire
+    let arguments: Vec<String> = env::args().collect();
+    if arguments.len() != 2 {
         eprintln!("Entrer 1 argument s'il vous plait!");
         process::exit(1);
 
     }
-    let file_path = &args[1];
+    let file_path = &arguments[1];
     let mon_agenda = read_agenda(String::from(file_path));
     println!("Les 160 premiers jours : ");
     for i in premier_jour().take(160) {
