@@ -124,9 +124,9 @@ fn main() {
         
     // Mais si on veut un code plus compact on peut utiliser expect() (ou unwrap())
     // https://learning-rust.github.io/docs/unwrap-and-expect/
-    //Unwrap in Rust returns the result of the operation for Option and Result enums.
-    //If unwrap encounters an error Err or a None, it will panic and stop the program execution.
-    //Unwrap method is defined on both Option and Result type.
+    // Unwrap in Rust returns the result of the operation for Option and Result enums.
+    // If unwrap encounters an error Err or a None, it will panic and stop the program execution.
+    // Unwrap method is defined on both Option and Result type.
     let file = File::open("date_naissance.txt").expect("Erreur a l'ouverture");
     println!("File : {:?}",file);
     
