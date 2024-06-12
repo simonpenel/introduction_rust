@@ -18,6 +18,7 @@ fn main() {
 
     }
     let file_path = &arguments[1];
+    // Lecture de l'agenda
     let mon_agenda  = match read_agenda(String::from(file_path)){
     	Ok(agenda) => agenda,
     	Err(e) => {        
@@ -28,12 +29,14 @@ fn main() {
     			_ => eprintln!("Une erreur s'est produite."), 
     		}
         	process::exit(1);}
-    }
-    ;
+    };
+    // Explore les 160 premiers jours du calendrier
     println!("Les 160 premiers jours : ");
     for i in premier_jour().take(160) {
         println!("> {}", i);
         match programme_du_jour_map_fold(&i,&mon_agenda) {    
+            // Ceci ne marche pas: le champs jour_sem est privé
+            //Some(s) => { println!("\nAttention aujourd'hui {} :\n{}", i.jour_sem,s)},       
             Some(s) => { println!("\nAttention aujourd'hui {} :\n{}", i,s)},
             None => {},
         }
