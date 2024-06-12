@@ -1,5 +1,4 @@
-// Implementer un iterateur pour une structure
-// =============================================
+
 
 use std::io::BufReader;
 use std::io::BufRead;
@@ -129,11 +128,19 @@ pub fn premier_jour() -> Jour {
 
 
 /// Fonction publique qui remplit l'agenda
-pub fn read_agenda(filename : String) -> Vec<Evenement> {
+// On ne renvoie plus un vecteur mais un Resultat, l'erreur pourra etre geree en aval 
+pub fn read_agenda(filename : String) -> Result<Vec<Evenement>,i32>  {
     let mut agenda_anniv:std::vec::Vec<Evenement> = Vec::new();
-    let file = File::open(filename).expect("Erreur a l'ouverture");
+    //let file = File::open(filename).expect("Erreur a l'ouverture");
+    let file = File::open(filename);
+    let file = match file {
+    	Ok(file) => file,
+    	Err(e) => {
+    		eprintln!("Erreur : {:?}",e.kind());
+    		return Err(1)
+    	},
+    };
     let reader = BufReader::new(file);
-    println!("\nLecture:");
     for line in reader.lines() {
         // Line est du type Results
         let line = line.expect("Probleme de lecture");
@@ -142,7 +149,8 @@ pub fn read_agenda(filename : String) -> Vec<Evenement> {
         // https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.collect  
         let split_line: Vec<&str> = line.split(',').collect();
         // On s'assure que l'on a 5 elements
-        assert_eq!(split_line.len(),5);
+        //assert_eq!(split_line.len(),5);
+        if split_line.len() != 5 { return Err(2) }
         
         // On recupere le prenom
         let prenom = split_line[1];
@@ -159,9 +167,9 @@ pub fn read_agenda(filename : String) -> Vec<Evenement> {
         // On veut etre sur que le jour du mois est un entier 
         let jour_mois = match jour_mois.parse::<u32>(){
             Ok(valeur) => valeur,
-            Err(_err) => {
-              eprintln!("Erreur, le jour du mois doit etre un entier");
-              process::exit(1);
+            Err(e) => {
+                eprintln!("Erreur : {:?}",e.kind());
+                return Err(3);
             },
          };
          // On pourrait s'assurer que le jour du mois est <=31
@@ -184,7 +192,7 @@ pub fn read_agenda(filename : String) -> Vec<Evenement> {
         let evt =  Evenement{description:prenom.to_string()+"'s birthday",date:date};
         agenda_anniv.push(evt);
     }
-     agenda_anniv
+     Ok(agenda_anniv)
 }
 
 /// Fonction qui renvoie un variable de type Jour qui est 

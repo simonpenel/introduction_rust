@@ -1,3 +1,6 @@
+// Pour comprendre l'organisation en modules:
+//https://larouille.github.io/modules/#mettre-notre-module-dans-un-dossier-dedie
+
 pub mod agenda;
 
 use std::env;
@@ -15,7 +18,18 @@ fn main() {
 
     }
     let file_path = &arguments[1];
-    let mon_agenda = read_agenda(String::from(file_path));
+    let mon_agenda  = match read_agenda(String::from(file_path)){
+    	Ok(agenda) => agenda,
+    	Err(e) => {        
+    		match e {
+    			1 => eprintln!("Le fichier n'existe pas."), 
+    			2 => eprintln!("Le fichier ne semble pas au bon format."), 
+    			3 => eprintln!("Le jour du mois doit être un entier."), 
+    			_ => eprintln!("Une erreur s'est produite."), 
+    		}
+        	process::exit(1);}
+    }
+    ;
     println!("Les 160 premiers jours : ");
     for i in premier_jour().take(160) {
         println!("> {}", i);
