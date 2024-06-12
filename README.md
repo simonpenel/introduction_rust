@@ -6,9 +6,4 @@ Tout d'abord  elle va aborder des aspects importants du langage Rust dans les fi
 
 Pour executer un de ces fichiers, par exemple "ex1.rs", une fois dans le répertoire tuto_rust utilisez la commande:
 
-`cargo run --example ex1`
-
-
-
-
-
+`cargo <span style="color:blue">run</span> --example ex1`
