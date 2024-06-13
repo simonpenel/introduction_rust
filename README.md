@@ -13,13 +13,12 @@ pour  Windows voir  https://doc.rust-lang.org/cargo/getting-started/installation
 La documentation Rust est accessible ici : https://doc.rust-lang.org/book/title-page.html
 
 ## Premiers pas
-Dans cette introduction à Rust on  va aborder des aspects importants du langage Rust.
-Tout d'abord  dans les fichiers ex1.rs, ex2.rs ex3.rs et ex4.rs dans le repertoire tuto_rust/examples/
+Dans cette introduction à Rust, on  va aborder des aspects importants du langage Rust.
+Tout d'abord dans les fichiers ex1.rs, ex2.rs ex3.rs et ex4.rs dans le répertoire tuto_rust/examples/
 
-Pour executer le code de l'un ces fichiers, par exemple "ex1.rs", une fois dans le répertoire tuto_rust on utilise la commande:
+Pour executer le code de l'un ces fichiers, par exemple "ex1.rs", une fois dans le répertoire tuto_rust, on utilise la commande:
 
 `cargo run --example ex1`
-
 
 Les exemples ex1, ex2, ex3 et ex4 abordent:
 
@@ -33,39 +32,38 @@ Les exemples ex1, ex2, ex3 et ex4 abordent:
 
 ## Projet Agenda
 
-Dans les fichiers projet_agenda_[1-11].rs dans le repertoire tuto_rust/examples/
-on va peu à peu écrire un code qui permet d'explorer un calendrier et vérifier si un événement est prévu dans un agenda.
+Dans les fichiers projet_agenda_[1-11].rs dans le répertoire tuto_rust/examples/ on va peu à peu écrire un code qui permet d'explorer un calendrier et vérifier si un événement est prévu dans un agenda.
 
-Pour executer le code de l'un de ces fichiers, par exemple "projet_agenda_7.rs", une fois dans le répertoire tuto_rust on utilise la commande:
+Pour éxecuter le code de l'un de ces fichiers, par exemple "projet_agenda_7.rs", une fois dans le répertoire tuto_rust, on utilise la commande:
 
 `cargo run --example projet_agenda_7`
+
 Ces exemples abordent :
 
-- les enumerations ("enum")
+- les énumerations ("enum")
 - la notion de "Trait"
 - les structures ("struct")
 - les fonctions implementées pour une structure (méthodes)
-- la structure Vector, sa construction, son exploration via un iterateur ("iter")
-- les iterateurs (Iterator) et certaines méthodes associées ("filter", "enumerate", "collect", "map", "fold")
-- le chainage des méthode "expect()" et "unwrap" apres le type Option ou Result
-- l'implementation d'un iterateur dédiée à une structure
+- la structure Vector, sa construction, son exploration via un itérateur ("iter")
+- les itérateurs (Iterator) et certaines méthodes associées ("filter", "enumerate", "collect", "map", "fold")
+- le chainage des méthodes "expect()" et "unwrap" après le type Option ou Result
+- l'implémentation d'un itérateur dédiée à une structure
 
 
 ## Projet final
 
-Tous ces éléments sont regroupés dans tuto_rust/src pour écrire un programme.
+Tous ces éléments sont regroupés dans le répertoire tuto_rust/src pour écrire un programme.
 
-Dans  le repertoire tuto_rust, la commande
+Dans  le répertoire tuto_rust, la commande
 
 
 `cargo build`
 
-va créer le binare exécutable
+va créer le binaire exécutable
 
-tuto_rust/target/debug/tuto_rust
+`tuto_rust/target/debug/tuto_rust`
 
-On peut voir l'organisation du code en modules, ici un seul module "agenda.rs"
-et le programme principal dans "main.rs".
+On peut voir l'organisation du code en modules, ici un seul module "agenda.rs" et le programme principal dans "main.rs".
 
 On aborde la documentation du code. La commande
 
