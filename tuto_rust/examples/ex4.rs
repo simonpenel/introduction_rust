@@ -4,11 +4,11 @@ fn main() {
     // Fonction qui renvoie une variable
     // ==================================
     let hello = String::from("Hello, world!");
-	let nb_de_o = calcule_nb_o(&hello);
-	println!("Nombre de o = {}",nb_de_o);
-	
-	// On peut recuperer differents type de variables 
-	// ici un "tupple" une liste de variables qui peuvent etre de type differents
+    let nb_de_o = calcule_nb_o(&hello);
+    println!("Nombre de o = {}",nb_de_o);
+
+    // On peut recuperer differents type de variables 
+    // ici un "tupple" une liste de variables qui peuvent etre de type differents
     let nb_de_voyelles = calcule_nb_voy(&hello);
     println!("Nb de a, e, i, o, u  : {:?}",nb_de_voyelles);
     
@@ -128,9 +128,8 @@ fn extrait_chaine( x: &String)-> Option<String> {
             _   => {}
 		    }	    
     };
-    
-match   chaine_0123.len() > 0 {
-	true => Some(chaine_0123),
-	false => None,
+    match   chaine_0123.len() > 0 {
+	   true => Some(chaine_0123),
+	   false => None,
 	}
 }
