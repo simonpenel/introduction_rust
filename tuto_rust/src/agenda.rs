@@ -189,8 +189,8 @@ pub fn read_agenda(filename : String) -> Result<Vec<Evenement>,i32>  {
         // On definit une date a partir du mois et du jour du mois
         let date = Date{jour_mois: jour_mois, mois: mois};
         // On definit un evenement a partir du prenom
-        // POur concatener des chaine on doit avoir : String + &str
-        //let evt =  Evenement{description:prenom.to_string()+"'s birthday",date:date};
+        // Pour concatener des chaine on doit avoir : String + &str
+        // let evt =  Evenement{description:prenom.to_string()+"'s birthday",date:date};
         // Plus complique d'ajouter prenom.to_string() a la suite :
         // to_owned permt de passer de &str a String
         let evt =  Evenement{description:"Anniversaire de ".to_owned() + &prenom, date:date};
