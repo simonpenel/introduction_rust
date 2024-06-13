@@ -65,6 +65,8 @@ va créer le binaire exécutable
 
 On peut voir l'organisation du code en modules, ici un seul module "agenda.rs" et le programme principal dans "main.rs".
 
+On utilise le type Result pour gérer les erreur.
+
 On aborde la documentation du code. La commande
 
 `cargo doc --open`
