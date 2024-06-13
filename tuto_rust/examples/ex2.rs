@@ -21,7 +21,7 @@ fn main() {
 
 
 	// ==================================
-	// Le "borowing" et le "ownsership"
+	// Le "borowing" et le "ownership"
 	// https://doc.rust-lang.org/rust-by-example/scope/move.html
 	// ==================================
 
