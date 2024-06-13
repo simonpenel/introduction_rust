@@ -23,7 +23,7 @@ Pour executer le code de l'un ces fichiers, par exemple "ex1.rs", une fois dans 
 Les exemples ex1, ex2, ex3 et ex4 abordent:
 
 - les variables mutables et non mutables
-- le "borrowing"
+- le "borrowing" et le "ownership"
 - les références (sortes de pointeur)
 - l'inférence de type
 - les fonctions en Rust
