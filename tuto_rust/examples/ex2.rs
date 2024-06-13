@@ -21,7 +21,8 @@ fn main() {
 
 
 	// ==================================
-	// Le "borowing"
+	// Le "borowing" et le "ownsership"
+	// https://doc.rust-lang.org/rust-by-example/scope/move.html
 	// ==================================
 
 	let hello = String::from("Hello, world!");
@@ -31,6 +32,7 @@ fn main() {
 	let coucou = hello;
 
 	println!("{}",coucou);	
+	// hello n'est plus accessible
 	// cette instruction engendre une erreur:
 	// println!("{}",hello);
 
@@ -44,7 +46,7 @@ fn main() {
 	println!("{}",*bonjour);
 	println!("{}",coucou);	
 
-	// Le borowing ne pose pas de probleme avec les variable de type entier.
+	// Le borrowing ne pose pas de probleme avec les variable de type entier.
 	// La variable est copiée, cela ne coute pas cher, contrairement à une chaine de caracteres.
 
 	let hello = 1;
