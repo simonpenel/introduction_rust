@@ -67,6 +67,8 @@ On peut voir l'organisation du code en modules, ici un seul module "agenda.rs" e
 
 On utilise le type Result pour gérer les erreur.
 
+On aborde un peu le problème de concaténation de chaînes de caractères.
+
 On aborde la documentation du code. La commande
 
 `cargo doc --open`
