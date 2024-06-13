@@ -23,7 +23,7 @@ fn main() {
     	Ok(agenda) => agenda,
     	Err(e) => {        
     		match e {
-    			1 => eprintln!("Le fichier n'existe pas."), 
+    			1 => eprintln!("Le fichier n'existe pas ou n'est pas lisible."), 
     			2 => eprintln!("Le fichier ne semble pas au bon format."), 
     			3 => eprintln!("Le jour du mois doit être un entier."), 
     			_ => eprintln!("Une erreur s'est produite."), 
