@@ -168,7 +168,7 @@ pub fn read_agenda(filename : String) -> Result<Vec<Evenement>,i32>  {
         let jour_mois = match jour_mois.parse::<u32>(){
             Ok(valeur) => valeur,
             Err(e) => {
-                eprintln!("Erreur : {:?}",e.kind());
+                eprintln!("\n{}\nErreur dans {} : {:?}",line, jour_mois, e.kind());
                 return Err(3);
             },
          };
