@@ -182,7 +182,7 @@ pub fn read_agenda(filename : String) -> Result<Vec<Evenement>,i32>  {
             "November" => Mois::Novembre,   
             "December" => Mois::Decembre,                                           
             _ => {
-                eprintln!("Erreur, je connais pas ce mois.");
+                eprintln!("Erreur, je connais pas ce mois [{}].",split_line[3]);
                 process::exit(1);
             },
         };
