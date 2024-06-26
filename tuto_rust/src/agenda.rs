@@ -150,7 +150,10 @@ pub fn read_agenda(filename : String) -> Result<Vec<Evenement>,i32>  {
         let split_line: Vec<&str> = line.split(',').collect();
         // On s'assure que l'on a 5 elements
         //assert_eq!(split_line.len(),5);
-        if split_line.len() != 5 { return Err(2) }
+        if split_line.len() != 5 {
+        	eprintln!("Erreur  dans la ligne {}",line); 
+        	return Err(2) 
+        }
         
         // On recupere le prenom
         let prenom = split_line[1];
