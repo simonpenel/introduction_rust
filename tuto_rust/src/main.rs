@@ -5,9 +5,15 @@ pub mod agenda;
 
 use std::env;
 use std::process;
+
+// Crates internes
+use crate::agenda::{Date, Mois}; // Utile pour la fin du code (utilisation du crate local)
 use crate::agenda::premier_jour;
 use crate::agenda::read_agenda;
 use crate::agenda::programme_du_jour_map_fold;
+
+// Crates externes : attention meme structure Date
+use gregorian::{Date as GregorianDate, Month::*, YearMonth};
 
 fn main() {
     // CLI tres rudimentaire
@@ -42,6 +48,15 @@ fn main() {
         }
 
     }
+    // Example de connflit entre crates interne et externe
+    // Utilisation du crates local
+    let date = Date::new(2,Mois::Aout);
+    println!("Tuto_rust date {:?}",date);
+    // Utilise le crates externe  calendrier gregorien
+	assert!(YearMonth::new(1900, February).total_days() == 28);
+	assert!(YearMonth::new(2000, February).total_days() == 29);
+    let date = GregorianDate::new(2020, 1, 31).unwrap();
+    println!("Gregorian date : {:?}",date);
 }
 
 
