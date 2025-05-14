@@ -27,22 +27,22 @@ fn main() {
     // Lecture de l'agenda
     let mon_agenda  = match read_agenda(String::from(file_path)){
     	Ok(agenda) => agenda,
-    	Err(e) => {        
+    	Err(e) => {
     		match e {
-    			1 => eprintln!("Le fichier n'existe pas ou n'est pas lisible."), 
-    			2 => eprintln!("Le fichier ne semble pas au bon format."), 
-    			3 => eprintln!("Le jour du mois doit être un entier."), 
-    			_ => eprintln!("Une erreur s'est produite."), 
+    			1 => eprintln!("Le fichier n'existe pas ou n'est pas lisible."),
+    			2 => eprintln!("Le fichier ne semble pas au bon format."),
+    			3 => eprintln!("Le jour du mois doit être un entier."),
+    			_ => eprintln!("Une erreur s'est produite."),
     		}
         	process::exit(1);}
     };
     // Explore les 160 premiers jours du calendrier
     println!("Les 160 premiers jours : ");
-    for i in premier_jour().take(160) {
+    for i in premier_jour().take(190) {
         println!("> {}", i);
-        match programme_du_jour_map_fold(&i,&mon_agenda) {    
+        match programme_du_jour_map_fold(&i,&mon_agenda) {
             // Ceci ne marche pas: le champs jour_sem est privé
-            //Some(s) => { println!("\nAttention aujourd'hui {} :\n{}", i.jour_sem,s)},       
+            //Some(s) => { println!("\nAttention aujourd'hui {} :\n{}", i.jour_sem,s)},
             Some(s) => { println!("\nAttention aujourd'hui {} :\n{}", i,s)},
             None => {},
         }
@@ -58,5 +58,3 @@ fn main() {
     let date = GregorianDate::new(2020, 1, 31).unwrap();
     println!("Gregorian date : {:?}",date);
 }
-
-

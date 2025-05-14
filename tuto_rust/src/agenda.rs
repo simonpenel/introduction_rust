@@ -29,18 +29,18 @@ pub enum Mois {
 }
 
 /// Structure Jour
-#[derive(Debug)] 
+#[derive(Debug)]
 pub struct Jour {
 	/// jour de la semaine
 	jour_sem: JourSemaine,
 	/// jour du mois
 	jour_mois: u32,
 	/// mois
-	mois: Mois	
+	mois: Mois
 	}
-	
+
 /// Le trait "Display" (necessaire pour utiliser println!) n'existe pas pour notre structure.
-/// Nous allons le definir	
+/// Nous allons le definir
 impl std::fmt::Display for Jour {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois)
@@ -59,7 +59,7 @@ impl Iterator for Jour {
         let jmois_prochain = match *jmois < 30 {
             true => jmois + 1,
             false  => 1,
-        };  
+        };
 
         let mois_prochain = match  *jmois < 30 {
             true => *mois,
@@ -76,14 +76,14 @@ impl Iterator for Jour {
         Some(dem)
      }
 }
- 
-/// Structure Date 
-#[derive(Debug)] 
+
+/// Structure Date
+#[derive(Debug)]
 pub struct Date {
 	/// jour du mois
 	jour_mois: u32,
 	/// mois
-	mois: Mois	
+	mois: Mois
 	}
 impl std::fmt::Display for Date {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
@@ -109,17 +109,17 @@ impl Date {
         }
     }
     pub fn affiche(&self) {
-    	println!("------ {:?}/{} --------",self.mois, self.jour_mois) 	
-   }   
-}   
- 
+    	println!("------ {:?}/{} --------",self.mois, self.jour_mois)
+   }
+}
+
 /// Structure Evenement
-#[derive(Debug)] 
+#[derive(Debug)]
 pub struct Evenement {
 	description:String,
 	date:Date
 }
-   
+
 
 /// Fonction publique premier jour
 pub fn premier_jour() -> Jour {
@@ -128,7 +128,7 @@ pub fn premier_jour() -> Jour {
 
 
 /// Fonction publique qui remplit l'agenda
-// On ne renvoie plus un vecteur mais un Resultat, l'erreur pourra etre geree en aval 
+// On ne renvoie plus un vecteur mais un Resultat, l'erreur pourra etre geree en aval
 pub fn read_agenda(filename : String) -> Result<Vec<Evenement>,i32>  {
     let mut agenda_anniv:std::vec::Vec<Evenement> = Vec::new();
     //let file = File::open(filename).expect("Erreur a l'ouverture");
@@ -146,15 +146,15 @@ pub fn read_agenda(filename : String) -> Result<Vec<Evenement>,i32>  {
         let line = line.expect("Probleme de lecture");
         // Ici on utilise split() qui renvoie  un iterateur
         // La methode collect() place tous les elements dans une collection
-        // https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.collect  
+        // https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.collect
         let split_line: Vec<&str> = line.split(',').collect();
         // On s'assure que l'on a 5 elements
         //assert_eq!(split_line.len(),5);
         if split_line.len() != 5 {
-        	eprintln!("Erreur  dans la ligne {}",line); 
-        	return Err(2) 
+        	eprintln!("Erreur  dans la ligne {}",line);
+        	return Err(2)
         }
-        
+
         // On recupere le prenom
         let prenom = split_line[1];
         // Virer les prenome multiples:
@@ -163,11 +163,11 @@ pub fn read_agenda(filename : String) -> Result<Vec<Evenement>,i32>  {
         let prenom = prenom.split(' ').next();
         // on recuper ce qu'il y a dans Option en utilisant unwrap
         let prenom  = prenom.unwrap();
-                
+
         // On recupere le jour du mois
-        let jour_mois = split_line[2];   
+        let jour_mois = split_line[2];
         // C'est une chaine de caracteres
-        // On veut etre sur que le jour du mois est un entier 
+        // On veut etre sur que le jour du mois est un entier
         let jour_mois = match jour_mois.parse::<u32>(){
             Ok(valeur) => valeur,
             Err(e) => {
@@ -176,14 +176,15 @@ pub fn read_agenda(filename : String) -> Result<Vec<Evenement>,i32>  {
             },
          };
          // On pourrait s'assurer que le jour du mois est <=31
-         
+
         // On recupere le mois
         let mois = match split_line[3] {
+			"June" => Mois::Juin,
             "July" => Mois::Juillet,
-            "August" => Mois::Aout, 
-            "October" => Mois::Octobre,  
-            "November" => Mois::Novembre,   
-            "December" => Mois::Decembre,                                           
+            "August" => Mois::Aout,
+            "October" => Mois::Octobre,
+            "November" => Mois::Novembre,
+            "December" => Mois::Decembre,
             _ => {
                 eprintln!("Erreur, je connais pas ce mois [{}].",split_line[3]);
                 process::exit(1);
@@ -202,7 +203,7 @@ pub fn read_agenda(filename : String) -> Result<Vec<Evenement>,i32>  {
      Ok(agenda_anniv)
 }
 
-/// Fonction qui renvoie un variable de type Jour qui est 
+/// Fonction qui renvoie un variable de type Jour qui est
 /// le lendemain du jour donne en entree par reference
 /// ------------------------------------------------------
 pub fn renvoie_demain(jour: &Jour)->Jour {
@@ -215,7 +216,7 @@ pub fn renvoie_demain(jour: &Jour)->Jour {
     let jmois_prochain = match *jmois < 30 {
         true => jmois + 1,
         false  => 1,
-    };  
+    };
 
     let mois_prochain = match  *jmois < 30 {
         //true => *mois,
@@ -226,12 +227,12 @@ pub fn renvoie_demain(jour: &Jour)->Jour {
     let demain = Jour{jour_sem:jsem_prochain,jour_mois: jmois_prochain, mois:mois_prochain};
 
     demain
-} 
+}
 
-/// Fonction qui renvoie un variable de type JourSemaine qui est 
+/// Fonction qui renvoie un variable de type JourSemaine qui est
 /// le lendemain du jour  de la semaine donne en entree par reference
 /// ------------------------------------------------------------------
-pub fn renvoie_demain_semaine(jour: &JourSemaine)->JourSemaine { 
+pub fn renvoie_demain_semaine(jour: &JourSemaine)->JourSemaine {
     let demain = match *jour {
     JourSemaine::Lundi => JourSemaine::Mardi,
     JourSemaine::Mardi => JourSemaine::Mercredi,
@@ -239,22 +240,22 @@ pub fn renvoie_demain_semaine(jour: &JourSemaine)->JourSemaine {
     JourSemaine::Jeudi => JourSemaine::Vendredi,
     JourSemaine::Vendredi => JourSemaine::Samedi,
     JourSemaine::Samedi => JourSemaine::Dimanche,
-    JourSemaine::Dimanche => JourSemaine::Lundi,            
+    JourSemaine::Dimanche => JourSemaine::Lundi,
     };
     demain
 }
 
-/// Fonction qui renvoie un variable de type Mois qui est 
+/// Fonction qui renvoie un variable de type Mois qui est
 /// le mois suivant le mois en entree par reference
 /// ------------------------------------------------------
-pub fn renvoie_mois_suivant(mois: &Mois)->Mois { 
+pub fn renvoie_mois_suivant(mois: &Mois)->Mois {
     let mois_prochain = match *mois {
     Mois::Octobre => Mois::Novembre,
     Mois::Novembre => Mois::Decembre,
-    Mois::Decembre => Mois::Juillet,
-    Mois::Juin => Mois::Juillet,        
-    Mois::Juillet => Mois::Aout,    
-    Mois::Aout => Mois::Octobre,                
+    Mois::Decembre => Mois::Juin,
+    Mois::Juin => Mois::Juillet,
+    Mois::Juillet => Mois::Aout,
+    Mois::Aout => Mois::Octobre,
     };
     mois_prochain
 }
@@ -264,7 +265,7 @@ pub fn renvoie_mois_suivant(mois: &Mois)->Mois {
 pub fn programme_du_jour(jour: &Jour, agenda: &Vec<Evenement>) -> Option<String> {
     let iterateur = agenda.iter();
     let mut events = String::new();
-    let mut nb_events =0; 
+    let mut nb_events =0;
     for eve in iterateur {
     if evenement(jour, &eve.date) {
         println!("Trouve {}",&eve.description);
@@ -286,7 +287,7 @@ pub fn programme_du_jour(jour: &Jour, agenda: &Vec<Evenement>) -> Option<String>
 pub fn programme_du_jour_map(jour: &Jour, agenda: &Vec<Evenement>) -> Option<String> {
     let iterateur = agenda.iter();
     let mut events = String::new();
-    let mut nb_events =0;   
+    let mut nb_events =0;
     for eve in iterateur.filter(|e| { evenement(jour, &e.date) }).map(|e|{&e.description}){
         events.push_str(eve);
         events.push_str("\n");
@@ -318,8 +319,8 @@ pub fn programme_du_jour_map_fold(jour: &Jour, agenda: &Vec<Evenement>) -> Optio
 /// ------------------------------------------------------------------------------
 pub fn evenement(jour: &Jour, date: &Date) -> bool {
     match jour.jour_mois == date.jour_mois {
-        true => { 
-            jour.mois == date.mois 
+        true => {
+            jour.mois == date.mois
         },
         false => false
     }
