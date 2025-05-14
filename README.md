@@ -8,7 +8,7 @@ Installer cargo sous linux ou Mac:
 
 pour  Windows voir  https://doc.rust-lang.org/cargo/getting-started/installation.html
 
-## Introduction
+## Documentation
 
 La documentation Rust est accessible ici : https://doc.rust-lang.org/book/title-page.html
 
@@ -31,7 +31,10 @@ cargo run --example ex1
 
 ## Premiers pas
 Dans cette introduction à Rust, on  va aborder des aspects importants du langage Rust.
-Tout d'abord dans les fichiers ex1.rs, ex2.rs ex3.rs et ex4.rs dans le répertoire tuto_rust/examples/
+Dans un premier temmp on va executer differents codes Rust. On verra ensuite comment créer un binaire executable.
+
+Tout d'abord on va tester les code proposés dans les  fichiers ex1.rs, ex2.rs ex3.rs et ex4.rs dans le répertoire tuto_rust/examples/
+
 
 Pour executer le code de l'un ces fichiers, par exemple "ex1.rs", une fois dans le répertoire tuto_rust, on utilise la commande:
 
@@ -46,6 +49,39 @@ Les exemples ex1, ex2, ex3 et ex4 abordent:
 - les fonctions en Rust
 - le matching
 - le type Option
+
+Les codes proposés contiennent des commentaires, signalés par '//'
+
+```
+// Ceci est un commentaire
+```
+
+qui présentent le but de l'exercice.
+
+Certains lignes sont comentées pour vous permettre de tester des modifications du code.
+Pour décommenter une ligne, il suffit de supprimer le // initial.
+
+
+### Exercice 1 
+https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex1.rs
+
+Exécuter le code:
+
+`cargo run --example ex1`
+
+Décomenter la ligne  14 et exécuter le code à nouveau.
+
+Observer  le message d'erreur.
+
+Même chose avec la ligne 17
+
+
+### Exercice 2 
+https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex2.rs
+
+Exécuter le code:
+
+`cargo run --example ex2`
 
 ## Projet Agenda
 
