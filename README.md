@@ -50,11 +50,17 @@ Les exemples ex1, ex2, ex3 et ex4 abordent:
 - le matching
 - le type Option
 
-Les codes proposés contiennent des commenataires, signalés par '//'
+Les codes proposés contiennent des commentaires, signalés par '//'
 
 ```
 // Ceci est un commentaire
 ```
+
+qui présentent le but de l'exercice.
+
+Certains lignes sont comentées pour vous permettre de tester des modifications du code.
+Pour decommenter une ligne, il suffit de supprimer le // initial.
+
 
 ### Exercice 1 
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex1.rs
