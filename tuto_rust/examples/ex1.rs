@@ -1,6 +1,6 @@
 
 fn main() {
-    println!("Hello, world!"); 
+    println!("Hello, world!");
 
     // ==================================
     // Variables mutables et non mutables
@@ -25,6 +25,6 @@ fn main() {
 
     // cette instruction est correcte:
     b = b + 10;
-    println!("{}",b);    
+    println!("{}",b);
 
 }
