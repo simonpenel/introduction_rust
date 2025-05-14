@@ -83,7 +83,7 @@ Exécuter le code:
 
 `cargo run --example ex2`
 
-Décommenter la ligne  42 et exécuter le code à nouveau.
+Décommenter la ligne  24 et exécuter le code à nouveau.
 
 Observer  le message d'erreur.
 
