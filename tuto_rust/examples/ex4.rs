@@ -5,18 +5,19 @@ fn main() {
     // ==================================
     let hello = String::from("Hello, world!");
     let nb_de_o = calcule_nb_o(&hello);
-    println!("Nombre de o = {}",nb_de_o);
+    println!("Nombre de o dans {} = {}", hello, nb_de_o);
 
-    // On peut recuperer differents type de variables 
+    // On peut recuperer differents type de variables
     // ici un "tupple" une liste de variables qui peuvent etre de type differents
+    // (on utilise {:?} pour afficher des variables de type  complexe)
     let nb_de_voyelles = calcule_nb_voy(&hello);
-    println!("Nb de a, e, i, o, u  : {:?}",nb_de_voyelles);
-    
+    println!("Nb de a, e, i, o, u dans {} : {:?}",hello, nb_de_voyelles);
+
     // On peut aussi ecrire comme ça
     let (a, e, i, o, u)  = calcule_nb_voy(&hello);
     println!("Nb de a : {} , de e : {}, de i : {}, de o : {}, de u : {}",a,e,i,o,u);
-        
-        
+
+
     // Utilisation de Option
     // =====================
     // Imaginons que l'on veuille recuperer dans du texte une chaine de caractete contenant des chiffres
@@ -32,16 +33,16 @@ fn main() {
     // f2("") -> ?
     // On peut dire f2("") -> 0
     // Mais f2("00000") -> 0 aussi
-    // On a f2(f1("AZER0000TYUI000OP")) == f2(f1("AZERTYUIOP")) 
+    // On a f2(f1("AZER0000TYUI000OP")) == f2(f1("AZERTYUIOP"))
     // On peut plutot dire f2("") -> -1 comme -1 ne sera jamais trouvé dans la chaine, cela sert de signal
     // Il faut verifier systematiquement si la valeur est -1 avant tout traitement
     // Si on est distrait et qu'on calcule le carré de f2
     // On a (f2(f1("AZERTYUIOP")))²  = (-1)² = 1
     // Et aussi  (f2(f1("AZERT1YUIOP")))²  = (1)² = 1
     // On voit qu'on traine comme un boulet la verification sur la valeur entrée
-    // et quele risque d'erreur indetectée est réel. 
-    
-    
+    // et que le risque d'erreur indetectée est réel.
+
+
     // Avec Rust :
     // Dans cet exemple on ne cherche que les chiffres 0-4
     let hello = String::from("Hello, world!");
@@ -50,7 +51,7 @@ fn main() {
     let hello = String::from("He12llo000, wo3455rl12d!");
     println!("traite la chaine {}",&hello);
     println!("La fonction renvoie {:?}",extrait_chaine(&hello));
-    
+
     // On peu faire un matching sur la variable Option que l'on recupere
     let hello = String::from("Hello, world!");
     println!("traite la chaine {}",&hello);
@@ -64,18 +65,18 @@ fn main() {
         Some(chaine_de_chiffres) => println!("On a trouvé cette chaine: {}.",chaine_de_chiffres),
         None  => println!("On n'a rien trouvé."),
     }
-    
-    
+
+
     // On peut aussi recuperer la variable option pour la traiter ulterieuremnt
     let _resu = extrait_chaine(&hello);
-    
+
     // Info sur le type Option
     // pub enum Option<T> {
     //     None,
     //     Some(T),
     // }
     // https://doc.rust-lang.org/std/option/enum.Option.html
-    
+
     // Il existe un type similaire : Results
     // https://doc.rust-lang.org/std/result/
 }
@@ -91,7 +92,7 @@ fn calcule_nb_o( x: &String)-> u32 {
             nb = nb + 1 ;
 		    }
     };
-nb    
+nb
 }
 
 // Utilisation du matching
@@ -112,7 +113,7 @@ fn calcule_nb_voy( x: &String)-> (u32,u32,u32,u32,u32) {
         	_ => {}
         }
     };
-(nb_a,nb_e,nb_i,nb_o,nb_u)    
+(nb_a,nb_e,nb_i,nb_o,nb_u)
 }
 
 // Utilisation de Option
@@ -126,7 +127,7 @@ fn extrait_chaine( x: &String)-> Option<String> {
             '2' => chaine_0123.push_str("2"),
             '3' => chaine_0123.push_str("3"),
             _   => {}
-		    }	    
+		    }
     };
     match   chaine_0123.len() > 0 {
 	   true => Some(chaine_0123),
