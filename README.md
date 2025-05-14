@@ -58,7 +58,7 @@ Les codes proposés contiennent des commentaires, signalés par '//'
 
 qui présentent le but de l'exercice.
 
-Certains lignes sont comentées pour vous permettre de tester des modifications du code.
+Certains lignes sont commentées pour vous permettre de tester des modifications du code.
 Pour décommenter une ligne, il suffit de supprimer le // initial.
 
 
