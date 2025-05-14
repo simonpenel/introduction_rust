@@ -58,11 +58,11 @@ Les codes proposés contiennent des commentaires, signalés par '//'
 
 qui présentent le but de l'exercice.
 
-Certains lignes sont comentées pour vous permettre de tester des modifications du code.
+Certains lignes sont commentées pour vous permettre de tester des modifications du code.
 Pour décommenter une ligne, il suffit de supprimer le // initial.
 
 
-### Exercice 1 
+### Exercice 1 : variables mutables et non mutables
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex1.rs
 
 Exécuter le code:
@@ -76,7 +76,7 @@ Observer  le message d'erreur.
 Même chose avec la ligne 17
 
 
-### Exercice 2 
+### Exercice 2 : l'ownership et le borrowing, les références
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex2.rs
 
 Exécuter le code:
@@ -88,16 +88,26 @@ Décommenter la ligne  24 et exécuter le code à nouveau.
 Observer  le message d'erreur.
 
 
-### Exercice 3 
+### Exercice 3 : inference de type et fonctions simples
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex3.rs
 
 Exécuter le code:
 
 `cargo run --example ex3`
 
-Décommenter la ligne  65 et exécuter le code à nouveau.
+Décommenter la ligne  12 et exécuter le code à nouveau.
 
 Observer  le message d'erreur.
+
+Décommenter la ligne  42 et exécuter le code à nouveau.
+
+Observer  le message d'erreur. Il s'agit d'un problème de _borrowing_.
+
+Expliquer pourquoi la fonction ma_fonction_3 n'a pas modifié la variable.
+
+Comprendre ce qu'il se passe avec les variable de type String.
+
+
 
 
 ## Projet Agenda
