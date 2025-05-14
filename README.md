@@ -31,7 +31,10 @@ cargo run --example ex1
 
 ## Premiers pas
 Dans cette introduction à Rust, on  va aborder des aspects importants du langage Rust.
-Tout d'abord dans les fichiers ex1.rs, ex2.rs ex3.rs et ex4.rs dans le répertoire tuto_rust/examples/
+Dans un premier temmp on va executer differents codes Rust. On verra ensuite comment créer un binaire executable.
+
+Tout d'abord on va tester les code proposés dans les  fichiers ex1.rs, ex2.rs ex3.rs et ex4.rs dans le répertoire tuto_rust/examples/
+
 
 Pour executer le code de l'un ces fichiers, par exemple "ex1.rs", une fois dans le répertoire tuto_rust, on utilise la commande:
 
