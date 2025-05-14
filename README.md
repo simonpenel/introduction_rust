@@ -69,7 +69,7 @@ Exécuter le code:
 
 `cargo run --example ex1`
 
-Décomenter la ligne  14 et exécuter le code à nouveau.
+Décommenter la ligne  14 et exécuter le code à nouveau.
 
 Observer  le message d'erreur.
 
@@ -83,7 +83,7 @@ Exécuter le code:
 
 `cargo run --example ex2`
 
-Décomenter la ligne  42 et exécuter le code à nouveau.
+Décommenter la ligne  42 et exécuter le code à nouveau.
 
 Observer  le message d'erreur.
 
@@ -95,7 +95,7 @@ Exécuter le code:
 
 `cargo run --example ex3`
 
-Décomenter la ligne  65 et exécuter le code à nouveau.
+Décommenter la ligne  65 et exécuter le code à nouveau.
 
 Observer  le message d'erreur.
 
