@@ -83,6 +83,10 @@ Exécuter le code:
 
 `cargo run --example ex2`
 
+Décomenter la ligne  37 et exécuter le code à nouveau.
+
+Observer  le message d'erreur.
+
 ## Projet Agenda
 
 Dans les fichiers projet_agenda_[1-11].rs dans le répertoire tuto_rust/examples/ on va peu à peu écrire un code qui permet d'explorer un calendrier et vérifier si un événement est prévu dans un agenda.
