@@ -8,7 +8,7 @@ Installer cargo sous linux ou Mac:
 
 pour  Windows voir  https://doc.rust-lang.org/cargo/getting-started/installation.html
 
-## Introduction
+## Documentation
 
 La documentation Rust est accessible ici : https://doc.rust-lang.org/book/title-page.html
 
