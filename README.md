@@ -50,6 +50,17 @@ Les exemples ex1, ex2, ex3 et ex4 abordent:
 - le matching
 - le type Option
 
+Les codes proposés contiennent des commenataires, signalés par '//'
+
+```
+// Ceci est un commentaire
+```
+
+### Exercice 1 
+https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex1.rs
+
+Supprimer les 
+
 ## Projet Agenda
 
 Dans les fichiers projet_agenda_[1-11].rs dans le répertoire tuto_rust/examples/ on va peu à peu écrire un code qui permet d'explorer un calendrier et vérifier si un événement est prévu dans un agenda.
