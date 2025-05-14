@@ -115,7 +115,7 @@ Exécuter le code:
 
 `cargo run --example ex4`
 
-
+Comprendre l'utilsation des fonctions, du pattern matching et du type Option.
 
 
 ## Projet Agenda
