@@ -59,13 +59,29 @@ Les codes proposés contiennent des commentaires, signalés par '//'
 qui présentent le but de l'exercice.
 
 Certains lignes sont comentées pour vous permettre de tester des modifications du code.
-Pour decommenter une ligne, il suffit de supprimer le // initial.
+Pour décommenter une ligne, il suffit de supprimer le // initial.
 
 
 ### Exercice 1 
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex1.rs
 
-Supprimer les 
+Exécuter le code:
+
+`cargo run --example ex1`
+
+Décomenter la ligne  14 et exécuter le code à nouveau.
+
+Observer  le message d'erreur.
+
+Même chose avec la ligne 17
+
+
+### Exercice 2 
+https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex2.rs
+
+Exécuter le code:
+
+`cargo run --example ex2`
 
 ## Projet Agenda
 
