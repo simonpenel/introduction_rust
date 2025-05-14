@@ -83,7 +83,7 @@ Exécuter le code:
 
 `cargo run --example ex2`
 
-Décomenter la ligne  37 et exécuter le code à nouveau.
+Décomenter la ligne  42 et exécuter le code à nouveau.
 
 Observer  le message d'erreur.
 
@@ -94,6 +94,10 @@ https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/e
 Exécuter le code:
 
 `cargo run --example ex3`
+
+Décomenter la ligne  65 et exécuter le code à nouveau.
+
+Observer  le message d'erreur.
 
 
 ## Projet Agenda
