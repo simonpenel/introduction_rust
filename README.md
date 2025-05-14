@@ -108,6 +108,14 @@ Expliquer pourquoi la fonction ma_fonction_3 n'a pas modifié la variable.
 Comprendre ce qu'il se passe avec les variable de type String.
 
 
+### Exercice 4 : fonctions, pattern matching et utilisation du  type Option 
+https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex4.rs
+
+Exécuter le code:
+
+`cargo run --example ex4`
+
+
 
 
 ## Projet Agenda
