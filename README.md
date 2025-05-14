@@ -153,9 +153,13 @@ Exécuter le code:
 `cargo run --example projet_agenda_2`
 
 
-### projet agenda 3 : créer ses structures (_struct_)
+### projet agenda 3 : définir un trait à associer à une structure
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_3.rs
 
+En savoir plus sur les traits: http...
+
+Un exemple de trait et le trait Display. Si une structure a ce trait, elle peut être affichée, par prinln!() par exemple.
+Ici on a crée une nouvelle structure, pour laquelle ce trait n'est bien sur pas défini. C'est à nous de le définir si on veut afficher cette structure.
 Exécuter le code:
 
 `cargo run --example projet_agenda_3`
