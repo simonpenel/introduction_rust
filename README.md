@@ -138,6 +138,13 @@ Ces exemples abordent :
 - l'implémentation d'un itérateur dédiée à une structure
 
 
+### projet agenda 1 : les énumérations et  leur utilisation avec le  pattern matching 
+https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_1.rs
+
+Exécuter le code:
+
+`cargo run --example projet_agenda_1
+
 ## Projet final
 
 Tous ces éléments sont regroupés dans le répertoire tuto_rust/src pour écrire un programme.
