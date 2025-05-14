@@ -16,9 +16,14 @@ La documentation Rust est accessible ici : https://doc.rust-lang.org/book/title-
 
 Les fichiers se trouvent  à  l'adresse  https://github.com/simonpenel/introduction_rust
 
-Récupérer les fichiers nécessaires:
+Récupérer les fichiers nécessaires et tester l'installation:
 
-`git clone https://github.com/simonpenel/introduction_rust.git`
+'''
+git clone https://github.com/simonpenel/introduction_rust.git`
+cd introduction_rust
+cd tuto_rust
+cargo run --example ex1
+'''
 
 
 ## Premiers pas
