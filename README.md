@@ -2,7 +2,7 @@
 
 ## Installation de Rust
 
-Installer cargo:
+Installer cargo sous linux ou Mac:
 
 `curl https://sh.rustup.rs -sSf | sh`
 
@@ -11,6 +11,15 @@ pour  Windows voir  https://doc.rust-lang.org/cargo/getting-started/installation
 ## Introduction
 
 La documentation Rust est accessible ici : https://doc.rust-lang.org/book/title-page.html
+
+## Introduction à Rust
+
+Les fichiers se trouvent  à  l'adresse  https://github.com/simonpenel/introduction_rust
+
+Récupérer les fichiers nécessaires:
+
+`git clone https://github.com/simonpenel/introduction_rust.git`
+
 
 ## Premiers pas
 Dans cette introduction à Rust, on  va aborder des aspects importants du langage Rust.
