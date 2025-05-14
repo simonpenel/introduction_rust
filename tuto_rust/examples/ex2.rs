@@ -3,24 +3,6 @@ fn main() {
 	println!("Hello, world!");
 
 	// ==================================
-	// Variables mutables et non mutables
-	// ==================================
-
-	let a = 32;
-	println!("{}",a);
-
-	// cette instruction engendre une erreur:
-	// a = 42;
-
-	let mut b = 42;
-	println!("{}",b);
-
-	// cette instruction est correcte:
-	b = 42;
-	println!("{}",b);
-
-
-	// ==================================
 	// Le "borowing" et le "ownership"
 	// https://doc.rust-lang.org/rust-by-example/scope/move.html
 	// En  Rust  chaque variable est propriétaire d’une valeur.
@@ -39,7 +21,7 @@ fn main() {
 	println!("{}",coucou);
 	// hello n'est plus accessible
 	// cette instruction engendre une erreur:
-	//println!("{}",hello);
+	// println!("{}",hello);
 
 	// ==================================
 	// Les references
