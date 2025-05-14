@@ -22,29 +22,29 @@ pub enum Mois {
 	Aout,
 }
 
-#[derive(Debug)] 
+#[derive(Debug)]
 pub struct Jour {
 	/// jour de la semaine
 	jour_sem: JourSemaine,
 	/// jour du mois
 	jour_mois: u32,
 	/// mois
-	mois: Mois	
+	mois: Mois
 	}
-	
+
 // Le trait "Display" (necessaire pour utiliser println!) n'existe pas pour notre structure.
-// Nous allons le definir	
+// Nous allons le definir
 impl std::fmt::Display for Jour {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois)
     }
  }
- 
+
 pub struct Date {
 	/// jour du mois
 	jour_mois: u32,
 	/// mois
-	mois: Mois	
+	mois: Mois
 	}
 impl std::fmt::Display for Date {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
@@ -55,16 +55,19 @@ impl std::fmt::Display for Date {
     	}
     }
 }
- 
+
 fn main() {
     let ajd = Jour { jour_sem: JourSemaine::Vendredi, jour_mois: 13, mois: Mois::Octobre};
     println!("Aujourd'hui c'est {:?}",ajd);
 	println!("Aujourd'hui c'est {:?}, le {} du mois d'{:?}",ajd.jour_sem,ajd.jour_mois,ajd.mois);
 	println!("Aujourd'hui c'est {}",ajd);
-	
+
 	let anniv = Date {jour_mois: 13, mois:Mois::Juin};
 	println!("L'anniversaire de Jason c'est {}",anniv);
+	let anniv = Date {jour_mois: 19, mois:Mois::Octobre};
+	println!("L'anniversaire de Michael c'est {}",anniv);
 	let anniv = Date {jour_mois: 2, mois:Mois::Aout};
 	println!("L'anniversaire de Wes c'est {}",anniv);
+	let anniv = Date {jour_mois: 22, mois:Mois::Juin};
+	println!("L'anniversaire de Bruce c'est {}",anniv);
 }
-
