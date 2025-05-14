@@ -76,7 +76,7 @@ Observer  le message d'erreur.
 Même chose avec la ligne 17
 
 
-### Exercice 2 : l'ownership et le borrowing
+### Exercice 2 : l'ownership et le borrowing, les références
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex2.rs
 
 Exécuter le code:
@@ -102,6 +102,9 @@ Observer  le message d'erreur.
 Décommenter la ligne  42 et exécuter le code à nouveau.
 
 Observer  le message d'erreur. Il s'agit d'un problème de _borrowing_.
+
+Expliquer pourquoi la fonction ma_fonction_3 n'a pas modifié la variable.
+
 
 
 
