@@ -105,6 +105,8 @@ Observer  le message d'erreur. Il s'agit d'un problème de _borrowing_.
 
 Expliquer pourquoi la fonction ma_fonction_3 n'a pas modifié la variable.
 
+Comprendre ce qu'il se passe avec les variable de type String.
+
 
 
 
