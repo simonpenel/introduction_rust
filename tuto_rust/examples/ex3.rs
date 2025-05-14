@@ -1,63 +1,10 @@
 
 fn main() {
-     println!("Hello, world!"); 
-
-    // ==================================
-    // Variables mutables et non mutables
-    // ==================================
-    
-    let a = 32;
-    println!("{}",a);
-
-    // cette instruction engendre une erreur:
-    // a = 42;
-
-    let mut b = 42;
-    println!("{}",b);
-
-    // cette instruction est correcte:
-    b = 42;
-    println!("{}",b);
-
-
-    // ==================================
-    // Le "borowing"
-    // ==================================
-
-    let hello = String::from("Hello, world!");
-
-    println!("{}",hello);
-
-    let coucou = hello;
-
-    println!("{}",coucou);     
-    // cette instruction engendre une erreur:
-    // println!("{}",hello);
-
-    // ==================================
-    // Les references
-    // ==================================
-
-    let bonjour = &coucou;
-    println!("{}",bonjour);
-    // println! recupere automatiquement
-    println!("{}",*bonjour);
-    println!("{}",coucou);     
-
-    // Le borowing ne pose pas de probleme avec les variable de type entier.
-    // La variable est copiée, cela ne coute pas cher, contrairement à une chaine de caracteres.
-
-    let hello = 1;
-    println!("{}",hello);
-    let coucou = hello;
-    println!("{}",coucou);     
-    // cette instruction marche:
-    println!("{}",hello);
-
+     println!("Hello, world!");
 
     // ==================================
     // Inference de type
-    // ==================================    
+    // ==================================
     let mut a = 21;
     println!("{}",a);
 
@@ -80,12 +27,12 @@ fn main() {
     // ==================================
     // Les fonctions
     // ==================================
-    
+
     // * Une fonction tres simple sur un entier
     let a: u32 = 12;
     ma_fonction(a);
     println!(" {}",a);
-    
+
     // * La meme sur une chaine
     let hello = String::from("Hello, world!");
     println!(" {}",hello);
@@ -93,15 +40,15 @@ fn main() {
     // Genere une erreur: la chaine a ete empruntée
     // par la fonction: elle n'est plus accessible.
     // println!(" {}",hello);
-    
+
     // * On veut modifier la variable
     println!("avant {}",a);
     ma_fonction_3(a);
     println!("apres {}",a);
     // On constate que la variable  n'a pas changé
-    
-    
-    // * On va utiliser une fonction qui prend la reference vers la 
+
+
+    // * On va utiliser une fonction qui prend la reference vers la
     // variable plutot que la variable elle meme
     // info sur les references : https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
     let  mut a: u32 =  12;
@@ -109,16 +56,16 @@ fn main() {
     ma_fonction_ref(&mut a);
     println!("apres {}",a);
     // on constate que la variable a bien  change
-    
-	// alternative : a est ici une reference vers une valeur mutable        
+
+	// alternative : a est ici une reference vers une valeur mutable
     let  a: &mut u32 = &mut 12;
     println!("avant {}",a);
     *a = 24;
     println!("apres {}",a);
     ma_fonction_ref(a);
     println!("apres {}",a);
-    
-    
+
+
     // * La meme chose avec une chaine
     let hello = String::from("Hello");
     ma_fonction_string_ref(&hello);
@@ -130,11 +77,11 @@ fn main() {
     ma_fonction_string_ref_mut(&mut hello);
     println!(" {}",hello);
 
-	// * Autre maniere de modifier une chaine        
+	// * Autre maniere de modifier une chaine
     let mut hello = String::from("Hello");
     ma_fonction_string_ref_mut_2(&mut hello);
     println!(" {}",hello);
-        
+
 }
 
 // Definition des fonctions
@@ -182,12 +129,12 @@ fn ma_fonction_string_ref_mut_2( x: &mut String) {
 	*x = x.to_owned() + " ,world!"
 }
 
-// Plus d'info sur String et &str 
+// Plus d'info sur String et &str
 
 // String is the dynamic heap string type, like Vec:
 // use it when you need to own or modify your string data.
 
 // str is an immutable sequence of UTF-8 bytes of dynamic length somewhere in memory.
-// Since the size is unknown, one can only handle it behind a pointer. 
+// Since the size is unknown, one can only handle it behind a pointer.
 // This means that str most commonly appears as &str: a reference to some UTF-8 data,
 // normally called a "string slice" or just a "slice"
