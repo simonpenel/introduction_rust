@@ -99,6 +99,11 @@ Décommenter la ligne  12 et exécuter le code à nouveau.
 
 Observer  le message d'erreur.
 
+Décommenter la ligne  42 et exécuter le code à nouveau.
+
+Observer  le message d'erreur. Il s'agit d'un problème de _borrowing_.
+
+
 
 ## Projet Agenda
 
