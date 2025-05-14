@@ -12,7 +12,7 @@ pour  Windows voir  https://doc.rust-lang.org/cargo/getting-started/installation
 
 La documentation Rust est accessible ici : https://doc.rust-lang.org/book/title-page.html
 
-## Introduction à Rust
+## Exercices et exemples
 
 Les fichiers se trouvent  à  l'adresse  https://github.com/simonpenel/introduction_rust
 
