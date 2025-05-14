@@ -100,7 +100,7 @@ fn ma_fonction_string(x:String) {
 fn ma_fonction_2(x:u32) {
     println!("entree = {}", x);
     // Genere une erreur
-    //x = x + 5;
+    // x = x + 5;
 
 }
 
