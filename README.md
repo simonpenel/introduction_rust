@@ -138,12 +138,27 @@ Ces exemples abordent :
 - l'implémentation d'un itérateur dédiée à une structure
 
 
-### projet agenda 1 : les énumérations et  leur utilisation avec le  pattern matching 
+### projet agenda 1 : les énumérations (_enum_) et  leur utilisation avec le  pattern matching 
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_1.rs
 
 Exécuter le code:
 
-`cargo run --example projet_agenda_1
+`cargo run --example projet_agenda_1`
+
+### projet agenda 2 : créer ses structures (_struct_)
+https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_2.rs
+
+Exécuter le code:
+
+`cargo run --example projet_agenda_2`
+
+
+### projet agenda 3 : créer ses structures (_struct_)
+https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_3.rs
+
+Exécuter le code:
+
+`cargo run --example projet_agenda_3`
 
 ## Projet final
 
