@@ -18,12 +18,12 @@ Les fichiers se trouvent  à  l'adresse  https://github.com/simonpenel/introduct
 
 Récupérer les fichiers nécessaires et tester l'installation:
 
-'''
-git clone https://github.com/simonpenel/introduction_rust.git`
+```
+git clone https://github.com/simonpenel/introduction_rust.git
 cd introduction_rust
 cd tuto_rust
 cargo run --example ex1
-'''
+``
 
 
 ## Premiers pas
