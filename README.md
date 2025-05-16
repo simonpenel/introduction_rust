@@ -215,12 +215,22 @@ Exécuter le code:
 `cargo run --example projet_agenda_9`
 
 
-### projet agenda 10 : Utilisation des methodes liées aux iterateurs 
+### projet agenda 10 : utilisation des methodes liées aux iterateurs 
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_10.rs
 
 Exécuter le code:
 
 `cargo run --example projet_agenda_10`
+
+
+
+### projet agenda 11 : implementer un iterateur pour une structure
+https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_11.rs
+
+Exécuter le code:
+
+`cargo run --example projet_agenda_11`
+
 
 ## Projet final
 
