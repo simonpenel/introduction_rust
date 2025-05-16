@@ -175,6 +175,14 @@ Exécuter le code:
 
 `cargo run --example projet_agenda_4`
 
+### projet agenda 5 : implémenter une fonction à associer à une structure
+https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_5.rs
+
+Exécuter le code:
+
+`cargo run --example projet_agenda_5`
+
+
 
 ## Projet final
 
