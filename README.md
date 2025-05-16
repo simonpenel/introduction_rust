@@ -214,6 +214,7 @@ Exécuter le code:
 
 `cargo run --example projet_agenda_9`
 
+
 ## Projet final
 
 Tous ces éléments sont regroupés dans le répertoire tuto_rust/src pour écrire un programme.
