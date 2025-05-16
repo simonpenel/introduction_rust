@@ -216,7 +216,7 @@ Exécuter le code:
 
 
 ### projet agenda 10 : Utilisation des methodes liées aux iterateurs 
-https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_19.rs
+https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_10.rs
 
 Exécuter le code:
 
