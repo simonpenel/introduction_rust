@@ -197,6 +197,14 @@ Exécuter le code:
 
 `cargo run --example projet_agenda_7`
 
+
+### projet agenda 8 : plus loin avec les itérateurs, lecture de fichier, methodes expect et unwrap
+https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_7.rs
+
+Exécuter le code:
+
+`cargo run --example projet_agenda_8`
+
 ## Projet final
 
 Tous ces éléments sont regroupés dans le répertoire tuto_rust/src pour écrire un programme.
