@@ -24,8 +24,7 @@ fn main() {
     }
     // Decoration les characteres en rust.
     let sparkle_heart = vec![240, 159, 146, 150];
-    let sparkle_heart = String::from_utf8(sparkle_heart).unwrap();
-    
+    let sparkle_heart = String::from_utf8(sparkle_heart).unwrap(); 
     let file_path = &arguments[1];
     // Lecture de l'agenda
     let mon_agenda  = match read_agenda(String::from(file_path)){
@@ -49,7 +48,6 @@ fn main() {
             Some(s) => { println!("\nAttention aujourd'hui {} {}:\n{}",i,sparkle_heart,s)},
             None => {},
         }
-
     }
     // Example de connflit entre crates interne et externe
     // Utilisation du crates local
