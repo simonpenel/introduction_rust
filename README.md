@@ -158,7 +158,7 @@ https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/p
 
 En savoir plus sur les traits: http...
 
-Un exemple de trait et le trait Display. Si une structure a ce trait, elle peut être affichée, par _println!()_ par exemple.
+Un exemple de trait et le trait Display. Si une structure a ce trait, elle peut être affichée, par _print_ln!()_ par exemple.
 Ici on a crée une nouvelle structure, pour laquelle ce trait n'est bien sur pas défini. C'est à nous de l'implémenter si on veut afficher cette structure.
 
 Exécuter le code:
