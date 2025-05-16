@@ -171,7 +171,6 @@ https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/p
 
 Un autre exemple d'implémentation du trait Display pour une structure que nous avons définie, ici la structure _Date_.
 
-
 Exécuter le code:
 
 `cargo run --example projet_agenda_4`
