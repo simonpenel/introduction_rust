@@ -21,9 +21,7 @@ fn main() {
     if arguments.len() != 2 {
         eprintln!("Entrer 1 argument s'il vous plait!");
         process::exit(1);
-
     }
-    
     // Decoration les characteres en rust.
     let sparkle_heart = vec![240, 159, 146, 150];
     let sparkle_heart = String::from_utf8(sparkle_heart).unwrap();
