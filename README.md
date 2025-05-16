@@ -254,6 +254,10 @@ On utilise le type Result pour gérer les erreur.
 
 On aborde un peu le problème de concaténation de chaînes de caractères.
 
+Exécuter le code:
+
+`target/debug/tuto_rust date_naissance.txt`
+
 On aborde la documentation du code. La commande
 
 `cargo doc --open`
