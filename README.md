@@ -199,11 +199,20 @@ Exécuter le code:
 
 
 ### projet agenda 8 : plus loin avec les itérateurs, lecture de fichier, methodes expect et unwrap
-https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_7.rs
+https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_8.rs
 
 Exécuter le code:
 
 `cargo run --example projet_agenda_8`
+
+
+
+### projet agenda 9 : définition de plusieurs fonctins pour gérer les dates 
+https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_9.rs
+
+Exécuter le code:
+
+`cargo run --example projet_agenda_9`
 
 ## Projet final
 
