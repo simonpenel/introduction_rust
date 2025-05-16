@@ -2,7 +2,7 @@
 // =======================================
 
 
-// Ici on speéciie que l'enum a le trait Debug
+// Ici on speéciie que l'enum a le trait Debug : #[derive(Debug)]
 // Ce trait permet d'utiliser println!("{:?}",toto) pour afficher l'enum toto.
 
 // All types which want to use std::fmt formatting traits require an implementation to be printable.
@@ -10,6 +10,7 @@
 // All others must be manually implemented somehow.
 // The fmt::Debug trait makes this very straightforward. All types can derive (automatically create) the fmt::Debug implementation. This is not true for fmt::Display which must be manually implemented.
 
+// More info on Debug and Display https://practice.course.rs/formatted-output/debug-display.html
 #[derive(Debug)]
 pub enum JourSemaine {
 	Lundi,
