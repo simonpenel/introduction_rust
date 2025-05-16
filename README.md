@@ -190,6 +190,13 @@ Exécuter le code:
 `cargo run --example projet_agenda_6`
 
 
+### projet agenda 7 : utiliser les itérateurs pour traiter des vecteurs
+https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_7.rs
+
+Exécuter le code:
+
+`cargo run --example projet_agenda_7`
+
 ## Projet final
 
 Tous ces éléments sont regroupés dans le répertoire tuto_rust/src pour écrire un programme.
