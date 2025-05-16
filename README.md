@@ -207,7 +207,7 @@ Exécuter le code:
 
 
 
-### projet agenda 9 : définition de plusieurs fonctins pour gérer les dates 
+### projet agenda 9 : définition de plusieurs fonctions pour gérer les dates 
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_9.rs
 
 Exécuter le code:
