@@ -169,7 +169,7 @@ Exécuter le code:
 ### projet agenda 4 : implémenter un trait à associer à une structure
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_4.rs
 
-Un autre exemple d'implémentation du trait Display pour une structure.
+Un autre exemple d'implémentation du trait Display pour une structure que nous avons définie, ici la structure _Date_.
 
 
 Exécuter le code:
