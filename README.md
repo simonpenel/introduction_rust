@@ -182,6 +182,12 @@ Exécuter le code:
 
 `cargo run --example projet_agenda_5`
 
+### projet agenda 6 : créer un vceteur de structures
+https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_6.rs
+
+Exécuter le code:
+
+`cargo run --example projet_agenda_6`
 
 
 ## Projet final
