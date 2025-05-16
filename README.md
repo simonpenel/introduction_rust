@@ -236,6 +236,9 @@ Exécuter le code:
 
 Tous ces éléments sont regroupés dans le répertoire tuto_rust/src pour écrire un programme.
 
+https://github.com/simonpenel/introduction_rust/tree/master/tuto_rust/src
+
+
 Dans  le répertoire tuto_rust, la commande
 
 
