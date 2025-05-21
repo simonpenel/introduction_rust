@@ -5,11 +5,11 @@ fn main() {
 	// ==================================
 	// Le "borowing" et le "ownership"
 	// https://doc.rust-lang.org/rust-by-example/scope/move.html
-	// En  Rust  chaque variable est propriétaire d’une valeur.
-	// Il ne peut y avoir qu’un seul propriétaire à la fois pour cette valeur.
-	// Lorsqu’une valeur est assignée à une autre variable,
-	// elle est transférée de la variable source à la variable cible. La variable source
-	// n’a plus accès à la valeur et la variable cible devient le nouveau propriétaire.
+	// En  Rust  chaque variable est propriétaire d’un emplacement mémoire.
+	// Il ne peut y avoir qu’un seul propriétaire à la fois pour cet emplacement.
+	// Lorsqu’un emplacement est assigné à une autre variable,
+	// il est transféré de la variable source à la variable cible. La variable source
+	// n’a plus accès à l'emplacement mémoire et la variable cible devient le nouveau propriétaire.
 	// ==================================
 
 	let hello = String::from("Hello, world!");
