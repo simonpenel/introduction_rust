@@ -25,16 +25,26 @@ fn main() {
 
 	// ==================================
 	// Les references
+	// Une réference est type de données qui représente un emplacement mémoire.
+	// L'opérateur & permet d'obtenir l'emplacement mémoire assigné à une variable.
+	// &x est l'emplacement mémoire  de x
 	// ==================================
 
 	let bonjour = &coucou;
-	println!("{}",bonjour);
-	// println! recupere automatiquement
+
+
+	// Pour récuperer la valeur à l'emplacement mémoire décrit par la réference on utilise l'opérateur *
 	println!("{}",*bonjour);
+
+	// Pour afficher la réference:
+	println!("{:p}",bonjour);
+	// Note on utilise {:p} pour forcer println! a ecrire l'adresse et non la valeur qui s'y trouve ce qui est le comportement par défaut
+
+    // La variable coucou est toujours disponible:
 	println!("{}",coucou);
 
 	// Le borrowing ne pose pas de probleme avec les variable de type entier.
-	// La variable est copiée, cela ne coute pas cher, contrairement à une chaine de caracteres.
+	// La variable est copiée automatiquement, car cela ne coute pas cher contrairement à une chaine de caracteres.
 
 	let hello = 1;
 	println!("{}",hello);
