@@ -10,6 +10,9 @@ fn main() {
 	// Lorsqu’un emplacement est assigné à une autre variable,
 	// il est transféré de la variable source à la variable cible. La variable source
 	// n’a plus accès à l'emplacement mémoire et la variable cible devient le nouveau propriétaire.
+	// Dans quel but:  maintenir la mémoire propre:
+	// - éviter les comportements imprévisibles avec les opérations de lectures/écritures
+	// - nettoyer rapidement les données inutilisées.
 	// ==================================
 
 	let hello = String::from("Hello, world!");
@@ -22,6 +25,21 @@ fn main() {
 	// hello n'est plus accessible
 	// cette instruction engendre une erreur:
 	// println!("{}",hello);
+
+	// Cas des variables "simples"
+	// --------------------------
+	// Le borrowing ne pose pas de probleme avec les variable de type entier.
+	// Dans ces cas la, la variable est en fait copiée automatiquement, car cela ne coute
+	// pas cher, contrairement  à une variable  complexe (allocation dynamique, 
+	// taille variable, structures,…).
+
+	let hello = 1;
+	println!("{}",hello);
+	let coucou = hello;
+	println!("{}",coucou);
+	// cette instruction marche:
+	println!("{}",hello);
+
 
 	// ==================================
 	// Les references
@@ -43,13 +61,5 @@ fn main() {
     // La variable coucou est toujours disponible:
 	println!("{}",coucou);
 
-	// Le borrowing ne pose pas de probleme avec les variable de type entier.
-	// La variable est copiée automatiquement, car cela ne coute pas cher contrairement à une chaine de caracteres.
 
-	let hello = 1;
-	println!("{}",hello);
-	let coucou = hello;
-	println!("{}",coucou);
-	// cette instruction marche:
-	println!("{}",hello);
 }
