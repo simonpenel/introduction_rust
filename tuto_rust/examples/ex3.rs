@@ -25,7 +25,7 @@ fn main() {
 
 
     // ==================================
-    // Les fonctions
+    // Les fonctions (definies plus bas)
     // ==================================
 
     // * Une fonction tres simple sur un entier
@@ -96,7 +96,6 @@ fn ma_fonction_string(x:String) {
     println!("entree = {}", x)
 }
 
-
 fn ma_fonction_2(x:u32) {
     println!("entree = {}", x);
     // Genere une erreur
@@ -125,6 +124,7 @@ fn ma_fonction_string_ref( x: &String) {
 fn ma_fonction_string_ref_mut( x: &mut String) {
 	x.push_str(", world!");
 }
+
 fn ma_fonction_string_ref_mut_2( x: &mut String) {
 	*x = x.to_owned() + " ,world!"
 }
@@ -138,3 +138,5 @@ fn ma_fonction_string_ref_mut_2( x: &mut String) {
 // Since the size is unknown, one can only handle it behind a pointer.
 // This means that str most commonly appears as &str: a reference to some UTF-8 data,
 // normally called a "string slice" or just a "slice"
+//
+// More info on https://blog.logrocket.com/understanding-rust-string-str/
