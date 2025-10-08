@@ -1,3 +1,4 @@
+ #[allow(unused)]
 
 fn main() {
 	println!("Hello, world!");
@@ -60,7 +61,7 @@ fn main() {
 
 
 
-	// Rappel sur le borowing sur les entiers
+	// Rappel sur le borowing sur les entiers 
 	// ======================================
 	println!("Ex 2.4 ");
 
@@ -72,32 +73,184 @@ fn main() {
 	println!("variable_2 = {}",variable_2);
 
 
+	// Rappel sur le borowing sur les String
+	// ======================================
+	// Ce code genere une erreur!
+
+    // let variable_1 = String::from("Hello, world!");;
+	// let variable_2 = variable_1;
+
+
+	// println!("variable_1 = {}",variable_1);
+	// println!("variable_2 = {}",variable_2);
+
+
 	// Rappel sur le borowing sur les entiers mutables
 	// ===============================================
 	println!("Ex 2.5 ");
 
-    let mut variable_1 = 3;
-	let variable_2 = variable_1;
-	variable_1 = variable_1 + 1;
+    let  variable_1 = 3;
+	let mut variable_2 = variable_1;
+	variable_2 = variable_2 + 1;
 
 
 	println!("variable_1 = {}",variable_1);
 	println!("variable_2 = {}",variable_2);
 
 
-	// References mutables
+	// Les references non mutables
+	// ======================================
+    println!("Ex 2.6 ");
+	let  variable = 3;
+
+    let ref1_variable = & variable;
+
+	println!("variable = {}",variable);
+    println!("ref1_variable = {}",ref1_variable);
+
+	// Plusieur references non mutables : ok
+	// ----------------------------------------------------------------
+	let ref2_variable = & variable;
+	let ref3_variable = & variable;
+	println!("variable = {}",variable);	
+	println!("ref2_variable = {}",ref2_variable);
+	println!("ref3_variable = {}",ref3_variable);
+	// variable est toujours  accessible
+	println!("variable = {}",variable);	
+
+	// Les references mutables
+	// =======================
+
+	//  Dans ces exemples, on a un peu l'impression que le compilateur comprend  le code.
+	//  Dans le contexte de references vers des variables mutables, il va generer une erreur
+	//  seulement si nous essayons d'utiliser une variable  que nous devrions  plus utiliser.
+
+    // une seule reference mutable : ok
+	// ---------------------------------
+	println!("Ex 2.8 ");
+	let mut variable = 3;
+
+    let ref_variable = &mut variable;
+
+	*ref_variable = 4;
+
+	// println!("variable = {}",variable);	
 
 
-	let mut variable_1 = 3;
+	// plusieur references mutables : erreur
+	// -------------------------------------
+	println!("Ex 2.9 ");
+	let mut variable = 3;
+    let ref1_variable = &mut variable;
+	let ref2_variable = &mut variable;
 
-    let ref_variable_1 = & variable_1;
+	// *ref1_variable = 4; // <- Cette instruction va déclencher une erreur
 
-	//  *ref_variable_1 = 4;
+	*ref2_variable = 4; // <- Cette instruction ne va pas déclencher une erreur
 
-	// println!("{}",variable_1);
-    println!("{}",ref_variable_1);
-	println!("{}",variable_1);
-    println!("{}",ref_variable_1);
-	// voir  https://dhghomon.github.io/easy_rust/Chapter_17.html
+	// 1 reference mutable et une reference non mutable 
+	// ------------------------------------------------
+
+	//  ceci va marcher
+	println!("Ex 2.10 ");
+	let mut variable = 3;
+    let ref1_variable = &variable;     // immutable borrow 
+	let ref2_variable = &mut variable; // mutable borrow 
+
+	*ref2_variable = 4; // mutable borrow  <- Cette instruction ne  déclenche pas d'erreur
+	
+	let test =  ref2_variable;
+	// let test =  ref1_variable;; // Remarque : et cette instruction  déclenche une d'erreur
+
+    
+	// Mais Ceci ne va pas marcher   : on a juste inversé l'ordre de déclaration de ref2_variable et ref1_variable
+	println!("Ex 2.11 ");
+	let mut variable = 3;
+	let ref2_variable = &mut variable; // mutable borrow 
+    let ref1_variable = &variable;     // immutable borrow 
+
+	// *ref2_variable = 4; // mutable borrow  <- Cette instruction   déclenche une erreur 
+	// C'est logique : une fois que la variable a ete empruntée de maniere immutable, 
+	// on ne peut plus l'emprunter de manière mutable 
+	// 
+
+
+    // Pourquoi println! fait des trucs bizares  
+	// ========================================
+
+    println!("Ex 2.11 ");
+	let mut variable = 3;
+	println!("variable = {}",variable);	
+
+    let ref_variable = &mut variable;
+	*ref_variable = 6;
+
+	println!("ref_variable = {}",ref_variable); // <- cette instruction  marche
+
+	println!("variable = {}",variable);	
+
+	// println!("ref_variable = {}",ref_variable); // <- cette meme instruction ne marche plus  
+
+    // parce que println! emprunte comme immutable puis comme mutable
+
+
+	//  L'explication du compilateur:
+	// 	A variable already borrowed with a certain mutability (either mutable or immutable) was borrowed again with a different
+	// mutability.
+
+	// Erroneous code example:
+
+	// fn bar(x: &mut i32) {}
+	// fn foo(a: &mut i32) {
+	//     let y = &a; // a is borrowed as immutable.
+	//     bar(a); // error: cannot borrow `*a` as mutable because `a` is also borrowed
+	//             //        as immutable
+	//     println!("{}", y);
+	// }
+
+	// To fix this error, ensure that you don't have any other references to the variable before trying to access it with a different
+	// mutability:
+
+	// fn bar(x: &mut i32) {}
+	// fn foo(a: &mut i32) {
+	//     bar(a);
+	//     let y = &a; // ok!
+	//     println!("{}", y);
+	// }
+
+
+	// testons ca
+
+	fn bar(x: &mut i32) {
+		if *x  == 0 {
+			println!("Zero!")
+		}
+		else {
+			println!("Pas zero!")
+		}
+		*x = 10;
+	}
+	fn foo(a: &mut i32) {
+		bar(a);
+		let y = &a; // ok!
+		println!("{}", y);
+	}
+
+	fn foo2(a: &mut i32) {
+		let y = &a; // a is borrowed as immutable.
+		bar(a); 	// error: cannot borrow `*a` as mutable because `a` is also borrowed
+					//        as immutable
+		// println!("{}", y); 
+		// on comprend bien que y qui est immutable ne peut plus être utilise puisque la fonction bar l'a modifiee
+
+	}
+
+
+	let mut test = 0; 
+	foo(&mut test);
+	test = 1;
+	foo(&mut test);
+
+	// plus d'info : voir  https://dhghomon.github.io/easy_rust/Chapter_17.html
 
 }
