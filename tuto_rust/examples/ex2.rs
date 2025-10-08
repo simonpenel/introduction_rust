@@ -130,15 +130,20 @@ fn main() {
 	println!("Ex 2.8 ");
 	let mut variable = 3;
 
+	println!("variable = {}",variable);	
+
     let ref_variable = &mut variable;
 
 	*ref_variable = 4;
 
-	// println!("variable = {}",variable);	
+	println!("variable = {}",variable);	
 
 
 	// plusieur references mutables : erreur
 	// -------------------------------------
+
+	//  ici on ne fait pas de println! des variables  pour eviter de complexifier
+
 	println!("Ex 2.9 ");
 	let mut variable = 3;
     let ref1_variable = &mut variable;
@@ -152,6 +157,7 @@ fn main() {
 	// ------------------------------------------------
 
 	//  ceci va marcher
+
 	println!("Ex 2.10 ");
 	let mut variable = 3;
     let ref1_variable = &variable;     // immutable borrow 
@@ -164,6 +170,7 @@ fn main() {
 
     
 	// Mais Ceci ne va pas marcher   : on a juste inversé l'ordre de déclaration de ref2_variable et ref1_variable
+	
 	println!("Ex 2.11 ");
 	let mut variable = 3;
 	let ref2_variable = &mut variable; // mutable borrow 
