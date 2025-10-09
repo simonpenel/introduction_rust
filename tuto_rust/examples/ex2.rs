@@ -75,14 +75,14 @@ fn main() {
 
 	// Rappel sur le borowing sur les String
 	// ======================================
-	// Ce code genere une erreur!
-
-    // let variable_1 = String::from("Hello, world!");;
-	// let variable_2 = variable_1;
 
 
-	// println!("variable_1 = {}",variable_1);
-	// println!("variable_2 = {}",variable_2);
+    let variable_1 = String::from("Hello, world!");;
+	let variable_2 = variable_1;
+
+
+	// println!("variable_1 = {}",variable_1); // Ce code genere une erreur!
+	println!("variable_2 = {}",variable_2);
 
 
 	// Rappel sur le borowing sur les entiers mutables
@@ -150,6 +150,7 @@ fn main() {
 	let ref2_variable = &mut variable;
 
 	// *ref1_variable = 4; // <- Cette instruction va déclencher une erreur
+	//  L'erreur est generee si on essaye d'utiliser la variable et non par la declaration des variables
 
 	*ref2_variable = 4; // <- Cette instruction ne va pas déclencher une erreur
 
@@ -237,17 +238,20 @@ fn main() {
 		}
 		*x = 10;
 	}
+
+
+	//  Fonction qui marche
 	fn foo(a: &mut i32) {
-		bar(a);
+		bar(a);                // a est modifiée
 		let y = &a; // ok!
 		println!("{}", y);
 	}
-
+	//  Fonction qui ne marche pas 
 	fn foo2(a: &mut i32) {
 		let y = &a; // a is borrowed as immutable.
 		bar(a); 	// error: cannot borrow `*a` as mutable because `a` is also borrowed
 					//        as immutable
-		// println!("{}", y); 
+		// println!("{}", y); // <- Ceci genere une erreur
 		// on comprend bien que y qui est immutable ne peut plus être utilise puisque la fonction bar l'a modifiee
 
 	}
@@ -257,6 +261,17 @@ fn main() {
 	foo(&mut test);
 	test = 1;
 	foo(&mut test);
+
+	//  Pour resumer:
+	//  On peut faire le parallele avec les fichiers en lecture ou en lecture/ecriture
+	//  Un fichier en lecture seule peut etre accedé en même temps par differentes parties du code
+	//  Un fichier en lecture/ecriture ne devrait  être accédé en même temps que par une seule
+	//  partie du code  pour eviter des erreurs potentielles.
+	//  
+	//  De la meme manière Rust interdit d'emprunter plusieur fois de maniere mutable une variable, ou d'emprunter
+	//  de maniere mutable une variable  empruntee avant de maniere immutable
+
+
 
 	// plus d'info : voir  https://dhghomon.github.io/easy_rust/Chapter_17.html
 
