@@ -121,10 +121,17 @@ fn main() {
 	// Les references mutables
 	// =======================
 
+
+	// Lorsque l'on déclare une reference mutable
+	// ref_variable_toto = &mut variable_toto
+	// &mut represente un acces exclusif, et interdit tout usage de la variable qui ne passe pas par la reference.
+	// Ici , ref_variable_toto a l'exclusivité de l'acces à variable_toto, jusqu'a sa dernière utilisation.
+
 	//  Dans ces exemples, on a un peu l'impression que le compilateur comprend  le code.
 	//  Dans le contexte de references vers des variables mutables, il va generer une erreur
 	//  seulement si nous essayons d'utiliser une variable  que nous devrions  plus utiliser.
 
+  
     // une seule reference mutable : ok
 	// ---------------------------------
 	println!("Ex 2.8 ");
@@ -273,6 +280,10 @@ fn main() {
 
 
 
+
+
 	// plus d'info : voir  https://dhghomon.github.io/easy_rust/Chapter_17.html
+
+	// un exemple d'erreur courante bien expliqué : https://users.rust-lang.org/t/why-is-this-println-s-treated-as-an-immutable-borrow/78870
 
 }
