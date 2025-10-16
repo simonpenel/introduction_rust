@@ -4,7 +4,7 @@ fn main() {
 	println!("Hello, world!");
 
 	// ==================================
-	// Le "borowing" et le "ownership"
+	// Le "borrowing" et le "ownership"
 	// https://doc.rust-lang.org/rust-by-example/scope/move.html
 	// En  Rust  chaque variable est propriétaire d’un emplacement mémoire.
 	// Il ne peut y avoir qu’un seul propriétaire à la fois pour cet emplacement.
@@ -61,7 +61,7 @@ fn main() {
 
 
 
-	// Rappel sur le borowing sur les entiers 
+	// Rappel sur le borrowing sur les entiers 
 	// ======================================
 	println!("Ex 2.4 ");
 
@@ -73,7 +73,7 @@ fn main() {
 	println!("variable_2 = {}",variable_2);
 
 
-	// Rappel sur le borowing sur les String
+	// Rappel sur le borrowing sur les String
 	// ======================================
 
 
@@ -85,7 +85,7 @@ fn main() {
 	println!("variable_2 = {}",variable_2);
 
 
-	// Rappel sur le borowing sur les entiers mutables
+	// Rappel sur le borrowing sur les entiers mutables
 	// ===============================================
 	println!("Ex 2.5 ");
 
@@ -203,8 +203,9 @@ fn main() {
 	println!("ref_variable = {}",ref_variable); // <- cette instruction  marche
 
 	println!("variable = {}",variable);	
-
-	// println!("ref_variable = {}",ref_variable); // <- cette meme instruction ne marche plus  
+	//  a parrtire
+	// *ref_variable = 3;
+	//println!("ref_variable = {}",ref_variable); // <- cette meme instruction ne marche plus  
 
     // parce que println! emprunte comme immutable puis comme mutable
 
