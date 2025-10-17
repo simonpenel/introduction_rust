@@ -51,13 +51,13 @@ fn main() {
 	// ==================================
 	// Les references et le borrowing
 	// ==================================
-	// Si on veut garder l'acces a un emplacement memoir, on utilise les références.
+	// Si on veut garder l'acces a un emplacement memoire, on utilise les références.
 	// Une réference est type de données qui représente un emplacement mémoire.
 	// L'opérateur & permet d'obtenir l'emplacement mémoire assigné à une variable.
 	// &x est l'emplacement mémoire  de x
 	// L'action de créer une référence est appelée le "borrowing"
-	
 	println!("Ex 2.3 ");
+
 	let coucou = String::from("Hello, world!");
 	let bonjour = &coucou;
 	let salut = &coucou;
@@ -74,8 +74,8 @@ fn main() {
 	// Rappel sur l'ownership avec les entiers  (muutables ou non)
 	// ===========================================================
 	println!("Ex 2.4 ");
-
-    let variable_1 = 3;
+    
+	let variable_1 = 3;
 	let variable_2 = variable_1;
 	let variable_3 = variable_1; // Cette ligne ne genere pas d'erreur
 
@@ -92,10 +92,9 @@ fn main() {
 	// Les references non mutables
 	// ============================
     println!("Ex 2.6 ");
+	
 	let  variable = 3;
-
     let ref1_variable = & variable;
-
 	println!("variable = {}",variable);
     println!("ref1_variable = {}",ref1_variable);
 
@@ -108,6 +107,7 @@ fn main() {
 	println!("ref3_variable = {}",ref3_variable);
 	// variable est toujours  accessible
 	println!("variable = {}",variable);	
+	
 
 	// Les references mutables
 	// =======================
@@ -121,161 +121,60 @@ fn main() {
 	// Une regle simple:
 	//   * une variabale non mutable peut être empruntée par autant de références non mutables que l'on veut
 	//   * une variabale  mutable ne peut être empruntée que par une référence mutable unique. 
-
-  
-    // une seule reference mutable : ok
+	//  Pourquoi ? On peut faire le parallele avec les fichiers en lecture ou en lecture/ecriture
+	//  Un fichier en lecture seule peut etre accedé en même temps par differentes parties du code
+	//  Un fichier en lecture/ecriture ne devrait  être accédé en même temps que par une seule
+	//  partie du code  pour eviter des erreurs potentielles.
+	//  
+    
+	// une seule reference mutable : ok
 	// ---------------------------------
 	println!("Ex 2.8 ");
 	let mut variable = 3;
-
-	println!("variable = {}",variable);	
-
     let ref_variable = &mut variable;
-
 	*ref_variable = 4;
-
 	println!("variable = {}",variable);	
 
 
 	// plusieur references mutables : erreur
 	// -------------------------------------
 
-	//  ici on ne fait pas de println! des variables  pour eviter de complexifier
-
 	println!("Ex 2.9 ");
+
 	let mut variable = 3;
     let ref1_variable = &mut variable;
 	let ref2_variable = &mut variable;
 
 	// *ref1_variable = 4; // <- Cette instruction va déclencher une erreur
-	//  L'erreur est generee si on essaye d'utiliser la variable et non par la declaration des variables
+	//  En effet la nouvelle reference ref2_variable emprunte la variable variable, ce qui entraine
+	//  la disparition  de la réference précédente  ref1_variable.
+	
+	*ref2_variable = 4; 
+	let test =  ref2_variable;
 
-	*ref2_variable = 4; // <- Cette instruction ne va pas déclencher une erreur
 
-	// 1 reference mutable et une reference non mutable 
-	// ------------------------------------------------
-
-	//  ceci va marcher
+	// 1 reference mutable et une reference non mutable  :erreur aussi
+	// ---------------------------------------------------------------
 
 	println!("Ex 2.10 ");
 	let mut variable = 3;
     let ref1_variable = &variable;     // immutable borrow 
 	let ref2_variable = &mut variable; // mutable borrow 
+		
+	
+	// let test =  ref1_variable; // <- Cette instruction va déclencher une erreur
+	//  En effet la nouvelle reference ref2_variable emprunte la variable variable, ce qui entraine
+	//  la disparition  de la réference précédente  ref1_variable.
 
 	*ref2_variable = 4; // mutable borrow  <- Cette instruction ne  déclenche pas d'erreur
 	
-	let test =  ref2_variable;
-	// let test =  ref1_variable;; // Remarque : et cette instruction  déclenche une d'erreur
-
-    
-	// Mais Ceci ne va pas marcher   : on a juste inversé l'ordre de déclaration de ref2_variable et ref1_variable
-	
-	println!("Ex 2.11 ");
-	let mut variable = 3;
-	let ref2_variable = &mut variable; // mutable borrow 
-    let ref1_variable = &variable;     // immutable borrow 
-
-	// *ref2_variable = 4; // mutable borrow  <- Cette instruction   déclenche une erreur 
-	// C'est logique : une fois que la variable a ete empruntée de maniere immutable, 
-	// on ne peut plus l'emprunter de manière mutable 
-	// 
-
-
-    // Pourquoi println! fait des trucs bizares  
-	// ========================================
-
-    println!("Ex 2.11 ");
-	let mut variable = 3;
+	let test =  ref2_variable; // Remaarque : après ça, ref2_variable n'existe plus. (ownership!)
 	println!("variable = {}",variable);	
 
-    let ref_variable = &mut variable;
-	*ref_variable = 6;
 
-	println!("ref_variable = {}",ref_variable); // <- cette instruction  marche
-
-	println!("variable = {}",variable);	
-	//  a parrtire
-	// *ref_variable = 3;
-	//println!("ref_variable = {}",ref_variable); // <- cette meme instruction ne marche plus  
-
-    // parce que println! emprunte comme immutable puis comme mutable
-
-
-	//  L'explication du compilateur:
-	// 	A variable already borrowed with a certain mutability (either mutable or immutable) was borrowed again with a different
-	// mutability.
-
-	// Erroneous code example:
-
-	// fn bar(x: &mut i32) {}
-	// fn foo(a: &mut i32) {
-	//     let y = &a; // a is borrowed as immutable.
-	//     bar(a); // error: cannot borrow `*a` as mutable because `a` is also borrowed
-	//             //        as immutable
-	//     println!("{}", y);
-	// }
-
-	// To fix this error, ensure that you don't have any other references to the variable before trying to access it with a different
-	// mutability:
-
-	// fn bar(x: &mut i32) {}
-	// fn foo(a: &mut i32) {
-	//     bar(a);
-	//     let y = &a; // ok!
-	//     println!("{}", y);
-	// }
-
-
-	// testons ca
-
-	fn bar(x: &mut i32) {
-		if *x  == 0 {
-			println!("Zero!")
-		}
-		else {
-			println!("Pas zero!")
-		}
-		*x = 10;
-	}
-
-
-	//  Fonction qui marche
-	fn foo(a: &mut i32) {
-		bar(a);                // a est modifiée
-		let y = &a; // ok!
-		println!("{}", y);
-	}
-	//  Fonction qui ne marche pas 
-	fn foo2(a: &mut i32) {
-		let y = &a; // a is borrowed as immutable.
-		bar(a); 	// error: cannot borrow `*a` as mutable because `a` is also borrowed
-					//        as immutable
-		// println!("{}", y); // <- Ceci genere une erreur
-		// on comprend bien que y qui est immutable ne peut plus être utilise puisque la fonction bar l'a modifiee
-
-	}
-
-
-	let mut test = 0; 
-	foo(&mut test);
-	test = 1;
-	foo(&mut test);
-
-	//  Pour resumer:
-	//  On peut faire le parallele avec les fichiers en lecture ou en lecture/ecriture
-	//  Un fichier en lecture seule peut etre accedé en même temps par differentes parties du code
-	//  Un fichier en lecture/ecriture ne devrait  être accédé en même temps que par une seule
-	//  partie du code  pour eviter des erreurs potentielles.
-	//  
-	//  De la meme manière Rust interdit d'emprunter plusieur fois de maniere mutable une variable, ou d'emprunter
-	//  de maniere mutable une variable  empruntee avant de maniere immutable
-
-
-
-
-
-	// plus d'info : voir  https://dhghomon.github.io/easy_rust/Chapter_17.html
-
-	// un exemple d'erreur courante bien expliqué : https://users.rust-lang.org/t/why-is-this-println-s-treated-as-an-immutable-borrow/78870
+	// Plus d'info 
+	// https://medium.com/@manikandan96372/rust-for-beginners-part-7-borrowing-reference-mutable-borrow-immutable-borrow-5c0e5c84e1ef
+	// https://dhghomon.github.io/easy_rust/Chapter_17.html
+	// https://users.rust-lang.org/t/why-is-this-println-s-treated-as-an-immutable-borrow/78870
 
 }
