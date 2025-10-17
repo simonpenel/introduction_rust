@@ -1,12 +1,10 @@
 
+// ==================================
+// Variables mutables et non mutables
+// ==================================
+    
 fn main() {
     println!("Hello, world!");
-
-    // ==================================
-    // Variables mutables et non mutables
-    // ==================================
-
-
     let a = 32;
     println!("{}",a);
 
