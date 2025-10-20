@@ -168,7 +168,7 @@ fn main() {
 
 	*ref2_variable = 4; // mutable borrow  <- Cette instruction ne  déclenche pas d'erreur
 	
-	let test =  ref2_variable; // Remaarque : après ça, ref2_variable n'existe plus. (à cause de l'ownership!)
+	let test =  ref2_variable; // Remarque : après ça, ref2_variable n'existe plus. (à cause de l'ownership!)
 	println!("variable = {}",variable);	
 
 
