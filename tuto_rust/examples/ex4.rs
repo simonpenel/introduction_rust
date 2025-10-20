@@ -3,6 +3,16 @@ fn main() {
     // ==================================
     // Fonction qui renvoie une variable
     // ==================================
+    fn calcule_nb_o( x: &String)-> u32 {
+        let mut nb = 0;
+        for c in x.chars() {
+            println!("charactere {}",c);
+            if c == 'o' {
+                nb = nb + 1 ;
+            }
+        };
+        nb
+    }
     let hello = String::from("Hello, world!");
     let nb_de_o = calcule_nb_o(&hello);
     println!("Nombre de o dans {} = {}", hello, nb_de_o);
@@ -10,6 +20,27 @@ fn main() {
     // On peut recuperer differents type de variables
     // ici un "tupple" une liste de variables qui peuvent etre de type differents
     // (on utilise {:?} pour afficher des variables de type  complexe)
+    // Utilisation du matching
+    // =======================
+    fn calcule_nb_voy( x: &String)-> (u32,u32,u32,u32,u32) {
+        let mut nb_a = 0;
+        let mut nb_e = 0;
+        let mut nb_i = 0;
+        let mut nb_o = 0;
+        let mut nb_u = 0;
+        for c in x.chars() {
+            match c {
+                'a' => nb_a +=1,
+                'e' => nb_e +=1,
+                'i' => nb_i +=1,
+                'o' => nb_o +=1,
+                'u' => nb_u +=1,
+                _ => {}
+            }
+        };
+    (nb_a,nb_e,nb_i,nb_o,nb_u)
+    }
+
     let nb_de_voyelles = calcule_nb_voy(&hello);
     println!("Nb de a, e, i, o, u dans {} : {:?}",hello, nb_de_voyelles);
 
@@ -42,14 +73,31 @@ fn main() {
     // On voit qu'on traine comme un boulet la verification sur la valeur entrée
     // et que le risque d'erreur indetectée est réel.
 
-
     // Avec Rust :
     // Dans cet exemple on ne cherche que les chiffres 0-4
+    // Utilisation de Option
+    // =====================
+    fn extrait_chaine( x: &String)-> Option<String> {
+        let mut chaine_0123 = String::new();
+        for c in x.chars() {
+            match c {
+                '0' => chaine_0123.push_str("0"),
+                '1' => chaine_0123.push_str("1"),
+                '2' => chaine_0123.push_str("2"),
+                '3' => chaine_0123.push_str("3"),
+                _   => {}
+                }
+        };
+        match   chaine_0123.len() > 0 {
+            true => Some(chaine_0123),
+            false => None,
+        }
+    }
     let hello = String::from("Hello, world!");
-    println!("traite la chaine {}",&hello);
+    println!("traite la chaine {}",hello);
     println!("La fonction renvoie {:?}",extrait_chaine(&hello));
     let hello = String::from("He12llo000, wo3455rl12d!");
-    println!("traite la chaine {}",&hello);
+    println!("traite la chaine {}",hello);
     println!("La fonction renvoie {:?}",extrait_chaine(&hello));
 
     // On peu faire un matching sur la variable Option que l'on recupere
@@ -79,58 +127,4 @@ fn main() {
 
     // Il existe un type similaire : Results
     // https://doc.rust-lang.org/std/result/
-}
-
-// Definition des fonctions
-// ===========================
-
-fn calcule_nb_o( x: &String)-> u32 {
-	let mut nb = 0;
-    for c in x.chars() {
-        println!("charactere {}",c);
-        if c == 'o' {
-            nb = nb + 1 ;
-		    }
-    };
-nb
-}
-
-// Utilisation du matching
-// =======================
-fn calcule_nb_voy( x: &String)-> (u32,u32,u32,u32,u32) {
-	let mut nb_a = 0;
-	let mut nb_e = 0;
-	let mut nb_i = 0;
-	let mut nb_o = 0;
-	let mut nb_u = 0;
-    for c in x.chars() {
-        match c {
-            'a' => nb_a +=1,
-            'e' => nb_e +=1,
-            'i' => nb_i +=1,
-            'o' => nb_o +=1,
-            'u' => nb_u +=1,
-        	_ => {}
-        }
-    };
-(nb_a,nb_e,nb_i,nb_o,nb_u)
-}
-
-// Utilisation de Option
-// =====================
-fn extrait_chaine( x: &String)-> Option<String> {
-	let mut chaine_0123 = String::new();
-    for c in x.chars() {
-        match c {
-            '0' => chaine_0123.push_str("0"),
-            '1' => chaine_0123.push_str("1"),
-            '2' => chaine_0123.push_str("2"),
-            '3' => chaine_0123.push_str("3"),
-            _   => {}
-		    }
-    };
-    match   chaine_0123.len() > 0 {
-	   true => Some(chaine_0123),
-	   false => None,
-	}
 }
