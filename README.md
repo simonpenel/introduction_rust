@@ -110,7 +110,7 @@ Exécuter le code:
 
 `cargo run --example ex3`
 
-Décommenter la ligne  12 et exécuter le code à nouveau.
+Décommenter la ligne  20 et exécuter le code à nouveau.
 
 Observer  le message d'erreur.
 
