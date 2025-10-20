@@ -1,7 +1,8 @@
+#[allow(dead_code)]
 // ===============
 //  LES FONCTIONS 
 // ===============
-
+//  Voir https://doc.rust-lang.org/book/ch03-03-how-functions-work.htmlhttps://doc.rust-lang.org/book/ch03-03-how-functions-work.html
 
 fn main() {
 
@@ -35,7 +36,6 @@ fn main() {
     fn ma_fonction_string(x:String) {
         println!("entree = {}", x)
     }
-
     let hello = String::from("world");
     println!("Hello  {}!",hello);
     ma_fonction_string(hello);
@@ -43,7 +43,11 @@ fn main() {
 
 
     // Dans les examples précédents la fonction devient propriétaire de la variable, 
-    // il s'agit de ownership comme dans l'instruction coucou = hello.
+    // il s'agit de ownership comme dans l'instruction coucou = hello. (qui ne pose pas de problème avec les entiers)
+    // C'est la raison pour laquelle, dans le cas des entiers la variable n'est pas modifiée car il sagit en fait
+    // d'une copie de la variable, et dans le cas des String il n'est plus possible d'acceder à la variable après qu'elle
+    // soit devenue la propriété de la fonction.
+    // La solution : l'appel par reference
 
 
     // APPEL PAR REFERENCE
@@ -51,6 +55,13 @@ fn main() {
 
     // On va utiliser une fonction qui prend la reference vers la variable plutot que la variable elle meme.
     // Rappel sur les references : https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
+
+    fn ma_fonction_ref( x: &mut u32) {
+        println!("entree = {}", x);
+        *x = 54;
+        println!("nouvelle entree = {}", x);
+
+    }
     let  mut a: u32 =  12;
     println!("avant {}",a);
     ma_fonction_ref(&mut a);
@@ -59,65 +70,47 @@ fn main() {
 
 	// alternative : a est ici une reference vers une valeur mutable
     let  a: &mut u32 = &mut 12;
-    println!("avant {}",a);
+    println!("a =  {}",a);
     *a = 24;
-    println!("apres {}",a);
+    println!("avant {}",a);
     ma_fonction_ref(a);
     println!("apres {}",a);
 
 
-    // * La meme chose avec une chaine
+    // * Une fonction simple avec une chaine
+    fn ma_fonction_string_ref( x: &String) {
+        println!("entree = {}", x);
+
+    }
     let hello = String::from("Hello");
     ma_fonction_string_ref(&hello);
-    // Ne genere plus d'erreur:
-    println!(" {}",hello);
+    println!(" {}",hello);   // Ne genere plus d'erreur:
 
     // * Modification de la chaine donnee en entree
+    fn ma_fonction_string_ref_mut( x: &mut String) {
+	x.push_str(", world!");
+    }
     let mut hello = String::from("Hello");
     ma_fonction_string_ref_mut(&mut hello);
     println!(" {}",hello);
 
 	// * Autre maniere de modifier une chaine
-    let mut hello = String::from("Hello");
-    ma_fonction_string_ref_mut_2(&mut hello);
-    println!(" {}",hello);
+    // fn ma_fonction_string_ref_mut_2( x: &mut String) {
+    // 	*x = x.to_owned() + " ,world!"
+    // }
+    // let mut hello = String::from("Hello");
+    // ma_fonction_string_ref_mut_2(&mut hello);
+    // println!(" {}",hello);
+    // Plus d'info sur String et &str
+
+    // String is the dynamic heap string type, like Vec:
+    // use it when you need to own or modify your string data.
+
+    // str is an immutable sequence of UTF-8 bytes of dynamic length somewhere in memory.
+    // Since the size is unknown, one can only handle it behind a pointer.
+    // This means that str most commonly appears as &str: a reference to some UTF-8 data,
+    // normally called a "string slice" or just a "slice"
+
+    // More info on https://blog.logrocket.com/understanding-rust-string-str/
 
 }
-
-// Definition des fonctions
-// ========================
-// Voir https://doc.rust-lang.org/book/ch03-03-how-functions-work.htmlhttps://doc.rust-lang.org/book/ch03-03-how-functions-work.html
-
-
-
-
-fn ma_fonction_ref( x: &mut u32) {
-    println!("entree = {}", x);
-    *x = 54;
-    println!("nouvelle entree = {}", x);
-
-}
-
-fn ma_fonction_string_ref( x: &String) {
-    println!("entree = {}", x);
-
-}
-fn ma_fonction_string_ref_mut( x: &mut String) {
-	x.push_str(", world!");
-}
-
-fn ma_fonction_string_ref_mut_2( x: &mut String) {
-	*x = x.to_owned() + " ,world!"
-}
-
-// Plus d'info sur String et &str
-
-// String is the dynamic heap string type, like Vec:
-// use it when you need to own or modify your string data.
-
-// str is an immutable sequence of UTF-8 bytes of dynamic length somewhere in memory.
-// Since the size is unknown, one can only handle it behind a pointer.
-// This means that str most commonly appears as &str: a reference to some UTF-8 data,
-// normally called a "string slice" or just a "slice"
-//
-// More info on https://blog.logrocket.com/understanding-rust-string-str/
