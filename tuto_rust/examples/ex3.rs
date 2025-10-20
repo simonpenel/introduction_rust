@@ -1,56 +1,56 @@
+// ===============
+//  LES FONCTIONS 
+// ===============
+
 
 fn main() {
-     println!("Hello, world!");
 
-    // ==================================
-    // Inference de type
-    // ==================================
-    let mut a = 21;
-    println!("{}",a);
-
-    // Genere une erreur
-    // a = a + 12.0;
-
-
-    let mut b = 52.0;
-    b = b + 10.0;
-    println!("{}",b);
-
-    let mut b = 32.5;
-    b = b + 10.0;
-    println!("{}",b);
-
-    // Specifier le type: ici un entier positif codé sur 32 bit : "u32"
-    let a: u32 = 12;
-
-
-    // ==================================
-    // Les fonctions (definies plus bas)
-    // ==================================
-
-    // * Une fonction tres simple sur un entier
+    // Une fonction tres simple sur un entier
+    fn ma_fonction(x:u32) {
+        println!("entree = {}", x)
+    }
     let a: u32 = 12;
     ma_fonction(a);
     println!(" {}",a);
 
-    // * La meme sur une chaine
-    let hello = String::from("Hello, world!");
-    println!(" {}",hello);
-    ma_fonction_string(hello);
-    // Genere une erreur: la chaine a ete empruntée
-    // par la fonction: elle n'est plus accessible.
-    // println!(" {}",hello);
+    // Si on veut modifier la variable:
+    fn ma_fonction_2(x:u32) {
+        println!("entree = {}", x);
+        // x = x + 5; // Genere une erreur
 
-    // * On veut modifier la variable
+    }
+    // La variable doit etre mutable
+    fn ma_fonction_3(mut x:u32) {
+        println!("entree = {}", x);
+        x = x + 5;
+        println!("nouvelle entree = {}", x);
+    }
     println!("avant {}",a);
     ma_fonction_3(a);
     println!("apres {}",a);
     // On constate que la variable  n'a pas changé
 
 
-    // * On va utiliser une fonction qui prend la reference vers la
-    // variable plutot que la variable elle meme
-    // info sur les references : https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
+    // La meme fonction tres simple sur  une chaine
+    fn ma_fonction_string(x:String) {
+        println!("entree = {}", x)
+    }
+
+    let hello = String::from("world");
+    println!("Hello  {}!",hello);
+    ma_fonction_string(hello);
+    // println!(" {}",hello); // Genere une erreur: la chaine a ete empruntéepar la fonction: elle n'est plus accessible.
+
+
+    // Dans les examples précédents la fonction devient propriétaire de la variable, 
+    // il s'agit de ownership comme dans l'instruction coucou = hello.
+
+
+    // APPEL PAR REFERENCE
+    // ===================
+
+    // On va utiliser une fonction qui prend la reference vers la variable plutot que la variable elle meme.
+    // Rappel sur les references : https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
     let  mut a: u32 =  12;
     println!("avant {}",a);
     ma_fonction_ref(&mut a);
@@ -88,27 +88,8 @@ fn main() {
 // ========================
 // Voir https://doc.rust-lang.org/book/ch03-03-how-functions-work.htmlhttps://doc.rust-lang.org/book/ch03-03-how-functions-work.html
 
-fn ma_fonction(x:u32) {
-    println!("entree = {}", x)
-}
 
-fn ma_fonction_string(x:String) {
-    println!("entree = {}", x)
-}
 
-fn ma_fonction_2(x:u32) {
-    println!("entree = {}", x);
-    // Genere une erreur
-    // x = x + 5;
-
-}
-
-fn ma_fonction_3(mut x:u32) {
-    println!("entree = {}", x);
-    x = x + 5;
-    println!("nouvelle entree = {}", x);
-
-}
 
 fn ma_fonction_ref( x: &mut u32) {
     println!("entree = {}", x);
