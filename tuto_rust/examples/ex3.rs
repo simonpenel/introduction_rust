@@ -19,7 +19,6 @@ fn main() {
     fn ma_fonction_2(x:u32) {
         println!("entree = {}", x);
         // x = x + 5; // Genere une erreur
-
     }
     // La variable doit etre mutable
     fn ma_fonction_3(mut x:u32) {
@@ -32,7 +31,6 @@ fn main() {
     println!("apres {}",a);
     // On constate que la variable  n'a pas changé
 
-
     // La meme fonction tres simple sur  une chaine
     fn ma_fonction_string(x:String) {
         println!("entree = {}", x)
@@ -42,14 +40,12 @@ fn main() {
     ma_fonction_string(hello);
     // let coucou = hello;  // Genere une erreur: la chaine a ete empruntéepar la fonction: elle n'est plus accessible.
 
-
     // Dans les examples précédents la fonction devient propriétaire de la variable, 
     // il s'agit de ownership comme dans l'instruction coucou = hello. (qui ne pose pas de problème avec les entiers)
     // C'est la raison pour laquelle, dans le cas des entiers la variable n'est pas modifiée car il sagit en fait
     // d'une copie de la variable, et dans le cas des String il n'est plus possible d'acceder à la variable après qu'elle
     // soit devenue la propriété de la fonction.
     // La solution : l'appel par reference
-
 
     // APPEL PAR REFERENCE
     // ===================
@@ -77,7 +73,6 @@ fn main() {
     ma_fonction_ref(a);
     println!("apres {}",a);
 
-
     //  Une fonction simple avec une chaine
     fn ma_fonction_string_ref( x: &String) {
         println!("entree = {}", x);
@@ -95,30 +90,23 @@ fn main() {
     ma_fonction_string_ref_mut(&mut hello);
     println!(" {}",hello);
 
-
-
     // Le cas de  println!
     // println! est une macro. Elle fonctionna un peu comme une fonction.
     // Cependnant
     let hello = String::from("Hello");
     println!(" {}",hello);
-    let coucou = hello; // Cette instruction marche. Alors  qu'on lui fournit un variablle sans passer par une reference.
-                        
+    let coucou = hello; // Cette instruction marche. Alors  qu'on lui fournit un variablle sans passer par une reference.                      
     // On s'attend à ce que la variabke "hello" soit  possédée par println! et donc ne soit plus accessible. (cf ligne 43)
     // En fait println! fait automatiquement un appel par référence, pour des raisons pratiques. 
-
     // Mais cela a des conséquuences:
-
 	let mut variable = 3;
 	println!("variable = {}",variable);	
     let ref_variable = &mut variable;
 	*ref_variable = 6;
 	println!("variable = {}",variable);	
 	// println!("ref_variable = {}",ref_variable); // <- cette instruction ne marche pas
-
     // parce que println! emprunte "variable" en creant une reference mutable vers "variable".
     // Cette action a supprimée  la reference mutable précédente "ref_variable", 
-
 
     // Pas de problème si on a une variable non mutable: 
 	let variable = 3;
@@ -127,27 +115,5 @@ fn main() {
 	let test = *ref_variable + 6;
 	println!("variable = {}",variable);	
 	println!("ref_variable = {}",ref_variable); // <- cette instruction marche 
-
-
-
-
-	// * Autre maniere de modifier une chaine
-    // fn ma_fonction_string_ref_mut_2( x: &mut String) {
-    // 	*x = x.to_owned() + " ,world!"
-    // }
-    // let mut hello = String::from("Hello");
-    // ma_fonction_string_ref_mut_2(&mut hello);
-    // println!(" {}",hello);
-    // Plus d'info sur String et &str
-
-    // String is the dynamic heap string type, like Vec:
-    // use it when you need to own or modify your string data.
-
-    // str is an immutable sequence of UTF-8 bytes of dynamic length somewhere in memory.
-    // Since the size is unknown, one can only handle it behind a pointer.
-    // This means that str most commonly appears as &str: a reference to some UTF-8 data,
-    // normally called a "string slice" or just a "slice"
-
-    // More info on https://blog.logrocket.com/understanding-rust-string-str/
 
 }
