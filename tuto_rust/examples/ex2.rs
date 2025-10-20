@@ -24,14 +24,12 @@ fn main() {
 	// - éviter les comportements imprévisibles avec les opérations de lectures/écritures
 	// - nettoyer rapidement les données inutilisées.
 
-
 	println!("Ex 2.1 ");
 	let hello = String::from("Hello, world!");
 	let coucou = hello;
 	// hello n'est plus accessible
 	// cette instruction engendre une erreur:
 	// let salut  = hello;
-
 
 	// Cas des variables "simples"
 	// --------------------------
@@ -46,7 +44,6 @@ fn main() {
 	// hello est tojours accessible
 	// cette instruction marche:
 	let salut  = hello;
-
 
 	// ==================================
 	// Les references et le borrowing
@@ -70,7 +67,6 @@ fn main() {
 	println!("{}",coucou);
 	println!("{}",*salut);
 
-
 	// Rappel sur l'ownership avec les entiers  (muutables ou non)
 	// ===========================================================
 	println!("Ex 2.4 ");
@@ -79,7 +75,6 @@ fn main() {
 	let variable_2 = variable_1;
 	let variable_3 = variable_1; // Cette ligne ne genere pas d'erreur
 
-
 	// Rappel sur l'ownership avec les String
 	// ======================================
     println!("Ex 2.5 ");
@@ -87,7 +82,6 @@ fn main() {
     let variable_1 = String::from("Hello, world!");;
 	let variable_2 = variable_1;
 	//let variable_3 = variable_1; // Cette ligne  genere une erreur
-
 
 	// Les references non mutables
 	// ============================
@@ -108,7 +102,6 @@ fn main() {
 	// variable est toujours  accessible
 	println!("variable = {}",variable);	
 	
-
 	// Les references mutables
 	// =======================
 
@@ -135,7 +128,6 @@ fn main() {
 	*ref_variable = 4;
 	println!("variable = {}",variable);	
 
-
 	// plusieur references mutables : erreur
 	// -------------------------------------
 
@@ -152,7 +144,6 @@ fn main() {
 	*ref2_variable = 4; 
 	let test =  ref2_variable;
 
-
 	// 1 reference mutable et une reference non mutable  :erreur aussi
 	// ---------------------------------------------------------------
 
@@ -161,7 +152,6 @@ fn main() {
     let ref1_variable = &variable;     // immutable borrow 
 	let ref2_variable = &mut variable; // mutable borrow 
 		
-	
 	// let test =  ref1_variable; // <- Cette instruction va déclencher une erreur
 	//  En effet la nouvelle reference "ref2_variable" emprunte la variable "variable", ce qui entraine
 	//  la disparition  de la réference précédente  "ref1_variable".
@@ -170,7 +160,6 @@ fn main() {
 	
 	let test =  ref2_variable; // Remarque : après ça, ref2_variable n'existe plus. (à cause de l'ownership!)
 	println!("variable = {}",variable);	
-
 
 	// Plus d'info 
 	// https://medium.com/@manikandan96372/rust-for-beginners-part-7-borrowing-reference-mutable-borrow-immutable-borrow-5c0e5c84e1ef
