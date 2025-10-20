@@ -77,7 +77,7 @@ fn main() {
     println!("apres {}",a);
 
 
-    // * Une fonction simple avec une chaine
+    //  Une fonction simple avec une chaine
     fn ma_fonction_string_ref( x: &String) {
         println!("entree = {}", x);
 
@@ -86,13 +86,49 @@ fn main() {
     ma_fonction_string_ref(&hello);
     println!(" {}",hello);   // Ne genere plus d'erreur:
 
-    // * Modification de la chaine donnee en entree
+    // Modification de la chaine donnee en entree
     fn ma_fonction_string_ref_mut( x: &mut String) {
 	x.push_str(", world!");
     }
     let mut hello = String::from("Hello");
     ma_fonction_string_ref_mut(&mut hello);
     println!(" {}",hello);
+
+
+
+    // Le cas de  println!
+    // println! est une macro. Elle fonctionna un peu comme une fonction.
+    // Cependnant
+    let hello = String::from("Hello");
+    println!(" {}",hello);
+    let coucou = hello; // Cette instruction marche. Alors  qu'on lui fourni un variabk=le sans passer par une reference.
+                        
+    // On s'attend à ce que la variabke "hello" soit  possédée par println! et donc ne soit plus accessible.
+    // En fait println! fait automatiquement un appel par référence, pour des raisons pratiques. 
+
+    // Mais cela a des conséquuences:
+
+	let mut variable = 3;
+	println!("variable = {}",variable);	
+    let ref_variable = &mut variable;
+	*ref_variable = 6;
+	println!("variable = {}",variable);	
+	// println!("ref_variable = {}",ref_variable); // <- cette instruction ne marche pas
+
+    // parce que println! emprunte "variable" en creant une reference mutable vers "variable".
+    // Cette action a supprimée  la reference mutable précédente "ref_variable", 
+
+
+    // Pas de problème si on a une variable non mutable: 
+	let variable = 3;
+	println!("variable = {}",variable);	
+    let ref_variable = & variable;
+	let test = *ref_variable + 6;
+	println!("variable = {}",variable);	
+	println!("ref_variable = {}",ref_variable); // <- cette instruction marche 
+
+
+
 
 	// * Autre maniere de modifier une chaine
     // fn ma_fonction_string_ref_mut_2( x: &mut String) {
