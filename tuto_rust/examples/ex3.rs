@@ -7,7 +7,8 @@
 
 fn main() {
 
-    // Une fonction tres simple sur un entier
+    // Une fonction tres simple sur un entier 
+    // (pour plus de clarte on déclare les fonctions ici, mais il serait mieux de les déclarer en dehors  de la fonction  main)
     fn ma_fonction(x:u32) {
         println!("entree = {}", x)
     }
