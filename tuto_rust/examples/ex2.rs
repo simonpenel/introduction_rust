@@ -1,7 +1,7 @@
  #[allow(unused)]
 
 // ============================
-//  LE'OWNERSHIP ET LE BRROWING
+//  L'OWNERSHIP ET LE BORROWING
 // ============================
 
 fn main() {
