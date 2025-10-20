@@ -1,6 +1,6 @@
 
 // ==================================
-// Variables mutables et non mutables
+// VARIABLES MUTABLES ET NON MUTABLES
 // ==================================
     
 fn main() {
