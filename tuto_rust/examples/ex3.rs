@@ -1,4 +1,5 @@
 #[allow(dead_code)]
+#[allow(unused)]
 // ===============
 //  LES FONCTIONS 
 // ===============
@@ -39,7 +40,7 @@ fn main() {
     let hello = String::from("world");
     println!("Hello  {}!",hello);
     ma_fonction_string(hello);
-    // println!(" {}",hello); // Genere une erreur: la chaine a ete empruntéepar la fonction: elle n'est plus accessible.
+    // let coucou = hello;  // Genere une erreur: la chaine a ete empruntéepar la fonction: elle n'est plus accessible.
 
 
     // Dans les examples précédents la fonction devient propriétaire de la variable, 
@@ -103,7 +104,7 @@ fn main() {
     println!(" {}",hello);
     let coucou = hello; // Cette instruction marche. Alors  qu'on lui fournit un variablle sans passer par une reference.
                         
-    // On s'attend à ce que la variabke "hello" soit  possédée par println! et donc ne soit plus accessible.
+    // On s'attend à ce que la variabke "hello" soit  possédée par println! et donc ne soit plus accessible. (cf ligne 42)
     // En fait println! fait automatiquement un appel par référence, pour des raisons pratiques. 
 
     // Mais cela a des conséquuences:
