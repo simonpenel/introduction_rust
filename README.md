@@ -62,7 +62,7 @@ Certains lignes sont commentées pour vous permettre de tester des modifications
 Pour décommenter une ligne, il suffit de supprimer le // initial.
 
 
-### Exercice 1 : variables mutables et non mutables
+### Exercice 1 : variables mutables et non mutables, l'inférence de type 
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex1.rs
 
 Exécuter le code:
@@ -103,7 +103,7 @@ Décommenter la ligne  165 et exécuter le code à nouveau.
 Observer  le message d'erreur.
 
 
-### Exercice 3 : inference de type et fonctions simples
+### Exercice 3 : fonctions simples, l'appel par référence
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex3.rs
 
 Exécuter le code:
