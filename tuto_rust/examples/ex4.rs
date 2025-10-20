@@ -18,7 +18,7 @@ fn main() {
     println!("Nombre de o dans {} = {}", hello, nb_de_o);
 
     // On peut recuperer differents type de variables
-    // ici un "tupple" une liste de variables qui peuvent etre de type differents
+    // ici le type "tupple" : une liste de variables qui peuvent etre de type differents
     // (on utilise {:?} pour afficher des variables de type  complexe)
     // Utilisation du matching
     // =======================
@@ -49,8 +49,8 @@ fn main() {
     println!("Nb de a : {} , de e : {}, de i : {}, de o : {}, de u : {}",a,e,i,o,u);
 
 
-    // Utilisation de Option
-    // =====================
+    // Utilisation du type Option
+    // ==========================
     // Imaginons que l'on veuille recuperer dans du texte une chaine de caractete contenant des chiffres
     // Sans rust:
     // la fonction f1 : f1("AZER0989TY") -> "0989"
@@ -102,7 +102,7 @@ fn main() {
 
     // On peu faire un matching sur la variable Option que l'on recupere
     let hello = String::from("Hello, world!");
-    println!("traite la chaine {}",&hello);
+    println!("traite la chaine {}",hello);
     match extrait_chaine(&hello) {
         Some(chaine_de_chiffres) => println!("On a trouvé cette chaine: {}.",chaine_de_chiffres),
         None  => println!("On n'a rien trouvé."),
@@ -118,6 +118,35 @@ fn main() {
     // On peut aussi recuperer la variable option pour la traiter ulterieuremnt
     let _resu = extrait_chaine(&hello);
 
+
+
+    fn extrait_chaine_somme( x: &String)-> Option<u32> {
+        let mut somme = 0;
+        let mut flag = false;
+        for c in x.chars() {
+            let valeur_de_c = c.to_digit(10);
+
+            match valeur_de_c {
+                Some(valeur) => { 
+                    somme = somme + valeur;
+                    flag = true; 
+                },
+                None => {}
+                }
+        };
+        match flag {
+            true => Some(somme),
+            false => None,
+        }
+    }
+
+    let hello = String::from("Hello, world!");
+
+    println!("Somme de {} = {:?}",hello, extrait_chaine_somme(&hello));
+
+    let hello = String::from("H3ll0, w0r1d!");
+
+    println!("Somme de {} = {:?}",hello, extrait_chaine_somme(&hello));
     // Info sur le type Option
     // pub enum Option<T> {
     //     None,
