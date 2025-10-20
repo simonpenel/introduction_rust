@@ -101,7 +101,7 @@ fn main() {
     // Cependnant
     let hello = String::from("Hello");
     println!(" {}",hello);
-    let coucou = hello; // Cette instruction marche. Alors  qu'on lui fourni un variabk=le sans passer par une reference.
+    let coucou = hello; // Cette instruction marche. Alors  qu'on lui fournit un variablle sans passer par une reference.
                         
     // On s'attend à ce que la variabke "hello" soit  possédée par println! et donc ne soit plus accessible.
     // En fait println! fait automatiquement un appel par référence, pour des raisons pratiques. 
