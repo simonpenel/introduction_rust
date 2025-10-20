@@ -69,11 +69,14 @@ Exécuter le code:
 
 `cargo run --example ex1`
 
-Décommenter la ligne  14 et exécuter le code à nouveau.
+Décommenter la ligne  15 et exécuter le code à nouveau.
 
 Observer  le message d'erreur.
 
-Même chose avec la ligne 17
+Même chose avec la ligne 18
+
+Même chose avec la ligne 39
+
 
 
 ### Exercice 2 : l'ownership et le borrowing, les références
@@ -83,7 +86,19 @@ Exécuter le code:
 
 `cargo run --example ex2`
 
-Décommenter la ligne  24 et exécuter le code à nouveau.
+Décommenter la ligne  33 et exécuter le code à nouveau.
+
+Observer  le message d'erreur.
+
+Décommenter la ligne  89 et exécuter le code à nouveau.
+
+Observer  le message d'erreur.
+
+Décommenter la ligne  148 et exécuter le code à nouveau.
+
+Observer  le message d'erreur.
+
+Décommenter la ligne  165 et exécuter le code à nouveau.
 
 Observer  le message d'erreur.
 
