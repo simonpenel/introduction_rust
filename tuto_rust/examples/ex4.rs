@@ -71,10 +71,14 @@ fn main() {
     // On a (f2(f1("AZERTYUIOP")))²  = (-1)² = 1
     // Et aussi  (f2(f1("AZERT1YUIOP")))²  = (1)² = 1
     // On voit qu'on traine comme un boulet la verification sur la valeur entrée
-    // et que le risque d'erreur indetectée est réel.
+    // et que le risque d'erreur indetectée est réel.*
+    // Le type Option permet de resoudre ce probleme. Le type Option permet d'utiliser une valeur optionelle.
+    // Option peut etre  :
+    //      - soit une valeur d'un type donnée 
+    //      - soit rien
+    // 
 
-    // Avec Rust :
-    // Dans cet exemple on ne cherche que les chiffres 0-4
+    // Dans cet exemple on ne cherche que les chiffres 0-4. On renvoie la chaine de cararacteres composée de ces ciffres$
     // Utilisation de Option
     // =====================
     fn extrait_chaine( x: &String)-> Option<String> {
@@ -119,7 +123,7 @@ fn main() {
     let _resu = extrait_chaine(&hello);
 
 
-
+    //  Une fonction plus generale, qui donne la somme
     fn extrait_chaine_somme( x: &String)-> Option<u32> {
         let mut somme = 0;
         let mut flag = false;
@@ -141,12 +145,11 @@ fn main() {
     }
 
     let hello = String::from("Hello, world!");
-
     println!("Somme de {} = {:?}",hello, extrait_chaine_somme(&hello));
-
     let hello = String::from("H3ll0, w0r1d!");
-
     println!("Somme de {} = {:?}",hello, extrait_chaine_somme(&hello));
+
+
     // Info sur le type Option
     // pub enum Option<T> {
     //     None,
