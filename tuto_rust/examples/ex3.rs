@@ -7,8 +7,8 @@
 
 fn main() {
 
-    // Une fonction tres simple sur un entier 
-    // (pour plus de clarte on déclare les fonctions ici, mais il serait mieux de les déclarer en dehors  de la fonction  main)
+    // Une fonction tres simple qui prend un  entier u32 comme paramètre
+    // (pour plus de clarté on déclare les fonctions ici, mais il serait mieux de les déclarer en dehors  de la fonction  main)
     fn ma_fonction(x:u32) {
         println!("entree = {}", x)
     }
@@ -16,7 +16,7 @@ fn main() {
     ma_fonction(a);
     println!(" {}",a);
 
-    // Si on veut modifier la variable:
+    // Si on veut modifier la variable donnée comme paramètre:
     fn ma_fonction_2(x:u32) {
         println!("entree = {}", x);
         // x = x + 5; // Genere une erreur
@@ -30,9 +30,9 @@ fn main() {
     println!("avant {}",a);
     ma_fonction_3(a);
     println!("apres {}",a);
-    // On constate que la variable  n'a pas changé
+    // On constate que la variable  n'a pas changé après la fonction
 
-    // La meme fonction tres simple sur  une chaine
+    // La meme fonction très simple avec une chaine comme paramètre
     fn ma_fonction_string(x:String) {
         println!("entree = {}", x)
     }
@@ -42,7 +42,7 @@ fn main() {
     // let coucou = hello;  // Genere une erreur: la chaine a ete empruntée par la fonction: elle n'est plus accessible.
 
     // Dans les examples précédents la fonction devient propriétaire de la variable donnée en entrée, 
-    // il s'agit de ownership comme dans l'instruction coucou = hello. (qui ne pose pas de problème avec les entiers)
+    // il s'agit de ownership comme dans l'instruction 'coucou = hello'. (qui ne pose pas de problème avec les entiers)
     // C'est la raison pour laquelle, dans le cas des entiers la variable n'est pas modifiée car il sagit en fait
     // d'une copie de la variable, et dans le cas des String il n'est plus possible d'accéder à la variable après qu'elle
     // soit devenue la propriété de la fonction.
