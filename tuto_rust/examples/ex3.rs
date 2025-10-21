@@ -39,13 +39,14 @@ fn main() {
     let hello = String::from("world");
     println!("Hello  {}!",hello);
     ma_fonction_string(hello);
-    // let coucou = hello;  // Genere une erreur: la chaine a ete empruntéepar la fonction: elle n'est plus accessible.
+    // let coucou = hello;  // Genere une erreur: la chaine a ete empruntée par la fonction: elle n'est plus accessible.
 
-    // Dans les examples précédents la fonction devient propriétaire de la variable, 
+    // Dans les examples précédents la fonction devient propriétaire de la variable donnée en entrée, 
     // il s'agit de ownership comme dans l'instruction coucou = hello. (qui ne pose pas de problème avec les entiers)
     // C'est la raison pour laquelle, dans le cas des entiers la variable n'est pas modifiée car il sagit en fait
-    // d'une copie de la variable, et dans le cas des String il n'est plus possible d'acceder à la variable après qu'elle
+    // d'une copie de la variable, et dans le cas des String il n'est plus possible d'accéder à la variable après qu'elle
     // soit devenue la propriété de la fonction.
+    // 
     // La solution : l'appel par reference
 
     // APPEL PAR REFERENCE
@@ -92,12 +93,14 @@ fn main() {
     println!(" {}",hello);
 
     // Le cas de  println!
-    // println! est une macro. Elle fonctionna un peu comme une fonction.
+    // -------------------
+    // println! est une macro. Elle fonctionne un peu comme une fonction.
     // Cependnant
     let hello = String::from("Hello");
     println!(" {}",hello);
-    let coucou = hello; // Cette instruction marche. Alors  qu'on a fournit à prointln!  une variablle sans passer par une reference.                      
-    // On s'attend à ce que la variabke "hello" soit  possédée par println! et donc ne soit plus accessible. (cf ligne 43)
+    let coucou = hello; // Cette instruction marche. Alors  qu'on a fournit à println!  une variable de type String
+    //  sans passer par une reference.                      
+    // On s'attend à ce que la variable "hello" soit  possédée par println! et donc ne soit plus accessible. (cf ligne 42)
     // En fait println! fait automatiquement un appel par référence, pour des raisons pratiques. 
     // Mais cela a des conséquuences:
 	let mut variable = 3;
@@ -105,9 +108,9 @@ fn main() {
     let ref_variable = &mut variable;
 	*ref_variable = 6;
 	println!("variable = {}",variable);	
-	// println!("ref_variable = {}",ref_variable); // <- cette instruction ne marche pas
+    // *ref_variable = 12; //<- cette instruction ne marche pas
     // parce que println! emprunte "variable" en creant une reference mutable vers "variable".
-    // Cette action a supprimée  la reference mutable précédente "ref_variable", 
+    // Cette action a supprimée  la reference mutable précédente "ref_variable".
 
     // Pas de problème si on a une variable non mutable: 
 	let variable = 3;

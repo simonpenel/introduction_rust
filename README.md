@@ -110,7 +110,7 @@ Exécuter le code:
 
 `cargo run --example ex3`
 
-Décommenter la ligne  20 et exécuter le code à nouveau.
+Décommenter la ligne  22 et exécuter le code à nouveau.
 
 Observer  le message d'erreur.
 
@@ -122,6 +122,7 @@ Expliquer pourquoi la fonction ma_fonction_3 n'a pas modifié la variable.
 
 Comprendre ce qu'il se passe avec les variable de type String.
 
+Décommenter la ligne  111 et exécuter le code à nouveau.
 
 ### Exercice 4 : fonctions, pattern matching et utilisation du  type Option 
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex4.rs
