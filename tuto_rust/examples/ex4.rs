@@ -1,8 +1,11 @@
 
+// ===================================================
+//  LES FONCTIONS ,LE PATTERN MATCHING, LE TYPE OPTION
+// ===================================================
 fn main() {
-    // ==================================
-    // Fonction qui renvoie une variable
-    // ==================================
+    // ========================================================================================
+    // Fonction qui prend une chaîne comme paramètre et renvoie une variable de type entier u32 
+    // ========================================================================================
     fn calcule_nb_o( x: &String)-> u32 {
         let mut nb = 0;
         for c in x.chars() {
@@ -11,7 +14,7 @@ fn main() {
                 nb = nb + 1 ;
             }
         };
-        nb
+        nb // Attention, ici pas de ";" final
     }
     let hello = String::from("Hello, world!");
     let nb_de_o = calcule_nb_o(&hello);
