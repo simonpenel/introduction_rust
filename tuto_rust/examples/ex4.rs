@@ -20,8 +20,8 @@ fn main() {
     let nb_de_o = calcule_nb_o(&hello);
     println!("Nombre de o dans {} = {}", hello, nb_de_o);
 
-    // On peut recuperer differents type de variables
-    // ici le type "tupple" : une liste de variables qui peuvent etre de type differents
+    // OLa fonction peut renvoyer differents type de variables.
+    // ici le type "tupple" : une liste de variables qui peuvent être de type differents
     // (on utilise {:?} pour afficher des variables de type  complexe)
     // Utilisation du matching
     // =======================
@@ -41,13 +41,13 @@ fn main() {
                 _ => {}
             }
         };
-    (nb_a,nb_e,nb_i,nb_o,nb_u)
+        (nb_a,nb_e,nb_i,nb_o,nb_u)
     }
 
     let nb_de_voyelles = calcule_nb_voy(&hello);
     println!("Nb de a, e, i, o, u dans {} : {:?}",hello, nb_de_voyelles);
 
-    // On peut aussi ecrire comme ça
+    // On peut aussi écrire comme ça
     let (a, e, i, o, u)  = calcule_nb_voy(&hello);
     println!("Nb de a : {} , de e : {}, de i : {}, de o : {}, de u : {}",a,e,i,o,u);
 
