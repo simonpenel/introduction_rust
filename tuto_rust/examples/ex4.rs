@@ -120,10 +120,8 @@ fn main() {
         None  => println!("On n'a rien trouvé."),
     }
 
-
     // On peut aussi recuperer la variable option pour la traiter ulterieuremnt
     let _resu = extrait_chaine(&hello);
-
 
     //  Une fonction plus generale, qui donne la somme
     fn extrait_chaine_somme( x: &String)-> Option<u32> {
@@ -150,7 +148,6 @@ fn main() {
     println!("Somme de {} = {:?}",hello, extrait_chaine_somme(&hello));
     let hello = String::from("H3ll0, w0r1d!");
     println!("Somme de {} = {:?}",hello, extrait_chaine_somme(&hello));
-
 
     // Info sur le type Option
     // pub enum Option<T> {
