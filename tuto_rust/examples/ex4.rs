@@ -114,7 +114,7 @@ fn main() {
         None  => println!("On n'a rien trouvé."),
     }
     let hello = String::from("Hel12076lo, w21orld!");
-    println!("traite la chaine {}",&hello);
+    println!("traite la chaine {}",hello);
     match extrait_chaine(&hello) {
         Some(chaine_de_chiffres) => println!("On a trouvé cette chaine: {}.",chaine_de_chiffres),
         None  => println!("On n'a rien trouvé."),
