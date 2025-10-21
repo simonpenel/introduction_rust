@@ -59,7 +59,6 @@ fn main() {
         println!("entree = {}", x);
         *x = 54;
         println!("nouvelle entree = {}", x);
-
     }
     let  mut a: u32 =  12;
     println!("avant {}",a);
@@ -78,7 +77,6 @@ fn main() {
     //  Une fonction simple avec une chaine
     fn ma_fonction_string_ref( x: &String) {
         println!("entree = {}", x);
-
     }
     let hello = String::from("Hello");
     ma_fonction_string_ref(&hello);
