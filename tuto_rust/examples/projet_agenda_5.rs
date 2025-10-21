@@ -1,4 +1,4 @@
-// Implementer une fonction pour une structure
+// IMPLEMENTER UNE FONCTION POUR UNE STRUCTURE
 // ============================================
 
 #[derive(Debug)]
@@ -31,9 +31,6 @@ pub struct Jour {
 	/// mois
 	mois: Mois	
 	}
-	
-// Le trait "Display" (necessaire pour utiliser println!) n'existe pas pour notre structure.
-// Nous allons le definir	
 impl std::fmt::Display for Jour {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois)
@@ -56,17 +53,20 @@ impl std::fmt::Display for Date {
     }
 }
 // Implemente des fonctions pour la structure Date
+// -----------------------------------------------
 impl Date {
+	//  Fonction qui crée une nouvelle date à partir du jour et du mois
     pub fn new(j: u32, m: Mois) -> Self {
         Self {
             jour_mois: j,
             mois: m,
         }
     }
+	//  Fonction qui crée une nouvelle date que l'on veut considérer comme le premier jour de l'année, par exemple le 1er Novembre. 
     pub fn premier_jour() -> Self {
         Self {
             jour_mois: 1,
-            mois: Mois::Octobre,
+            mois: Mois::Novembre,
         }
     }
     pub fn affiche(&self) {
@@ -79,6 +79,9 @@ fn main() {
 	println!("Le premier jour de l'annee c'est {}",p);
 	let anniv = Date::new(2,Mois::Aout);
 	println!("L'anniversaire de Wes c'est {}",anniv);
+	anniv.affiche();
+	let anniv = Date::new(17,Mois::Juillet);
+	println!("L'anniversaire de Nancy c'est {}",anniv);
 	anniv.affiche();
 }
 

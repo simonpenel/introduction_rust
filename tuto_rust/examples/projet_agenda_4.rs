@@ -1,5 +1,5 @@
-// Implementer un trait pour une structure
-// =======================================
+// IMPLEMENTER UN TRAIT POUR UNE STRUCTURE SUITE
+// =============================================
 
 #[derive(Debug)]
 pub enum JourSemaine {
@@ -46,6 +46,8 @@ pub struct Date {
 	/// mois
 	mois: Mois
 	}
+// Le trait "Display" (necessaire pour utiliser println!) n'existe pas pour notre structure.
+// Nous allons le definir	
 impl std::fmt::Display for Date {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     	match self.mois {
@@ -68,6 +70,6 @@ fn main() {
 	println!("L'anniversaire de Michael c'est {}",anniv);
 	let anniv = Date {jour_mois: 2, mois:Mois::Aout};
 	println!("L'anniversaire de Wes c'est {}",anniv);
-	let anniv = Date {jour_mois: 22, mois:Mois::Juin};
-	println!("L'anniversaire de Bruce c'est {}",anniv);
+	let anniv = Date {jour_mois: 17, mois:Mois::Juillet};
+	println!("L'anniversaire de Nancy c'est {}",anniv);
 }

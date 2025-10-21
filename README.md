@@ -161,7 +161,7 @@ Exécuter le code:
 
 `cargo run --example projet_agenda_1`
 
-Décommenter la ligne  21,22,23 et exécuter le code à nouveau.
+Décommenter les lignes  21,22,23 et exécuter le code à nouveau.
 
 ### projet agenda 2 : créer ses structures (_struct_)
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_2.rs
@@ -170,6 +170,7 @@ Exécuter le code:
 
 `cargo run --example projet_agenda_2`
 
+Décommenter la ligne  40 et exécuter le code à nouveau.
 
 ### projet agenda 3 : implémenter un trait à associer à une structure
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_3.rs
@@ -207,6 +208,10 @@ Exécuter le code:
 
 `cargo run --example projet_agenda_6`
 
+Décommenter la ligne  113 et exécuter le code à nouveau.
+
+
+Décommenter la ligne  116 et exécuter le code à nouveau.
 
 ### projet agenda 7 : utiliser les itérateurs pour traiter des vecteurs
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_7.rs
@@ -215,6 +220,7 @@ Exécuter le code:
 
 `cargo run --example projet_agenda_7`
 
+Décommenter les lignes  111,112,113 et exécuter le code à nouveau.
 
 ### projet agenda 8 : plus loin avec les itérateurs, lecture de fichier, methodes expect et unwrap
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_8.rs

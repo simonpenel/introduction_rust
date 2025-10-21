@@ -1,4 +1,4 @@
-// Creer un vecteur de structures 
+// CREER UN VECTEUR DE STRUCTURES 
 // ==============================
 
 
@@ -35,9 +35,6 @@ pub struct Jour {
 	/// mois
 	mois: Mois	
 	}
-	
-// Le trait "Display" (necessaire pour utiliser println!) n'existe pas pour notre structure.
-// Nous allons le definir	
 impl std::fmt::Display for Jour {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois)
@@ -61,7 +58,6 @@ impl std::fmt::Display for Date {
     	}
     }
 }
-// Implemente des fonctions pour la structure Date
 impl Date {
     pub fn new(j: u32, m: Mois) -> Self {
         Self {
@@ -72,7 +68,7 @@ impl Date {
     pub fn premier_jour() -> Self {
         Self {
             jour_mois: 1,
-            mois: Mois::Octobre,
+            mois: Mois::Novembre,
         }
     }
     pub fn affiche(&self) {
@@ -113,10 +109,12 @@ fn main() {
 
 	println!("Apres : {:?}",agenda_anniv);
 	
-	// Ceci genere une erreur: la variable hpl a ete donnee au vecteur agenda_anniv, elle n'est plus accessible.
+	// Laligne suivante genere une erreur: la variable hpl a ete donnee au vecteur agenda_anniv, elle n'est plus accessible.
 	// println!("{:?}",hpl);
     // On la voit ici
 	println!("{:?}",agenda_anniv[0]);
+	// println!("{}",agenda_anniv[0]); // Ceci genere une erreur car la structure Evenement n'a pas le trait Display,
+	//                                    seulement le trait Debug
 	println!("{} c'est {}",agenda_anniv[0].date, agenda_anniv[0].description);
 }
 

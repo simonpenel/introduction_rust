@@ -1,5 +1,7 @@
-// Les Iterators
-// =============
+// LES ITERATEURS (ITERATORS), LE CHAINAGE DE METHODES
+// ===================================================
+
+// use std::collections::binary_heap::Iter;
 
 
 /// Enum JourSemaine
@@ -15,7 +17,7 @@ pub enum JourSemaine {
 }
 
 /// Enum Mois
-#[derive(Debug,PartialEq)]
+#[derive(Debug,PartialEq)] // Ici on ajoute le Trait "PartialEq" aux traits de Mois, afin de pouvoir comparer les mois
 pub enum Mois {
 	Octobre,
 	Novembre,
@@ -34,10 +36,7 @@ pub struct Jour {
 	jour_mois: u32,
 	/// mois
 	mois: Mois	
-	}
-	
-// Le trait "Display" (necessaire pour utiliser println!) n'existe pas pour notre structure.
-// Nous allons le definir	
+	}	
 impl std::fmt::Display for Jour {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois)
@@ -61,7 +60,6 @@ impl std::fmt::Display for Date {
     	}
     }
 }
-// Implemente des fonctions pour la structure Date
 impl Date {
     pub fn new(j: u32, m: Mois) -> Self {
         Self {
@@ -72,7 +70,7 @@ impl Date {
     pub fn premier_jour() -> Self {
         Self {
             jour_mois: 1,
-            mois: Mois::Octobre,
+            mois: Mois::Novembre,
         }
     }
     pub fn affiche(&self) {
@@ -87,7 +85,6 @@ pub struct Evenement {
 	date:Date
 }
    
-
 fn main() {
 
 	// Creation d'1 evenement a partir d'une date
@@ -104,31 +101,27 @@ fn main() {
  
  	// Creation d'un vecteur d'evenements vide
  	let mut agenda_anniv:std::vec::Vec<Evenement> = Vec::new();
-	println!("Avant : {:?}",agenda_anniv); 	
  	agenda_anniv.push(hpl);
 	agenda_anniv.push(ms);
 	agenda_anniv.push(ulg);
 	agenda_anniv.push(bs);
 	agenda_anniv.push(jp);
 
-	println!("Apres : {:?}",agenda_anniv);
 	
-	// Ceci genere une erreur: la variable hpl a ete donnee au vecteur agenda_anniv, elle n'est plus accessible.
-	// println!("{:?}",hpl);
-    // On la voit ici
-	println!("{:?}",agenda_anniv[0]);
-	println!("{} c'est {}",agenda_anniv[0].date, agenda_anniv[0].description);
-	
-	
+	// agenda_anniv est un vecteur.
+	// Les vecteurs ont le trait "Iterator" qui permet d'itérer sur chaque element du vecteur
+	// Le trait Iterator fournit un grand nombre de méthodes qui puevent être utilisée sur les 
+	// types quit possèdent ce trait, par exemple les vecteurs.
+
 	// Tester ceci
-	/*
-	for evenement in agenda_anniv {
-		println!("{} c'est {}",evenement.date, evenement.description);
-	}
 	
+	// for evenement in agenda_anniv {
+	// println!("{} c'est {}",evenement.date, evenement.description);
+	// }
+	println!("\nprojet_agenda_7.1");
 	// et maintenant cette commande ne marche plus
 	println!("{:?}",agenda_anniv);
-	*/
+
 	// Que s'est  t il passé ?
 	// Le compilateur l'explique
 
@@ -136,13 +129,16 @@ fn main() {
 	for evenement in &agenda_anniv {
 		println!("{} c'est {}",evenement.date, evenement.description);
 	}
-	
 	// et maintenant ca marche
-	println!("{:?}",agenda_anniv);	
-	
+	println!("{:?}",agenda_anniv);
+
+	println!("\nprojet_agenda_7.2");
 	// Utilisation d'un iterateur
-	// La boucle for utilise implicitement un iterateur into_iter
-	// On peut le faire explicitement
+	// La boucle for utilise implicitement un la methode "into_iter" fournie par trait Iterator
+	// https://blog.coolhead.in/difference-between-intoiter-iter-and-itermut-in-rust
+	// into_iter() transmet l'owwnership du vecteur à l'iterateur.
+	// Il existe une autre méthode, iter() qui emprunte (borrowing)  le vecteur
+	// A la place de la boucle sur le vecteur, on peut utiliser explicitement l'iterateur:
 	let iterateur = agenda_anniv.iter();
 	// Et pas into_iter
 	
@@ -157,23 +153,33 @@ fn main() {
 	// https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.map
 
 	// quelques exemples	
+	// ------------------
+
+	// La methode enumerate
+	println!("\nprojet_agenda_7.3");
+	let iterateur = agenda_anniv.iter();
+	let iterateur_avec_index = iterateur.enumerate();
+	for (i, eve) in iterateur_avec_index {
+		println!("Evnement numero {} : {:?}",i,eve);
+	}
 	
+
+	println!("\nprojet_agenda_7.4");
+	// On peut "chaîner" les méthodes:
 	let iterateur = agenda_anniv.iter().enumerate();
 	for (i, eve) in iterateur {
 		println!("Evnement numero {} : {:?}",i,eve);
 	}
 	
+	// La methode filter
+	println!("\nprojet_agenda_7.5");
 	// necessite l'ajout de 
 	// #[derive(PartialEq)]
 	// a la struture Mois
 	let iterateur = agenda_anniv.iter().filter(|x| x.date.mois == Mois::Aout).enumerate();
 	for (i, eve) in iterateur {
-		println!("Evnement en Aout numero {} : {:?}",i,eve);
+		println!("Evenement en Aout numero {} : {:?}",i,eve);
 	}
 		
-
-//    }
-
-	
 }
 

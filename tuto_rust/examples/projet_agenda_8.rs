@@ -1,4 +1,4 @@
-// Plus loin avec les Iterators, lecture de fichier, methodes expect et unwrap
+// PLUS LOIN AVEC LES ITERATORS, LECTURE DE FICHIER, METHODES EXPECT ET UNWRAP
 // ===========================================================================
 
 use std::io::BufReader;
@@ -39,9 +39,6 @@ pub struct Jour {
 	/// mois
 	mois: Mois	
 	}
-	
-// Le trait "Display" (necessaire pour utiliser println!) n'existe pas pour notre structure.
-// Nous allons le definir	
 impl std::fmt::Display for Jour {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois)
@@ -91,70 +88,88 @@ pub struct Evenement {
 	date:Date
 }
    
-
 fn main() {
-    let mut agenda_anniv:std::vec::Vec<Evenement> = Vec::new();
-    
+    println!("\nprojet_agenda_8.1");
+    let mut agenda_anniv:std::vec::Vec<Evenement> = Vec::new(); 
     // On veut remplir un agenda a partir d'un fichier date_naissance.txt
-    //open file
+    // Ouverture d'un fichier:
     let file = File::open("date_naissance.txt");
-    // file est du type Results
+    // file est du type Results, qui ressemble un peu ay type Option
     // https://doc.rust-lang.org/std/result/enum.Result.html
-    println!("{:?}",file);
+    println!("File = {:?}",file);
     // On peut utiliser le matching
-    let file2 = match file {
-    Ok(file3) => file3,
-    Err(erreur) => {
-    	eprintln!("Erreur : {:?}",erreur);
-    	panic!("Erreur a l'ouverture du fichier")
-    	},
+    let file_resu = match file {
+        Ok(file_ok) => file_ok,
+        Err(erreur) => {
+            eprintln!("Erreur : {:?}",erreur);
+            panic!("Erreur a l'ouverture du fichier")
+            },
     };
-    println!("File : {:?}",file2);
-    
+    println!("File : {:?}",file_resu);
+
+    println!("\nprojet_agenda_8.2");
     // On pourait aussi ecrire tout simplement avec le meme nom de variable
     let file = File::open("date_naissance.txt");
     let file = match file {
-    Ok(file) => file,
-    Err(erreur) => {
-    	eprintln!("Erreur : {:?}",erreur);
-    	panic!("Erreur a l'ouverture du fichier")
-    	},
+        Ok(file) => file,
+        Err(erreur) => {
+            eprintln!("Erreur : {:?}",erreur);
+            panic!("Erreur a l'ouverture du fichier")
+            },
     };
     println!("File : {:?}",file);
-        
+
+    println!("\nprojet_agenda_8.3");
+    let file = File::open("date_naissance.txt");
+    // Test sur un fichier bidon
+    // let file = File::open("bidon.txt");
+    let file = match file {
+        Ok(file) => file,
+        Err(erreur) => {
+            eprintln!("Erreur : {:?}",erreur);
+            panic!("Erreur a l'ouverture du fichier")
+            },
+    };
+    println!("File : {:?}",file);  
+
     // Mais si on veut un code plus compact on peut utiliser expect() (ou unwrap())
     // https://learning-rust.github.io/docs/unwrap-and-expect/
     // Unwrap in Rust returns the result of the operation for Option and Result enums.
     // If unwrap encounters an error Err or a None, it will panic and stop the program execution.
     // Unwrap method is defined on both Option and Result type.
+    println!("\nprojet_agenda_8.4");
     let file = File::open("date_naissance.txt").expect("Erreur a l'ouverture");
     println!("File : {:?}",file);
-    
+
+
+    // Lecture d'un fichier
+    println!("\nprojet_agenda_8.5");  
     let reader = BufReader::new(file);
     println!("\nLecture:");
     for line in reader.lines() {
-    	// Line est du type Results
-	    println!("{:?}",line);
+    	// line est du type Results 
+	    println!("line = {:?}",line);
 	    let line = line.expect("Probleme de lecture");
+        // line est maintenant du type String 
+	    println!("line = {:?}",line);
 	    // Ici on utilise split() qui renvoie  un iterateur
 	    // La methode collect() place tous les elements dans une collection
 	    // https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.collect  
         let split_line: Vec<&str> = line.split(',').collect();
-    	println!("-> {:?}",split_line);
+    	println!("split_line = {:?}",split_line);
     	// On s'assure que l'on a 5 elements
-        assert_eq!(split_line.len(),5);
-        
+        assert_eq!(split_line.len(),5); // assert_eq va renvoyer un erreur si les deux termes split_line.len() et 5 sont differents
         // On recupere le prenom
         let prenom = split_line[1];
-        println!("{}",prenom);
-        // Virer les prenome multiples:
+        println!("prenom = {}",prenom);
+        // Virer les prenoms multiples:
         // split est un iterator, la methode next renvoie le prochain element sous forme
         // de Option: soit il y a un prochain element ( Some(x)) soit il n'y en a pas (None)
         let prenom = prenom.split(' ').next();
+        println!("first element of splited prenom = {:?}",prenom);
         // on recuper ce qu'il y a dans Option en utilisant unwrap
-        println!("{:?}",prenom);
         let prenom  = prenom.unwrap();
-                
+        println!("first element of splited prenom = {:?}",prenom);      
         // On recupere le jour du mois
     	let jour_mois = split_line[2];   
     	// C'est une chaine de caracteres
@@ -166,10 +181,10 @@ fn main() {
               process::exit(1);
             },
     	 };
-    	 println!("{}",jour_mois);
+    	 println!("Jour du mois = {}",jour_mois);
     	 // On pourrait s'assurer que le jour du mois est <=31
     	 
-    	// On recupere le mois
+    	// On recupere le mois avec le pattern matching
         let mois = match split_line[3] {
     	    "July" => Mois::Juillet,
     	    "August" => Mois::Aout, 
@@ -181,13 +196,14 @@ fn main() {
     	        process::exit(1);
             },
     	};
+        println!("Mois = {:?}",mois);
     	// On definit une date a partir du mois et du jour du mois
         let date = Date{jour_mois: jour_mois, mois: mois};
+        println!("Date = {:?}",date);
         // On definit un evenement a partir du prenom
         let evt =  Evenement{description:prenom.to_string()+"'s birthday",date:date};
         agenda_anniv.push(evt);
 	}
-	
-	println!("AGENDA {:?}",agenda_anniv);
+	println!("\nAGENDA {:?}",agenda_anniv);
 }
 

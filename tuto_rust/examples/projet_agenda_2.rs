@@ -1,4 +1,4 @@
-// Utiliser des structures
+// UTILISER DES STRUCTURES
 // =======================
 
 #[derive(Debug)]
@@ -21,6 +21,8 @@ pub enum Mois {
 	Aout,
 }
 
+// On définit la structure Jour
+// ----------------------------
 #[derive(Debug)] 
 pub struct Jour {
 	/// jour de la semaine
@@ -35,4 +37,5 @@ fn main() {
     let ajd = Jour { jour_sem: JourSemaine::Vendredi, jour_mois: 13, mois: Mois::Octobre};
     println!("Aujourd'hui c'est {:?}",ajd);
 	println!("Aujourd'hui c'est {:?}, le {} du mois d'{:?}",ajd.jour_sem,ajd.jour_mois,ajd.mois);
+	// println!("Aujourd'hui c'est {}",ajd);	// <- on ne peut pas utiliser println!
 }

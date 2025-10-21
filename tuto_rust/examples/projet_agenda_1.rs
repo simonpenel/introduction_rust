@@ -1,4 +1,5 @@
 //  LES ENUMERATIONS(ENUM)
+//  ======================
 
 // On définit l'enum "JourSemaine"
 #[derive(Debug)] // <- JourSemaine doit implementer le "trait" Debug pour pouvoir etre affiche avec {:?}. La notion de Trait sera abordé plus tard
