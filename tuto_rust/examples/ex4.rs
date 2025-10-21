@@ -50,7 +50,6 @@ fn main() {
     let (a, e, i, o, u)  = calcule_nb_voy(&hello);
     println!("Nb de a : {} , de e : {}, de i : {}, de o : {}, de u : {}",a,e,i,o,u);
 
-
     // Utilisation du type Option
     // ==========================
     // Imaginons que l'on veuille recuperer dans du texte une chaine de caractete contenant des chiffres
