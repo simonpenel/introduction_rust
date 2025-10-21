@@ -19,7 +19,7 @@ fn main() {
     let nb_de_o = calcule_nb_o(&hello);
     println!("Nombre de o dans {} = {}", hello, nb_de_o);
 
-    // OLa fonction peut renvoyer differents type de variables.
+    // La fonction peut renvoyer differents type de variables.
     // ici le type "tupple" : une liste de variables qui peuvent être de type differents
     // (on utilise {:?} pour afficher des variables de type  complexe)
     // Utilisation du matching
@@ -131,14 +131,14 @@ fn main() {
         let mut flag = false;
         for c in x.chars() {
             let valeur_de_c = c.to_digit(10);
-
+            // to_digit est une méthode du type char qui renvoie le type Option: la valeur numerique du char, ou rien
             match valeur_de_c {
                 Some(valeur) => { 
                     somme = somme + valeur;
                     flag = true; 
-                },
+                    },
                 None => {}
-                }
+            }
         };
         match flag {
             true => Some(somme),
