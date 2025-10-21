@@ -119,7 +119,6 @@ fn main() {
     };
     println!("File : {:?}",file);
 
-    println!("\nprojet_agenda_8.3");
     let file = File::open("date_naissance.txt");
     // Test sur un fichier bidon
     // let file = File::open("bidon.txt");
@@ -132,7 +131,19 @@ fn main() {
     };
     println!("File : {:?}",file);  
 
-    // Mais si on veut un code plus compact on peut utiliser expect() (ou unwrap())
+    println!("\nprojet_agenda_8.3");
+    // C'est un peu lourd, on peut simplifier:
+    let file = match File::open("date_naissance.txt") {
+        Ok(file) => file,
+        Err(erreur) => {
+            eprintln!("Erreur : {:?}",erreur);
+            panic!("Erreur a l'ouverture du fichier")
+            },
+    };
+    println!("File : {:?}",file); 
+
+    // Mais c'est toujours un peu lourd d'ecrire ce code à chaque fois.
+    // Si on veut un code plus compact on peut utiliser expect() (ou unwrap())
     // https://learning-rust.github.io/docs/unwrap-and-expect/
     // Unwrap in Rust returns the result of the operation for Option and Result enums.
     // If unwrap encounters an error Err or a None, it will panic and stop the program execution.

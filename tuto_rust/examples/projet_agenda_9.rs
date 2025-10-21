@@ -1,5 +1,5 @@
-// Plein de fonctions
-// ==================
+// PLEIN DE FONCTIONS, LES TRAITS COPY ET CLONE
+// ============================================
 
 use std::io::BufReader;
 use std::io::BufRead;
@@ -20,6 +20,7 @@ pub enum JourSemaine {
 
 /// Enum Mois
 #[derive(Debug,PartialEq,Clone,Copy)]
+// #[derive(Debug,PartialEq,Clone)]
 pub enum Mois {
 	Octobre,
 	Novembre,
@@ -39,9 +40,6 @@ pub struct Jour {
 	/// mois
 	mois: Mois	
 	}
-	
-// Le trait "Display" (necessaire pour utiliser println!) n'existe pas pour notre structure.
-// Nous allons le definir	
 impl std::fmt::Display for Jour {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois)
@@ -65,7 +63,6 @@ impl std::fmt::Display for Date {
     	}
     }
 }
-// Implemente des fonctions pour la structure Date
 impl Date {
     pub fn new(j: u32, m: Mois) -> Self {
         Self {
@@ -90,14 +87,13 @@ pub struct Evenement {
 	description:String,
 	date:Date
 }
-   
 
 fn main() {
     // On utilise une fonction pour lire l'agenda
     let mon_agenda = read_agenda(String::from("date_naissance.txt"));
-    println!("{:?}",mon_agenda);
+    println!("Agenda = {:?}",mon_agenda);
 
-    // hors sujet: les characteres en rust.
+    // les characteres speciaux en rust.
     let sparkle_heart = vec![240, 159, 146, 150];
     let sparkle_heart = String::from_utf8(sparkle_heart).unwrap();
 
@@ -197,12 +193,11 @@ pub fn renvoie_demain(jour: &Jour)->Jour {
     let jsem_prochain = renvoie_demain_semaine(jsem);
 
     let jmois_prochain = match *jmois < 30 {
-        true => jmois + 1,
+        true => *jmois + 1,
         false  => 1,
     };  
 
     let mois_prochain = match  *jmois < 30 {
-        //true => *mois,
         true => *mois, // pour faire ça, On doit donner le trait Copy a Mois!
         false => renvoie_mois_suivant(mois)
     };
