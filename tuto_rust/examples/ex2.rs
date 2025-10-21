@@ -128,7 +128,7 @@ fn main() {
 	*ref_variable = 4;
 	println!("variable = {}",variable);	
 
-	// plusieur references mutables : erreur
+	// plusieures references mutables : erreur
 	// -------------------------------------
 
 	println!("Ex 2.9 ");
@@ -138,8 +138,8 @@ fn main() {
 	let ref2_variable = &mut variable;
 
 	// *ref1_variable = 4; // <- Cette instruction va déclencher une erreur
-	//  En effet la nouvelle reference "ref2_variable" emprunte la variable "variable", ce qui entraine
-	//  la disparition  de la réference précédente  "ref1_variable".
+	// En effet la nouvelle reference "ref2_variable" emprunte la variable "variable", ce qui entraine
+	// la disparition  de la réference précédente  "ref1_variable".
 	
 	*ref2_variable = 4; 
 	let test =  ref2_variable;
@@ -153,8 +153,8 @@ fn main() {
 	let ref2_variable = &mut variable; // mutable borrow 
 		
 	// let test =  ref1_variable; // <- Cette instruction va déclencher une erreur
-	//  En effet la nouvelle reference "ref2_variable" emprunte la variable "variable", ce qui entraine
-	//  la disparition  de la réference précédente  "ref1_variable".
+	// En effet la nouvelle reference "ref2_variable" emprunte la variable "variable", ce qui entraine
+	// la disparition  de la réference précédente  "ref1_variable".
 
 	*ref2_variable = 4; // mutable borrow  <- Cette instruction ne  déclenche pas d'erreur
 	
