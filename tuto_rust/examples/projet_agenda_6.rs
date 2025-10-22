@@ -109,12 +109,12 @@ fn main() {
 
 	println!("Apres : {:?}",agenda_anniv);
 	
-	// Laligne suivante genere une erreur: la variable hpl a ete donnee au vecteur agenda_anniv, elle n'est plus accessible.
+	// La ligne suivante genere une erreur: la variable hpl a ete donnée au vecteur agenda_anniv, elle n'est plus accessible.
 	// println!("{:?}",hpl);
     // On la voit ici
 	println!("{:?}",agenda_anniv[0]);
 	// println!("{}",agenda_anniv[0]); // Ceci genere une erreur car la structure Evenement n'a pas le trait Display,
-	//                                    seulement le trait Debug
+									   // seulement le trait Debug
 	println!("{} c'est {}",agenda_anniv[0].date, agenda_anniv[0].description);
 }
 

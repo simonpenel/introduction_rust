@@ -161,7 +161,7 @@ Exécuter le code:
 
 `cargo run --example projet_agenda_1`
 
-Décommenter les lignes  21,22,23 et exécuter le code à nouveau.
+Décommenter les lignes  21,22,23 et exécuter le code à nouveau. 
 
 ### projet agenda 2 : créer ses structures (_struct_)
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_2.rs

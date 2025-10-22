@@ -2,7 +2,11 @@
 // =======================================
 
 // Un trait décrit une fonctionnalité qu'a un type particulier et qu'il peut partager
-// avec d'autres types.
+// avec d'autres types. Cette fonctionalité fournit un ensemble de méthodes aux types qui
+// possèdent se trait. Par exemple il existe le trait qui permet de savoir si une variable 
+// est supérieure ou inférieure à une autre. Ce trait est possédé par le type entier et par 
+// le type chaîne de caractères. Si on crée une structure, on peut avoir besoin de les classer.
+// Il faudra alors lui associer ce trait, et eventuellement implémenter ce trait.
 
 // Ici on spécifie que l'enum a le trait Debug : #[derive(Debug)]
 // Ce trait permet d'utiliser println!("{:?}",toto) pour afficher l'enum toto.
@@ -49,7 +53,8 @@ pub struct Jour {
 	}
 
 // Le trait "Display" (necessaire pour utiliser println!) n'existe pas pour notre structure.
-// Nous allons le definir
+// Nous allons le definir.
+// voir https://doc.rust-lang.org/std/fmt/trait.Display.html
 impl std::fmt::Display for Jour {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois) //<- définit comment println! va ecrire Jour
