@@ -17,7 +17,7 @@ pub enum JourSemaine {
 }
 
 /// Enum Mois
-#[derive(Debug,PartialEq)] // Ici on ajoute le Trait "PartialEq" aux traits de Mois, afin de pouvoir comparer les mois
+#[derive(Debug,PartialEq)] // Ici on ajoute le Trait "PartialEq" aux traits de Mois, afin de pouvoir utiliser l'opérateur "==" ligne 179
 pub enum Mois {
 	Octobre,
 	Novembre,
@@ -39,7 +39,7 @@ pub struct Jour {
 	}	
 impl std::fmt::Display for Jour {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-    write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois)
+    	write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois)
     }
  }
  
@@ -54,9 +54,9 @@ pub struct Date {
 impl std::fmt::Display for Date {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     	match self.mois {
-    	Mois::Octobre => write!(f, "le {} du mois d'{:?}", self.jour_mois, self.mois),
-    	Mois::Aout => write!(f, "le {} du mois d'{:?}", self.jour_mois, self.mois),
-    	_ =>  write!(f, "le {} du mois de {:?}", self.jour_mois, self.mois),
+			Mois::Octobre => write!(f, "le {} du mois d'{:?}", self.jour_mois, self.mois),
+			Mois::Aout => write!(f, "le {} du mois d'{:?}", self.jour_mois, self.mois),
+			_ =>  write!(f, "le {} du mois de {:?}", self.jour_mois, self.mois),
     	}
     }
 }
@@ -87,19 +87,19 @@ pub struct Evenement {
    
 fn main() {
 
-	// Creation d'1 evenement a partir d'une date
+	// Instanciation d'1 évènement à partir d'une date
     let date_hpl = Date{jour_mois: 20, mois: Mois::Aout};
 	let hpl = Evenement{description:"Anniversaire de Howard".to_string(),date:date_hpl};
 
-	// Creation directe
+	// Instanciation directe
 	let ms = Evenement{description:"Anniversaire de Mary".to_string(),date:Date{jour_mois: 30, mois: Mois::Aout}};
 
-	// Creation en utilisant la fonction new de Date
+	// Instanciation en utilisant la fonction new de Date
 	let ulg = Evenement{description:"Anniversaire de Ursula".to_string(),date:Date::new(21,Mois::Octobre)};
 	let bs = Evenement{description:"Anniversaire de Bram".to_string(),date:Date::new(8,Mois::Novembre)};
 	let jp = Evenement{description:"Anniversaire de John".to_string(),date:Date::new(30,Mois::Aout)};
  
- 	// Creation d'un vecteur d'evenements vide
+ 	// Creation d'un vecteur d'évenements vide
  	let mut agenda_anniv:std::vec::Vec<Evenement> = Vec::new();
  	agenda_anniv.push(hpl);
 	agenda_anniv.push(ms);
@@ -109,8 +109,8 @@ fn main() {
 
 	
 	// agenda_anniv est un vecteur.
-	// Les vecteurs ont le trait "Iterator" qui permet d'itérer sur chaque element du vecteur
-	// Le trait Iterator fournit un grand nombre de méthodes qui puevent être utilisée sur les 
+	// Les vecteurs ont le trait "Iterator" qui permet d'itérer sur chaque élément du vecteur
+	// Le trait Iterator fournit un grand nombre de méthodes qui peuvent être utilisée sur les 
 	// types quit possèdent ce trait, par exemple les vecteurs.
 
 	// Tester ceci
@@ -134,14 +134,13 @@ fn main() {
 
 	println!("\nprojet_agenda_7.2");
 	// Utilisation d'un iterateur
-	// La boucle for utilise implicitement un la methode "into_iter" fournie par trait Iterator
+	// La boucle for utilise implicitement  la methode "into_iter" fournie par trait Iterator
 	// https://blog.coolhead.in/difference-between-intoiter-iter-and-itermut-in-rust
-	// into_iter() transmet l'owwnership du vecteur à l'iterateur.
+	// into_iter() transmet l'owwnership du vecteur à l'itérateur.
 	// Il existe une autre méthode, iter() qui emprunte (borrowing)  le vecteur
 	// A la place de la boucle sur le vecteur, on peut utiliser explicitement l'iterateur:
-	let iterateur = agenda_anniv.iter();
-	// Et pas into_iter
-	
+	let iterateur = agenda_anniv.iter(); // Et pas into_iter
+	//  Ensuite on fait la boucle sur l'itérateur
 	for evenement in iterateur {
 	    println!("Et encore, {} c'est toujours {}",evenement.date, evenement.description);
     }	
@@ -160,7 +159,7 @@ fn main() {
 	let iterateur = agenda_anniv.iter();
 	let iterateur_avec_index = iterateur.enumerate();
 	for (i, eve) in iterateur_avec_index {
-		println!("Evnement numero {} : {:?}",i,eve);
+		println!("Evenement numero {} : {:?}",i,eve);
 	}
 	
 
@@ -175,7 +174,7 @@ fn main() {
 	println!("\nprojet_agenda_7.5");
 	// necessite l'ajout de 
 	// #[derive(PartialEq)]
-	// a la struture Mois
+	// à la struture Mois
 	let iterateur = agenda_anniv.iter().filter(|x| x.date.mois == Mois::Aout).enumerate();
 	for (i, eve) in iterateur {
 		println!("Evenement en Aout numero {} : {:?}",i,eve);

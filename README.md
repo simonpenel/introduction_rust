@@ -217,14 +217,14 @@ Décommenter la ligne  114 et exécuter le code à nouveau.
 
 Décommenter la ligne  117 et exécuter le code à nouveau.
 
-### projet agenda 7 : utiliser les itérateurs pour traiter des vecteurs
+### projet agenda 7 : utiliser les itérateurs pour traiter des vecteurs, chaînage de méthode
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_7.rs
 
 Exécuter le code:
 
 `cargo run --example projet_agenda_7`
 
-Décommenter les lignes  111,112,113 et exécuter le code à nouveau.
+Décommenter les lignes  118,119,120 et exécuter le code à nouveau.
 
 ### projet agenda 8 : plus loin avec les itérateurs, lecture de fichier, methodes expect et unwrap
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_8.rs
@@ -241,6 +241,8 @@ https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/p
 Exécuter le code:
 
 `cargo run --example projet_agenda_9`
+
+Vérfier ce qui se passe si on supprime le trait Copy de Mois.
 
 
 ### projet agenda 10 : utilisation des methodes liées aux iterateurs 

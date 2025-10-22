@@ -19,8 +19,8 @@ pub enum JourSemaine {
 }
 
 /// Enum Mois
-#[derive(Debug,PartialEq,Clone,Copy)]
-// #[derive(Debug,PartialEq,Clone)]
+#[derive(Debug,PartialEq,Clone,Copy)] // <- l'instruction ligne 200 impose que Mois ait le trait Copy.
+                                      //  Avoir le trait Copy nécessite d'avoit le trait Clone
 pub enum Mois {
 	Octobre,
 	Novembre,
@@ -212,13 +212,13 @@ pub fn renvoie_demain(jour: &Jour)->Jour {
 // ------------------------------------------------------------------
 pub fn renvoie_demain_semaine(jour: &JourSemaine)->JourSemaine { 
     let demain = match *jour {
-    JourSemaine::Lundi => JourSemaine::Mardi,
-    JourSemaine::Mardi => JourSemaine::Mercredi,
-    JourSemaine::Mercredi => JourSemaine::Jeudi,
-    JourSemaine::Jeudi => JourSemaine::Vendredi,
-    JourSemaine::Vendredi => JourSemaine::Samedi,
-    JourSemaine::Samedi => JourSemaine::Dimanche,
-    JourSemaine::Dimanche => JourSemaine::Lundi,            
+        JourSemaine::Lundi => JourSemaine::Mardi,
+        JourSemaine::Mardi => JourSemaine::Mercredi,
+        JourSemaine::Mercredi => JourSemaine::Jeudi,
+        JourSemaine::Jeudi => JourSemaine::Vendredi,
+        JourSemaine::Vendredi => JourSemaine::Samedi,
+        JourSemaine::Samedi => JourSemaine::Dimanche,
+        JourSemaine::Dimanche => JourSemaine::Lundi,            
     };
     demain
 }
@@ -228,12 +228,12 @@ pub fn renvoie_demain_semaine(jour: &JourSemaine)->JourSemaine {
 // ------------------------------------------------------
 pub fn renvoie_mois_suivant(mois: &Mois)->Mois { 
     let mois_prochain = match *mois {
-    Mois::Octobre => Mois::Novembre,
-    Mois::Novembre => Mois::Decembre,
-    Mois::Decembre => Mois::Juillet,
-    Mois::Juin => Mois::Juillet,        
-    Mois::Juillet => Mois::Aout,    
-    Mois::Aout => Mois::Octobre,                
+        Mois::Octobre => Mois::Novembre,
+        Mois::Novembre => Mois::Decembre,
+        Mois::Decembre => Mois::Juillet,
+        Mois::Juin => Mois::Juillet,        
+        Mois::Juillet => Mois::Aout,    
+        Mois::Aout => Mois::Octobre,                
     };
     mois_prochain
 }
@@ -254,8 +254,8 @@ pub fn programme_du_jour(jour: &Jour, agenda: &Vec<Evenement>) -> Option<String>
     }
     println!("Trouve {} evenement(s)",nb_events);
     match nb_events {
-    0 => None,
-    _ => Some(events)
+        0 => None,
+        _ => Some(events)
     }
 }
 

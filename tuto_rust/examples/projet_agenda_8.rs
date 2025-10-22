@@ -94,7 +94,7 @@ fn main() {
     // On veut remplir un agenda a partir d'un fichier date_naissance.txt
     // Ouverture d'un fichier:
     let file = File::open("date_naissance.txt");
-    // file est du type Results, qui ressemble un peu ay type Option
+    // file est du type Results, qui ressemble un peu au type Option
     // https://doc.rust-lang.org/std/result/enum.Result.html
     println!("File = {:?}",file);
     // On peut utiliser le matching
@@ -119,17 +119,16 @@ fn main() {
     };
     println!("File : {:?}",file);
 
-    let file = File::open("date_naissance.txt");
     // Test sur un fichier bidon
     // let file = File::open("bidon.txt");
-    let file = match file {
-        Ok(file) => file,
-        Err(erreur) => {
-            eprintln!("Erreur : {:?}",erreur);
-            panic!("Erreur a l'ouverture du fichier")
-            },
-    };
-    println!("File : {:?}",file);  
+    // let file = match file {
+    //     Ok(file) => file,
+    //     Err(erreur) => {
+    //         eprintln!("Erreur : {:?}",erreur);
+    //         panic!("Erreur a l'ouverture du fichier")
+    //         },
+    // };
+    // println!("File : {:?}",file);  
 
     println!("\nprojet_agenda_8.3");
     // C'est un peu lourd, on peut simplifier:
@@ -149,7 +148,7 @@ fn main() {
     // If unwrap encounters an error Err or a None, it will panic and stop the program execution.
     // Unwrap method is defined on both Option and Result type.
     println!("\nprojet_agenda_8.4");
-    let file = File::open("date_naissance.txt").expect("Erreur a l'ouverture");
+    let file = File::open("date_naissance.txt").expect("Erreur à l'ouverture");
     println!("File : {:?}",file);
 
 

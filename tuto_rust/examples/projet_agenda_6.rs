@@ -98,7 +98,7 @@ fn main() {
 	let bs = Evenement{description:"Anniversaire de Bram".to_string(),date:Date::new(8,Mois::Novembre)};
 	let jp = Evenement{description:"Anniversaire de John".to_string(),date:Date::new(30,Mois::Aout)};
  
- 	// Creation d'un vecteur d'evenements vide
+ 	// Creation d'un vecteur d'évenements vide
  	let mut agenda_anniv:std::vec::Vec<Evenement> = Vec::new();
 	println!("Avant : {:?}",agenda_anniv); 	
 	// Peupler un vecteur
