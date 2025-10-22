@@ -1,5 +1,5 @@
-// Implementer un iterateur pour une structure
-// =============================================
+// IMPLEMENTER UN ITERATEUR POUR UNE STRUCTURE
+// ===========================================
 
 use std::io::BufReader;
 use std::io::BufRead;
@@ -61,19 +61,17 @@ impl Iterator for Jour {
             true => jmois + 1,
             false  => 1,
         };  
-
         let mois_prochain = match  *jmois < 30 {
             true => *mois,
             false => renvoie_mois_suivant(mois)
         };
-
         self.jour_mois = jmois_prochain;
         self.jour_sem = jsem_prochain;
         self.mois = mois_prochain;
         // Pour faire ça, il faut que  JourSemaine ait le trait Copy/Clone
         // Les perfomances du programme s'en ressentiront
         let dem = Jour{jour_sem:self.jour_sem,jour_mois: self.jour_mois, mois:self.mois};
-        // Cet iterateur n'a pas de dernier element.
+        // Cet iterateur n'a pas de dernier element. (Exercic : a faire)
         Some(dem)
      }
 }
@@ -125,9 +123,11 @@ pub struct Evenement {
 fn main() {
     // On utilise une fonction pour lire l'agenda
     let mon_agenda = read_agenda(String::from("date_naissance.txt"));
-
-
     println!("Les 160 premiers jours : ");
+    // premier_jour renvoie une varaible de type Jour.
+    // On a défini un iterateur pour ce type. 
+    // On peut donc faire une boucle dessus, et utiliser les méthodes liées au trait Iterator. 
+    // On utilise la methode take qui renvoie un iterateur des 160 premières iterations.
     for i in premier_jour().take(160) {
         println!("> {}", i);
         match programme_du_jour_map_fold(&i,&mon_agenda) {    
@@ -139,7 +139,7 @@ fn main() {
 }
 
 
-// Fonction premier jour
+// Fonction premier jour (Different de la fonction Date::premier_jour())
 fn premier_jour() -> Jour {
     Jour{jour_sem: JourSemaine::Lundi, jour_mois: 1, mois: Mois::Octobre}
 }
@@ -261,45 +261,7 @@ pub fn renvoie_mois_suivant(mois: &Mois)->Mois {
     mois_prochain
 }
 
-// Fonction qui renvoie les evenements dans l'agenda lies au jour
-// --------------------------------------------------------------
-pub fn programme_du_jour(jour: &Jour, agenda: &Vec<Evenement>) -> Option<String> {
-    let iterateur = agenda.iter();
-    let mut events = String::new();
-    let mut nb_events =0; 
-    for eve in iterateur {
-    if evenement(jour, &eve.date) {
-        println!("Trouve {}",&eve.description);
-        events.push_str(&eve.description);
-        events.push_str("\n");
-        nb_events += 1;
-        }
-    }
-    println!("Trouve {} evenement(s)",nb_events);
-    match nb_events {
-    0 => None,
-    _ => Some(events)
-    }
-}
 
-// Fonction qui renvoie les evenements dans l'agenda lies au jour.
-// Utilise les methodes filter et map
-// --------------------------------------------------------------
-pub fn programme_du_jour_map(jour: &Jour, agenda: &Vec<Evenement>) -> Option<String> {
-    let iterateur = agenda.iter();
-    let mut events = String::new();
-    let mut nb_events =0;   
-    for eve in iterateur.filter(|e| { evenement(jour, &e.date) }).map(|e|{&e.description}){
-        events.push_str(eve);
-        events.push_str("\n");
-        nb_events += 1;
-        };
-    println!("Trouve {} evenement(s)",nb_events);
-    match nb_events {
-    0 => None,
-    _ => Some(events)
-    }
-}
 
 // Fonction qui renvoie les evenements dans l'agenda lies au jour.
 // Utilise les methodes filter map et fold
