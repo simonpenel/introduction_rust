@@ -71,11 +71,10 @@ impl Date {
             mois: Mois::Novembre,
         }
     }
-	// Méthode  associée à la variable: le premier argument est &self 
+	// Méthode  associée à la variable. Dans la défintion d'une méthode, le premier argument est &self 
     pub fn affiche(&self) {
     	println!("------ {:?}/{} --------",self.mois, self.jour_mois) 	
    }
-    
 }
 fn main() {
 	let p = Date::premier_jour();  // fonction
