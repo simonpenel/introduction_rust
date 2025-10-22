@@ -8,8 +8,11 @@
 // le type chaîne de caractères. Si on crée une structure, on peut avoir besoin de les classer.
 // Il faudra alors lui associer ce trait, et eventuellement implémenter ce trait.
 
-// Ici on spécifie que l'enum a le trait Debug : #[derive(Debug)]
-// Ce trait permet d'utiliser println!("{:?}",toto) pour afficher l'enum toto.
+// Ici on a spécifié que l'enum a le trait Debug : #[derive(Debug)]
+// Ce trait permet d'utiliser le format {:?} dans println!("{:?}",toto) pour afficher l'enum toto.
+// Mais on voudrait que notre structure ait le trait Display  qui permet de l'afficher avec println!("{}",toto).
+// La plupart des  types ont le trait Display, mais ici il faut que nous définissions comment la
+// stucture doit être affichée. Pour cela il faut que le trait Display soit implémenté.
 
 
 // All types which want to use std::fmt formatting traits require an implementation to be printable.
@@ -52,8 +55,8 @@ pub struct Jour {
 	mois: Mois	
 	}
 
-// Le trait "Display" (necessaire pour utiliser println!) n'existe pas pour notre structure.
-// Nous allons le definir.
+// Le trait "Display" (nécessaire pour utiliser println!) n'existe pas pour notre structure.
+// Nous allons le définir.
 // voir https://doc.rust-lang.org/std/fmt/trait.Display.html
 impl std::fmt::Display for Jour {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {

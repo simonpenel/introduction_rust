@@ -71,20 +71,20 @@ impl Date {
             mois: Mois::Novembre,
         }
     }
-	// Méthode  d'affichage associée à la variable: le premier argument est &self 
+	// Méthode  associée à la variable: le premier argument est &self 
     pub fn affiche(&self) {
     	println!("------ {:?}/{} --------",self.mois, self.jour_mois) 	
    }
     
 }
 fn main() {
-	let p = Date::premier_jour();
+	let p = Date::premier_jour();  // fonction
 	println!("Le premier jour de l'annee c'est {}",p);
-	let anniv = Date::new(2,Mois::Aout);
+	let anniv = Date::new(2,Mois::Aout); // fonction
 	println!("L'anniversaire de Wes c'est {}",anniv);
-	anniv.affiche();
-	let anniv = Date::new(17,Mois::Juillet);
+	anniv.affiche(); // méthode
+	let anniv = Date::new(17,Mois::Juillet); // fonction
 	println!("L'anniversaire de Nancy c'est {}",anniv);
-	anniv.affiche();
+	anniv.affiche(); // méthode
 }
 
