@@ -299,4 +299,6 @@ On aborde la documentation du code. La commande
 
 permet de générer la documentation sous la forme html.
 
-Exercice : écrire un programme qui classe un agenda  d'anniversaire avec différentes options: par ordre alphabétique du nom, du prénom, ou par date (il faudra implémenter pour la structure Date un trait qui permette la comparaison)
+Exercice : 
+
+écrire un programme qui classe un agenda  d'anniversaire avec différentes options: par ordre alphabétique du nom, du prénom, ou par date (il faudra implémenter pour la structure Date un trait qui permette la comparaison)
