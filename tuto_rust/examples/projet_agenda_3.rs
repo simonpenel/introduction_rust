@@ -57,7 +57,7 @@ pub struct Jour {
 // voir https://doc.rust-lang.org/std/fmt/trait.Display.html
 impl std::fmt::Display for Jour {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-    write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois) //<- définit comment println! va ecrire Jour
+    	write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois) //<- définit comment println! va ecrire Jour
     }
 }
  

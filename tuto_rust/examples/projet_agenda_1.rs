@@ -3,7 +3,7 @@
 
 // On définit l'enum "JourSemaine"
 #[derive(Debug)] // <- JourSemaine doit implementer le "trait" Debug pour pouvoir etre affiche avec {:?}. La notion de Trait sera abordé plus tard
-pub enum JourSemaine {
+pub enum JourSemaine { // <- le mot-clef  pub ("publique") permet de rendre cette  énumeration visible par le reste du code.
 	Lundi,
 	Mardi,
 	Mercredi,
@@ -17,7 +17,8 @@ fn main() {
     let ajd = JourSemaine::Lundi;
     println!("Aujourd'hui c'est {:?}",ajd);
 
-// Le matching verifie que tous les cas sont testes.
+// Dans le contexte d'une enumeration, le matching verifie que tous les cas sont testés.
+// C'est une sécurité.
 // Ceci va generer un erreur:
 //    let demain = match ajd {
 //    	JourSemaine::Lundi => JourSemaine::Mardi,

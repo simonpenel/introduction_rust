@@ -33,7 +33,7 @@ pub struct Jour {
 	}
 impl std::fmt::Display for Jour {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-    write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois)
+    	write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois)
     }
  }
  
@@ -46,29 +46,32 @@ pub struct Date {
 impl std::fmt::Display for Date {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     	match self.mois {
-    	Mois::Octobre => write!(f, "le {} du mois d'{:?}", self.jour_mois, self.mois),
-    	Mois::Aout => write!(f, "le {} du mois d'{:?}", self.jour_mois, self.mois),
-    	_ =>  write!(f, "le {} du mois de {:?}", self.jour_mois, self.mois),
+			Mois::Octobre => write!(f, "le {} du mois d'{:?}", self.jour_mois, self.mois),
+			Mois::Aout => write!(f, "le {} du mois d'{:?}", self.jour_mois, self.mois),
+			_ =>  write!(f, "le {} du mois de {:?}", self.jour_mois, self.mois),
     	}
     }
 }
-// Implemente des fonctions pour la structure Date
-// -----------------------------------------------
+
+// Implémente des fonctions et des méthodes pour la structure Date
+// ----------------------------------------------------------------
 impl Date {
-	//  Fonction qui crée une nouvelle date à partir du jour et du mois
-    pub fn new(j: u32, m: Mois) -> Self {
+	//  Fonction qui crée une nouvelle date à partir du jour et du mois. La fonction renvoie donc une Date
+    pub fn new(j: u32, m: Mois) -> Self { // <- Self designe la structure pour laquelle on implémente la fonction. 
         Self {
             jour_mois: j,
             mois: m,
         }
     }
-	//  Fonction qui crée une nouvelle date que l'on veut considérer comme le premier jour de l'année, par exemple le 1er Novembre. 
+	//  Fonction sans paramètre qui crée une nouvelle date que l'on veut considérer comme le premier jour de l'année,
+	//  par exemple le 1er Novembre. 
     pub fn premier_jour() -> Self {
         Self {
             jour_mois: 1,
             mois: Mois::Novembre,
         }
     }
+	// Méthode  d'affichage associée à la variable: le premier argument est &self 
     pub fn affiche(&self) {
     	println!("------ {:?}/{} --------",self.mois, self.jour_mois) 	
    }

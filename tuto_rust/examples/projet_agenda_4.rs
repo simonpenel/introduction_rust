@@ -32,11 +32,11 @@ pub struct Jour {
 	mois: Mois
 	}
 
-// Le trait "Display" (necessaire pour utiliser println!) n'existe pas pour notre structure.
-// Nous allons le definir
+// Le trait "Display" (nécessaire pour utiliser println!) n'existe pas pour notre structure.
+// Nous allons le définir
 impl std::fmt::Display for Jour {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-    write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois)
+    	write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois)
     }
  }
 
@@ -46,14 +46,14 @@ pub struct Date {
 	/// mois
 	mois: Mois
 	}
-// Le trait "Display" (necessaire pour utiliser println!) n'existe pas pour notre structure.
-// Nous allons le definir	
+// Le trait "Display" (nécessaire pour utiliser println!) n'existe pas pour notre structure.
+// Nous allons le définir	
 impl std::fmt::Display for Date {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     	match self.mois {
-    	Mois::Octobre => write!(f, "le {} du mois d'{:?}", self.jour_mois, self.mois),
-    	Mois::Aout => write!(f, "le {} du mois d'{:?}", self.jour_mois, self.mois),
-    	_ =>  write!(f, "le {} du mois de {:?}", self.jour_mois, self.mois),
+    		Mois::Octobre => write!(f, "le {} du mois d'{:?}", self.jour_mois, self.mois),
+    		Mois::Aout => write!(f, "le {} du mois d'{:?}", self.jour_mois, self.mois),
+    		_ =>  write!(f, "le {} du mois de {:?}", self.jour_mois, self.mois),
     	}
     }
 }

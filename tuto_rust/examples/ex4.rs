@@ -32,12 +32,12 @@ fn main() {
         let mut nb_u = 0;
         for c in x.chars() {
             match c {
-                'a' => nb_a +=1,
-                'e' => nb_e +=1,
+                'a' => nb_a +=1, // cas ou c est égal à 'a'
+                'e' => nb_e +=1, // ...
                 'i' => nb_i +=1,
                 'o' => nb_o +=1,
                 'u' => nb_u +=1,
-                _ => {}
+                _ => {} // <- tous les autre cas
             }
         };
         (nb_a,nb_e,nb_i,nb_o,nb_u)

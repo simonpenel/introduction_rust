@@ -161,7 +161,7 @@ Exécuter le code:
 
 `cargo run --example projet_agenda_1`
 
-Décommenter les lignes  21,22,23 et exécuter le code à nouveau. 
+Décommenter les lignes  23,24,25 et exécuter le code à nouveau. 
 
 ### projet agenda 2 : créer ses structures (_struct_)
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_2.rs
@@ -178,7 +178,8 @@ https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/p
 En savoir plus sur les traits: http...
 
 Un exemple de trait et le trait Display. Si une structure a ce trait, elle peut être affichée, par _println!()_ par exemple.
-Ici on a crée une nouvelle structure, pour laquelle ce trait n'est bien sur pas défini. C'est à nous de l'implémenter si on veut afficher cette structure.
+Ici on a crée une nouvelle structure, pour laquelle ce trait n'est bien sur pas défini.
+C'est à nous de l'implémenter si on veut afficher cette structure.
 
 Exécuter le code:
 
@@ -189,7 +190,7 @@ Exécuter le code:
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_4.rs
 
 Un autre exemple d'implémentation du trait Display pour une structure que nous avons définie, ici la structure _Date_.
-
+On utilise le pattern matching dans l'implémentation du trait.
 Exécuter le code:
 
 `cargo run --example projet_agenda_4`
@@ -197,11 +198,13 @@ Exécuter le code:
 ### projet agenda 5 : implémenter une fonction à associer à une structure
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_5.rs
 
+Exemple de création de fonction. Différence entre les fonctions et les méthodes.
+
 Exécuter le code:
 
 `cargo run --example projet_agenda_5`
 
-### projet agenda 6 : créer un vceteur de structures
+### projet agenda 6 : créer un vecteur de structures
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_6.rs
 
 Exécuter le code:
