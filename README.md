@@ -248,6 +248,8 @@ Vérfier ce qui se passe si on supprime le trait Copy de Mois.
 ### projet agenda 10 : utilisation des methodes liées aux iterateurs 
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_10.rs
 
+On va découvrir la puissance des méthodes liées aux itérateurs : filter, map, fold.
+
 Exécuter le code:
 
 `cargo run --example projet_agenda_10`

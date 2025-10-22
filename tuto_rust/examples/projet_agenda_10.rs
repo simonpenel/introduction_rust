@@ -1,5 +1,6 @@
-// Utilisation des methodes liées aux iterateurs
-// =============================================
+// UTILISATION DES METHODES FILTER, MAP ET FOLD LIÉES AUX ITERATEURS
+// =================================================================
+// Ca ressemble a certaines fonctionalités de R (je crois)
 
 use std::io::BufReader;
 use std::io::BufRead;
@@ -91,7 +92,6 @@ pub struct Evenement {
 	date:Date
 }
    
-
 fn main() {
     // On utilise une fonction pour lire l'agenda
     let mon_agenda = read_agenda(String::from("date_naissance.txt"));
@@ -103,7 +103,7 @@ fn main() {
 
     // On explore le calendrier et on verifie si il ya un evenement le lendemain 
     // du jour courant.
-    // 1ere methode pour expler le calendrier: la fonction renvoie_demain  
+    // 1ere methode pour explorer le calendrier: la fonction renvoie_demain  
     let mut count = 0u32;
     // Infinite loop
     let mut ajd = Jour{jour_sem: JourSemaine::Lundi, jour_mois: 1, mois: Mois::Aout};
@@ -111,10 +111,23 @@ fn main() {
         count += 1;
         println!("Ajourd'hui c'est {}",ajd);
         let demain = renvoie_demain(&ajd);
+        println!("Avec programme_du_jour:");
+        match programme_du_jour(&demain,&mon_agenda) {    
+            Some(s) => { println!("\nAttention demain {} {} :\n{}", demain,sparkle_heart,s)},
+            None => {},
+        }
+        println!("Avec programme_du_jour_map:");
+        match programme_du_jour_map(&demain,&mon_agenda) {    
+            Some(s) => { println!("\nAttention demain {} {} :\n{}", demain,sparkle_heart,s)},
+            None => {},
+        }
+        println!("Avec programme_du_jour_map_fold:");
         match programme_du_jour_map_fold(&demain,&mon_agenda) {    
             Some(s) => { println!("\nAttention demain {} {} :\n{}", demain,sparkle_heart,s)},
             None => {},
         }
+
+
         ajd = demain;
                 
         if count == 80 {
@@ -197,7 +210,7 @@ pub fn renvoie_demain(jour: &Jour)->Jour {
     let jsem_prochain = renvoie_demain_semaine(jsem);
 
     let jmois_prochain = match *jmois < 30 {
-        true => jmois + 1,
+        true => *jmois + 1,
         false  => 1,
     };  
 
@@ -265,13 +278,16 @@ pub fn programme_du_jour(jour: &Jour, agenda: &Vec<Evenement>) -> Option<String>
 }
 
 // Fonction qui renvoie les evenements dans l'agenda lies au jour.
-// Utilise les methodes filter et map
+// Utilise la methodes filter pour selectionner les jours de l'agenda
+// qui présentent un évènement,
+// puis utilise la méthode map pour boucler sur les descriptions.
 // --------------------------------------------------------------
 pub fn programme_du_jour_map(jour: &Jour, agenda: &Vec<Evenement>) -> Option<String> {
     let iterateur = agenda.iter();
     let mut events = String::new();
     let mut nb_events =0;   
     for eve in iterateur.filter(|e| { evenement(jour, &e.date) }).map(|e|{&e.description}){
+        events.push_str("Evenement : ");
         events.push_str(eve);
         events.push_str("\n");
         nb_events += 1;
@@ -284,8 +300,9 @@ pub fn programme_du_jour_map(jour: &Jour, agenda: &Vec<Evenement>) -> Option<Str
 }
 
 // Fonction qui renvoie les evenements dans l'agenda lies au jour.
-// Utilise les methodes filter map et fold
-// --------------------------------------------------------------
+// Utilise len plus la méthode fold qui permet d'accumuler les descriptions
+// https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.fold
+// ------------------------------------------------------------------------
 pub fn programme_du_jour_map_fold(jour: &Jour, agenda: &Vec<Evenement>) -> Option<String> {
     let iterateur = agenda.iter();
     let res = iterateur.filter(|e| { evenement(jour, &e.date) }).map(|e|{&e.description}).fold(String::new(), |a, b| a + b + "\n");
@@ -295,10 +312,7 @@ pub fn programme_du_jour_map_fold(jour: &Jour, agenda: &Vec<Evenement>) -> Optio
     }
 }
 
-
-
-
-// Fonction qui renvoie un boolean indiquany si une date et un jour correspondent
+// Fonction qui renvoie un boolean indiquant si une date et un jour correspondent
 // ------------------------------------------------------------------------------
 pub fn evenement(jour: &Jour, date: &Date) -> bool {
     match jour.jour_mois == date.jour_mois {
