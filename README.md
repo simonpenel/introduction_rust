@@ -211,10 +211,11 @@ Exécuter le code:
 
 `cargo run --example projet_agenda_6`
 
-Décommenter la ligne  113 et exécuter le code à nouveau.
+Différentes manière d'instancier une structure.
+Décommenter la ligne  114 et exécuter le code à nouveau.
 
 
-Décommenter la ligne  116 et exécuter le code à nouveau.
+Décommenter la ligne  117 et exécuter le code à nouveau.
 
 ### projet agenda 7 : utiliser les itérateurs pour traiter des vecteurs
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_7.rs

@@ -1,5 +1,5 @@
-// CREER UN VECTEUR DE STRUCTURES 
-// ==============================
+// INSTANCIER UNE STRUCTURE, CREER UN VECTEUR DE STRUCTURES 
+// ========================================================
 
 
 /// Enum JourSemaine
@@ -37,7 +37,7 @@ pub struct Jour {
 	}
 impl std::fmt::Display for Jour {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-    write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois)
+    	write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois)
     }
  }
  
@@ -52,9 +52,9 @@ pub struct Date {
 impl std::fmt::Display for Date {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     	match self.mois {
-    	Mois::Octobre => write!(f, "le {} du mois d'{:?}", self.jour_mois, self.mois),
-    	Mois::Aout => write!(f, "le {} du mois d'{:?}", self.jour_mois, self.mois),
-    	_ =>  write!(f, "le {} du mois de {:?}", self.jour_mois, self.mois),
+			Mois::Octobre => write!(f, "le {} du mois d'{:?}", self.jour_mois, self.mois),
+			Mois::Aout => write!(f, "le {} du mois d'{:?}", self.jour_mois, self.mois),
+			_ =>  write!(f, "le {} du mois de {:?}", self.jour_mois, self.mois),
     	}
     }
 }
@@ -86,14 +86,14 @@ pub struct Evenement {
 
 fn main() {
 
-	// Creation d'1 evenement a partir d'une date
+	// Instanciation d'1 evenement a partir d'une date
     let date_hpl = Date{jour_mois: 20, mois: Mois::Aout};
 	let hpl = Evenement{description:"Anniversaire de Howard".to_string(),date:date_hpl};
 
-	// Creation directe
+	// Instanciation directe
 	let ms = Evenement{description:"Anniversaire de Mary".to_string(),date:Date{jour_mois: 30, mois: Mois::Aout}};
 
-	// Creation en utilisant la fonction new de Date
+	// Instanciation en utilisant la fonction new de Date
 	let ulg = Evenement{description:"Anniversaire de Ursula".to_string(),date:Date::new(21,Mois::Octobre)};
 	let bs = Evenement{description:"Anniversaire de Bram".to_string(),date:Date::new(8,Mois::Novembre)};
 	let jp = Evenement{description:"Anniversaire de John".to_string(),date:Date::new(30,Mois::Aout)};
@@ -101,6 +101,7 @@ fn main() {
  	// Creation d'un vecteur d'evenements vide
  	let mut agenda_anniv:std::vec::Vec<Evenement> = Vec::new();
 	println!("Avant : {:?}",agenda_anniv); 	
+	// Peupler un vecteur
  	agenda_anniv.push(hpl);
 	agenda_anniv.push(ms);
 	agenda_anniv.push(ulg);
