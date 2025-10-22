@@ -46,7 +46,7 @@ Les exemples ex1, ex2, ex3 et ex4 abordent:
 - le "borrowing" et le "ownership"
 - les références (sortes de pointeur)
 - l'inférence de type
-- les fonctions en Rust
+- les fonctions
 - le matching
 - le type Option
 
@@ -132,6 +132,7 @@ Exécuter le code:
 `cargo run --example ex4`
 
 Comprendre l'utilisation des fonctions, du pattern matching et du type Option.
+Comprendre le sens de l'absence de ";"  pour renvoyer une valeur.
 
 
 ## Projet Agenda
@@ -262,6 +263,8 @@ https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/p
 Exécuter le code:
 
 `cargo run --example projet_agenda_11`
+
+Exercice : définir le dernier élément de l'iterateur.
 
 
 ## Projet final
