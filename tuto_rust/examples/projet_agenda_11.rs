@@ -71,7 +71,7 @@ impl Iterator for Jour {
         // Pour faire ça, il faut que  JourSemaine ait le trait Copy/Clone
         // Les perfomances du programme s'en ressentiront
         let dem = Jour{jour_sem:self.jour_sem,jour_mois: self.jour_mois, mois:self.mois};
-        // Cet iterateur n'a pas de dernier element. (Exercic : a faire)
+        // Cet iterateur n'a pas de dernier element. (Exercice : a faire)
         Some(dem)
      }
 }
