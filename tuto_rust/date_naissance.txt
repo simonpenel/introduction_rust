@@ -1,8 +1,10 @@
 Lovecraft,Howard Philip,20,August,1890
 Shelley,Mary,30,August,1797
 K. Le Guin,Ursula,21,October,1929
+Haig,Sid,14,July,1939
 Stoker,Bram,8,November,1847
 Craven,Wes,2,August,1939
 Langenkamp,Heather,17,July,1964
 Scob,Edith,21,October,1937
-Voorhees,Jason,13,June,1946  
+Voorhees,Jason,13,June,1946
+Bates,Kathy,28,June,1948
