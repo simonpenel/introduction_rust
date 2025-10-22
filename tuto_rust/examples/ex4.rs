@@ -13,7 +13,7 @@ fn main() {
                 nb = nb + 1 ;
             }
         };
-        nb // Attention, ici pas de ";" final
+        nb // Attention, ici pas de ";" final ! 
     }
     let hello = String::from("Hello, world!");
     let nb_de_o = calcule_nb_o(&hello);
