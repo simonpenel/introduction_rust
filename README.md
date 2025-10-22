@@ -264,7 +264,7 @@ Exécuter le code:
 
 `cargo run --example projet_agenda_11`
 
-Exercice : définir le dernier élément de l'iterateur.
+Exercice : définir le dernier élément de l'itérateur implémenté pour la structure.
 
 
 ## Projet final
@@ -298,3 +298,5 @@ On aborde la documentation du code. La commande
 `cargo doc --open`
 
 permet de générer la documentation sous la forme html.
+
+Exercice : écrire un programme qui classe un agenda  d'anniversaire avec différentes options: par ordre alphabétique du nom, du prénom, ou par date (il faudra implémenter pour la structure Date)un trait qui permette la comparaison )
