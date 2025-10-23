@@ -1,9 +1,11 @@
-//  LES ENUMERATIONS(ENUM)
-//  ======================
+//  LES ENUMERATIONS (ENUM)
+//  =======================
 
 // On définit l'enum "JourSemaine"
-#[derive(Debug)] // <- JourSemaine doit implementer le "trait" Debug pour pouvoir etre affiche avec {:?}. La notion de Trait sera abordé plus tard
-pub enum JourSemaine { // <- le mot-clef  pub ("publique") permet de rendre cette  énumeration visible par le reste du code.
+#[derive(Debug)] // JourSemaine doit avoir le "trait" Debug pour pouvoir être
+				 // affiché avec {:?} La notion de Trait sera abordée plus tard
+// le mot-clef pub permet de rendre l'énumeration visible par le reste du code.
+pub enum JourSemaine { 
 	Lundi,
 	Mardi,
 	Mercredi,
@@ -17,9 +19,9 @@ fn main() {
     let ajd = JourSemaine::Lundi;
     println!("Aujourd'hui c'est {:?}",ajd);
 
-// Dans le contexte d'une enumeration, le matching verifie que tous les cas sont testés.
-// C'est une sécurité.
-// Ceci va generer un erreur:
+// Dans le contexte d'une enumération, le matching vérifie que tous les cas
+// sont testés. C'est une sécurité.
+// Ceci va générer un erreur:
 //    let demain = match ajd {
 //    	JourSemaine::Lundi => JourSemaine::Mardi,
 //    };
@@ -33,5 +35,5 @@ fn main() {
     	JourSemaine::Samedi => JourSemaine::Dimanche,
     	JourSemaine::Dimanche => JourSemaine::Lundi,
     };
-    println!("Demain c'est {:?}",demain);    
+    println!("Demain c'est {:?}",demain);
 }

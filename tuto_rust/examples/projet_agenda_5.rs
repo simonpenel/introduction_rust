@@ -56,22 +56,24 @@ impl std::fmt::Display for Date {
 // Implémente des fonctions et des méthodes pour la structure Date
 // ----------------------------------------------------------------
 impl Date {
-	//  Fonction qui crée une nouvelle date à partir du jour et du mois. La fonction renvoie donc une Date
+	// Fonction qui crée une nouvelle date à partir du jour et du mois. La
+	// fonction renvoie donc une Date
     pub fn new(j: u32, m: Mois) -> Self { // <- Self designe la structure pour laquelle on implémente la fonction. 
         Self {
             jour_mois: j,
             mois: m,
         }
     }
-	//  Fonction sans paramètre qui crée une nouvelle date que l'on veut considérer comme le premier jour de l'année,
-	//  par exemple le 1er Novembre. 
+	// Fonction sans paramètre qui crée une nouvelle date que l'on veut
+	// considérer comme le premier jour de l'année, par exemple le 1er Novembre 
     pub fn premier_jour() -> Self {
         Self {
             jour_mois: 1,
             mois: Mois::Novembre,
         }
     }
-	// Méthode  associée à la variable. Dans la défintion d'une méthode, le premier argument est &self 
+	// Méthode  associée à la variable. Dans la défintion d'une méthode, le 
+	// premier argument est toujours &self 
     pub fn affiche(&self) {
     	println!("------ {:?}/{} --------",self.mois, self.jour_mois) 	
    }
