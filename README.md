@@ -31,12 +31,12 @@ cargo run --example ex1
 
 ## Premiers pas
 Dans cette introduction à Rust, on  va aborder des aspects importants du langage Rust.
-Dans un premier temmp on va executer differents codes Rust. On verra ensuite comment créer un binaire executable.
+Dans un premier temps on va exécuter différents codes Rust. On verra ensuite comment créer un binaire exécutable.
 
 Tout d'abord on va tester les code proposés dans les  fichiers ex1.rs, ex2.rs ex3.rs et ex4.rs dans le répertoire tuto_rust/examples/
 
 
-Pour executer le code de l'un ces fichiers, par exemple "ex1.rs", une fois dans le répertoire tuto_rust, on utilise la commande:
+Pour exécuter le code de l'un ces fichiers, par exemple "ex1.rs", une fois dans le répertoire tuto_rust, on utilise la commande:
 
 `cargo run --example ex1`
 
@@ -132,7 +132,7 @@ Exécuter le code:
 `cargo run --example ex4`
 
 Comprendre l'utilisation des fonctions, du pattern matching et du type Option.
-Comprendre le sens de l'absence de ";"  pour renvoyer une valeur.
+Comprendre le sens de l'absence de ";" dans une fonction  pour renvoyer une valeur.
 
 
 ## Projet Agenda
@@ -148,7 +148,7 @@ Ces exemples abordent :
 - les énumerations ("enum")
 - la notion de "Trait"
 - les structures ("struct")
-- les fonctions implementées pour une structure (méthodes)
+- les fonctions implementées pour une structure (et les méthodes)
 - la structure Vector, sa construction, son exploration via un itérateur ("iter")
 - les itérateurs (Iterator) et certaines méthodes associées ("filter", "enumerate", "collect", "map", "fold")
 - le chainage des méthodes "expect()" et "unwrap" après le type Option ou Result
@@ -176,11 +176,12 @@ Décommenter la ligne  40 et exécuter le code à nouveau.
 ### projet agenda 3 : implémenter un trait à associer à une structure
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_3.rs
 
-En savoir plus sur les traits: http...
+En savoir plus sur les traits: https://doc.rust-lang.org/rust-by-example/trait.html
 
-Un exemple de trait et le trait Display. Si une structure a ce trait, elle peut être affichée, par _println!()_ par exemple.
-Ici on a crée une nouvelle structure, pour laquelle ce trait n'est bien sur pas défini.
-C'est à nous de l'implémenter si on veut afficher cette structure.
+Un exemple de trait et le trait Display. Si une structure a ce trait, elle peut être affichée par avec _println!("{}")_.
+(Le trait Debug permet l'affichage "verbeux" avec  _println!("{:?}")_, ce trait n'a pas besoin d'être implémenté) 
+Ici on a créé une nouvelle structure, pour laquelle ce trait n'est bien sur pas défini.
+C'est à nous de l'implémenter si on veut afficher cette structure, et cela permettra de définir sous quelle forme la structure est affichée.
 
 Exécuter le code:
 
@@ -293,6 +294,8 @@ Exécuter le code:
 
 `target/debug/tuto_rust date_naissance.txt`
 
+Vérifier la gestion des erreurs en donnant en parametre des fichiers erronés.
+
 On aborde la documentation du code. La commande
 
 `cargo doc --open`
@@ -301,4 +304,4 @@ permet de générer la documentation sous la forme html.
 
 Exercice : 
 
-écrire un programme qui classe un agenda  d'anniversaire avec différentes options: par ordre alphabétique du nom, du prénom, ou par date (il faudra implémenter pour la structure Date un trait qui permette la comparaison)
+écrire un programme qui classe un agenda  d'anniversaire avec différentes options: par ordre alphabétique du nom, du prénom, ou par date (jour/mois, jour/mois/année). Il faudra implémenter pour la structure Date un trait qui permette la comparaison.
