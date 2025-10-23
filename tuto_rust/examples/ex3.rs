@@ -21,7 +21,6 @@ fn main() {
     ma_fonction(66);    // Ok
     // ma_fonction(3.5);   // erreur
 
-
     // Si on veut modifier la variable donnée comme paramètre:
     fn ma_fonction_2(x:u32) {
         println!("entrée = {}", x);
@@ -38,7 +37,7 @@ fn main() {
     println!("après {}",a);
     // On constate que la variable  n'a pas changé après la fonction
 
-    // La meme fonction très simple avec une chaine comme paramètre
+    // La même fonction très simple avec une chaine comme paramètre
     fn ma_fonction_string(x:String) {
         println!("entrée = {}", x)
     }
@@ -95,7 +94,7 @@ fn main() {
 
     // Modification de la chaine donnee en entree
     fn ma_fonction_string_ref_mut( x: &mut String) {
-	x.push_str(", world!");
+	    x.push_str(", world!");
     }
     let mut hello = String::from("Hello");
     ma_fonction_string_ref_mut(&mut hello);
@@ -104,22 +103,23 @@ fn main() {
     // Le cas de  println!
     // -------------------
     // println! est une macro. Elle fonctionne un peu comme une fonction.
-    // Cependnant
+    // Cependant
     let hello = String::from("Hello");
     println!(" {}",hello);
-    let coucou = hello; // Cette instruction marche. Alors  qu'on a fournit à println!  une variable de type String
-    //  sans passer par une reference.                      
-    // On s'attend à ce que la variable "hello" soit  possédée par println! et donc ne soit plus accessible. (cf ligne 42)
-    // En fait println! fait automatiquement un appel par référence, pour des raisons pratiques. 
-    // Mais cela a des conséquuences:
+    let coucou = hello; // Cette instruction marche. Alors  qu'on a fourni à
+    // println!  une variable de type String sans passer par une référence. On 
+    // s'attend à ce que la variable "hello" soit  possédée par println! et 
+    // donc ne soit plus accessible. (cf ligne 46). En fait println! fait
+    // automatiquement un appel par référence, pour des raisons pratiques. Mais
+    // cela a des conséquuences:
 	let mut variable = 3;
 	println!("variable = {}",variable);	
     let ref_variable = &mut variable;
 	*ref_variable = 6;
 	println!("variable = {}",variable);	
     // *ref_variable = 12; //<- cette instruction ne marche pas
-    // parce que println! emprunte "variable" en creant une reference mutable vers "variable".
-    // Cette action a supprimée  la reference mutable précédente "ref_variable".
+    // parce que println! emprunte "variable" en créant une référence mutable vers "variable".
+    // Cette action a supprimé  la référence mutable précédente "ref_variable".
 
     // Pas de problème si on a une variable non mutable: 
 	let variable = 3;
