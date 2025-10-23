@@ -115,28 +115,28 @@ fn main() {
 
     // On peut faire un matching sur la variable Option que l'on recupère:
     let hello = String::from("Hello, world!");
-    println!("traite la chaine {}",hello);
+    println!("traite la chaîne {}",hello);
     match extrait_chaine(&hello) {
-        Some(chaine_de_chiffres) => println!("On a trouvé cette chaine: {}.",chaine_de_chiffres),
+        Some(chaine_de_chiffres) => println!("On a trouvé cette chaîne: {}.",chaine_de_chiffres),
         None  => println!("On n'a rien trouvé."),
     }
     let hello = String::from("Hel12076lo, w21orld!");
-    println!("traite la chaine {}",hello);
+    println!("traite la chaîne {}",hello);
     match extrait_chaine(&hello) {
-        Some(chaine_de_chiffres) => println!("On a trouvé cette chaine: {}.",chaine_de_chiffres),
+        Some(chaine_de_chiffres) => println!("On a trouvé cette chaîne: {}.",chaine_de_chiffres),
         None  => println!("On n'a rien trouvé."),
     }
 
     // On peut aussi recuperer la variable option pour la traiter ulterieuremnt
     let _resu = extrait_chaine(&hello);
 
-    //  Une fonction plus generale, qui donne la somme
+    //  Une fonction plus générale, qui renvoie la somme
     fn extrait_chaine_somme( x: &String)-> Option<u32> {
         let mut somme = 0;
         let mut flag = false;
         for c in x.chars() {
             let valeur_de_c = c.to_digit(10);
-            // to_digit est une méthode du type char qui renvoie le type Option: la valeur numerique du char, ou rien
+            // to_digit est une méthode du type char qui renvoie le type Option: la valeur numérique du char, ou rien
             match valeur_de_c {
                 Some(valeur) => { 
                     somme = somme + valeur;
