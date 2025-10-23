@@ -278,9 +278,10 @@ pub fn programme_du_jour(jour: &Jour, agenda: &Vec<Evenement>) -> Option<String>
 }
 
 // Fonction qui renvoie les evenements dans l'agenda lies au jour.
-// Utilise la methodes filter pour selectionner les jours de l'agenda
-// qui présentent un évènement,
-// puis utilise la méthode map pour boucler sur les descriptions.
+// Utilise la methode 'filter' pour selectionner les jours de l'agenda
+// qui présentent un évènement, puis utilise la méthode 'map' pour 
+// boucler sur les descriptions. On utilise la fonction 'evenement' dans 
+// la méthode 'filter'.
 // --------------------------------------------------------------
 pub fn programme_du_jour_map(jour: &Jour, agenda: &Vec<Evenement>) -> Option<String> {
     let iterateur = agenda.iter();
