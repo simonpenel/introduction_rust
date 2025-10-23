@@ -7,64 +7,75 @@
 
 fn main() {
 
-    // Une fonction tres simple qui prend un  entier u32 comme paramètre
-    // (pour plus de clarté on déclare les fonctions ici, mais il serait mieux de les déclarer en dehors  de la fonction  main)
-    fn ma_fonction(x:u32) {
-        println!("entree = {}", x)
+    // Une fonction très simple qui prend un entier u32 comme paramètre
+    // (pour plus de clarté on déclare les fonctions ici, mais il serait mieux
+    // de les déclarer en dehors  de la fonction  main)
+    // Une fonction se déclare avec "fn" et on définit le type de l'argument :
+    fn ma_fonction(x:u32) { 
+        println!("entrée = {}", x)
     }
     let a: u32 = 12;
     ma_fonction(a);
     println!(" {}",a);
 
+    ma_fonction(66);    // Ok
+    // ma_fonction(3.5);   // erreur
+
+
     // Si on veut modifier la variable donnée comme paramètre:
     fn ma_fonction_2(x:u32) {
-        println!("entree = {}", x);
-        // x = x + 5; // Genere une erreur
+        println!("entrée = {}", x);
+        // x = x + 5; // Génére une erreur
     }
     // La variable doit etre mutable
     fn ma_fonction_3(mut x:u32) {
-        println!("entree = {}", x);
+        println!("entrée = {}", x);
         x = x + 5;
-        println!("nouvelle entree = {}", x);
+        println!("nouvelle entrée = {}", x);
     }
     println!("avant {}",a);
     ma_fonction_3(a);
-    println!("apres {}",a);
+    println!("après {}",a);
     // On constate que la variable  n'a pas changé après la fonction
 
     // La meme fonction très simple avec une chaine comme paramètre
     fn ma_fonction_string(x:String) {
-        println!("entree = {}", x)
+        println!("entrée = {}", x)
     }
     let hello = String::from("world");
     println!("Hello  {}!",hello);
     ma_fonction_string(hello);
-    // let coucou = hello;  // Genere une erreur: la chaine a ete empruntée par la fonction: elle n'est plus accessible.
+    // let coucou = hello;  // Genere une erreur: la chaîne a été empruntée par
+    // la fonction: elle n'est plus accessible.
 
-    // Dans les examples précédents la fonction devient propriétaire de la variable donnée en entrée, 
-    // il s'agit de ownership comme dans l'instruction 'coucou = hello'. (qui ne pose pas de problème avec les entiers)
-    // C'est la raison pour laquelle, dans le cas des entiers la variable n'est pas modifiée car il sagit en fait
-    // d'une copie de la variable, et dans le cas des String il n'est plus possible d'accéder à la variable après qu'elle
-    // soit devenue la propriété de la fonction.
+    // Dans les examples précédents la fonction devient propriétaire de la
+    // variable donnée en entrée, il s'agit de ownership comme dans 
+    // l'instruction 'coucou = hello'. (qui ne pose pas de problème avec les
+    // entiers). C'est la raison pour laquelle, dans le cas des entiers la
+    // variable n'est pas modifiée car il s'agit en fait d'une copie de la
+    // variable, et dans le cas des String il n'est plus possible d'accéder à 
+    // la variable après qu'elle soit devenue la propriété de la fonction.
     // 
-    // La solution : l'appel par reference
+    // La solution : l'appel par référence
 
     // APPEL PAR REFERENCE
     // ===================
 
-    // On va utiliser une fonction qui prend la reference vers la variable plutot que la variable elle meme.
-    // Rappel sur les references : https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
+    // On va utiliser une fonction qui prend la référence vers la variable
+    // plutot que la variable elle meme.
+    // Info sur les références : 
+    // https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
 
     fn ma_fonction_ref( x: &mut u32) {
-        println!("entree = {}", x);
+        println!("entrée = {}", x);
         *x = 54;
-        println!("nouvelle entree = {}", x);
+        println!("nouvelle entrée = {}", x);
     }
     let  mut a: u32 =  12;
     println!("avant {}",a);
     ma_fonction_ref(&mut a);
-    println!("apres {}",a);
-    // on constate que la variable a bien  change
+    println!("après {}",a);
+    // on constate que la variable a bien  changé
 
 	// alternative : a est ici une reference vers une valeur mutable
     let  a: &mut u32 = &mut 12;
@@ -72,11 +83,11 @@ fn main() {
     *a = 24;
     println!("avant {}",a);
     ma_fonction_ref(a);
-    println!("apres {}",a);
+    println!("après {}",a);
 
     //  Une fonction simple avec une chaine
     fn ma_fonction_string_ref( x: &String) {
-        println!("entree = {}", x);
+        println!("entrée = {}", x);
     }
     let hello = String::from("Hello");
     ma_fonction_string_ref(&hello);
