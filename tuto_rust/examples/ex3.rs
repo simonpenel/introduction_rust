@@ -109,7 +109,7 @@ fn main() {
     let coucou = hello; // Cette instruction marche. Alors  qu'on a fourni à
     // println!  une variable de type String sans passer par une référence. On 
     // s'attend à ce que la variable "hello" soit  possédée par println! et 
-    // donc ne soit plus accessible. (cf ligne 46). En fait println! fait
+    // donc ne soit plus accessible. (cf ligne 47). En fait println! fait
     // automatiquement un appel par référence, pour des raisons pratiques. Mais
     // cela a des conséquuences:
 	let mut variable = 3;
