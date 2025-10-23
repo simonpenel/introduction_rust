@@ -1,10 +1,11 @@
-// ===================================================
-//  LES FONCTIONS ,LE PATTERN MATCHING, LE TYPE OPTION
-// ===================================================
+// =========================================================
+//  LES FONCTIONS (SUITE) ,LE PATTERN MATCHING, LE TYPE OPTION
+// =========================================================
 fn main() {
-    // ========================================================================================
-    // Fonction qui prend une chaîne comme paramètre et renvoie une variable de type entier u32 
-    // ========================================================================================
+    // =========================================================================
+    // Fonction qui prend une chaîne comme paramètre et renvoie une variable de
+    // type entier u32 
+    // =========================================================================
     fn calcule_nb_o( x: &String)-> u32 {
         let mut nb = 0;
         for c in x.chars() {
@@ -20,8 +21,8 @@ fn main() {
     println!("Nombre de o dans {} = {}", hello, nb_de_o);
 
     // La fonction peut renvoyer differents type de variables.
-    // ici le type "tupple" : une liste de variables qui peuvent être de type differents
-    // (on utilise {:?} pour afficher des variables de type  complexe)
+    // ici le type "tupple" : une liste de variables qui peuvent être de type
+    // differents.
     // Utilisation du matching
     // =======================
     fn calcule_nb_voy( x: &String)-> (u32,u32,u32,u32,u32) {
@@ -44,7 +45,8 @@ fn main() {
     }
 
     let nb_de_voyelles = calcule_nb_voy(&hello);
-    println!("Nb de a, e, i, o, u dans {} : {:?}",hello, nb_de_voyelles);
+    //(on utilise {:?} pour afficher des variables complexes)
+    println!("Nb de a, e, i, o, u dans {} : {:?}",hello, nb_de_voyelles); 
 
     // On peut aussi écrire comme ça
     let (a, e, i, o, u)  = calcule_nb_voy(&hello);
@@ -52,39 +54,45 @@ fn main() {
 
     // Utilisation du type Option
     // ==========================
-    // Imaginons que l'on veuille recuperer dans du texte une chaine de caractete contenant des chiffres
-    // Sans rust:
-    // la fonction f1 : f1("AZER0989TY") -> "0989"
+    // Imaginons que l'on veuille récupérer dans du texte une chaîne de
+    // caractères contenant des chiffres.
+    // 
+    // Sans le type Option (ou équivalent):
+    // On définit la fonction f1 : f1("AZER0989TY") -> "0989"
     // ok!
     // mais f1("AZERTYUIOP") -> ?
     // on peut demander à la fonction de renvoyer une erreur , ou alors on dit
     // f1("AZERTYUIOP") -> ""
-    // C'est genant une chaine vide n'est pas l'absence de chaine.
+    // C'est génant: une chaine vide n'est pas l'absence de chaine.
     // Et si ob veut sommer les chiffres de cette chaine:
     // f2("0989") -> 26
     // f2("") -> ?
     // On peut dire f2("") -> 0
     // Mais f2("00000") -> 0 aussi
     // On a f2(f1("AZER0000TYUI000OP")) == f2(f1("AZERTYUIOP"))
-    // On peut plutot dire f2("") -> -1 comme -1 ne sera jamais trouvé dans la chaine, cela sert de signal
-    // Il faut verifier systematiquement si la valeur est -1 avant tout traitement
-    // Si on est distrait et qu'on calcule le carré de f2
-    // On a (f2(f1("AZERTYUIOP")))²  = (-1)² = 1
+    // On peut plutot dire f2("") -> -1 comme -1 ne sera jamais trouvé dans la
+    // chaine, cela sert de signal.
+    // Il faut alors vérifier systematiquement si la valeur est -1 avant tout
+    // traitement. Si on est distrait et qu'on calcule le carré de f2 on a 
+    // (f2(f1("AZERTYUIOP")))²  = (-1)² = 1
     // Et aussi  (f2(f1("AZERT1YUIOP")))²  = (1)² = 1
-    // On voit qu'on traine comme un boulet la verification sur la valeur entrée
-    // et que le risque d'erreur indetectée est réel.*
-    // Le type Option permet de resoudre ce probleme. Le type Option permet d'utiliser une valeur optionelle.
-    // Option peut etre  :
+    // On voit qu'on traîne comme un boulet la vérification de la valeur entrée
+    // et que le risque d'erreur indetectée est réel.
+    // 
+    // Le type Option permet de resoudre ce probleme. Le type Option permet
+    // d'utiliser une valeur optionelle.
+    // Option peut être  :
     //      - soit une valeur d'un type donnée 
     //      - soit rien
     // 
 
-    // Dans cet exemple on ne cherche que les chiffres 0-4. On renvoie la chaine de cararacteres composée de ces ciffres$
+    // Dans cet exemple on ne cherche que les chiffres 0-4. On renvoie la
+    // chaîne de cararactères composée de ces chiffres.
     // Utilisation de Option
     // =====================
     fn extrait_chaine( x: &String)-> Option<String> {
-        let mut chaine_0123 = String::new();
-        for c in x.chars() {
+        let mut chaine_0123 = String::new(); // Crée une chaîne vide
+        for c in x.chars() { // boucle sur les caractères de la chaîne entrée
             match c {
                 '0' => chaine_0123.push_str("0"),
                 '1' => chaine_0123.push_str("1"),
@@ -94,18 +102,18 @@ fn main() {
                 }
         };
         match   chaine_0123.len() > 0 {
-            true => Some(chaine_0123),
-            false => None,
+            true => Some(chaine_0123),  // On renvoie une chaîne
+            false => None,              // On renvoie None
         }
     }
     let hello = String::from("Hello, world!");
-    println!("traite la chaine {}",hello);
+    println!("traite la chaîne {}",hello);
     println!("La fonction renvoie {:?}",extrait_chaine(&hello));
     let hello = String::from("He12llo000, wo3455rl12d!");
-    println!("traite la chaine {}",hello);
+    println!("traite la chaîne {}",hello);
     println!("La fonction renvoie {:?}",extrait_chaine(&hello));
 
-    // On peu faire un matching sur la variable Option que l'on recupere
+    // On peut faire un matching sur la variable Option que l'on recupère:
     let hello = String::from("Hello, world!");
     println!("traite la chaine {}",hello);
     match extrait_chaine(&hello) {
