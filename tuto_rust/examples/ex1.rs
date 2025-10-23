@@ -7,9 +7,9 @@ fn main() {
     // ==================================
     // variables mutables et non mutables
     // ==================================
-    println!("Hello, world!");
-    let a = 32;
-    println!("{}",a);
+    println!("Hello, world!");   // <- une instruction se termine par ';'.
+    let a = 32;             // <- déclaration d'une variable avec let
+    println!("{}",a);            // <- println! est une macro rust dédiée à l'affichage
 
     // cette instruction engendre une erreur:
     // a = 42;
@@ -29,13 +29,13 @@ fn main() {
     println!("{}",b);
 
     // ==================================
-    // L'inference de type
+    // L'inférence de type
     // ==================================
     let mut a = 21;
     println!("{}",a);
     a = a + 5;
     println!("{}",a);
-    // Genere une erreur
+    // Génére une erreur
     // a = a + 12.0;
 
 
@@ -44,8 +44,11 @@ fn main() {
     println!("{}",b);
 
 
-    // Specifier le type: ici un entier positif codé sur 32 bit : "u32"
+    // Spécifier le type: ici un entier positif ("unsigned") codé sur 32 bit : "u32"
     let a: u32 = 12;    
     println!("{}",a);
+
+    // Quelques types : i8,u8, i16, u16, i32, u32,f32,f64 ...
+    // https://doc.rust-lang.org/book/ch03-02-data-types.html
 
 }
