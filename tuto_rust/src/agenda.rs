@@ -72,7 +72,6 @@ impl Iterator for Jour {
         self.jour_sem = jsem_prochain;
         self.mois = mois_prochain;
         // Pour faire ça, il faut que  JourSemaine ait le trait Copy/Clone
-        // Les perfomances du programme s'en ressentiront
         let dem = Jour {
             jour_sem: self.jour_sem,
             jour_mois: self.jour_mois,
