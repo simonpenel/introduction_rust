@@ -163,6 +163,7 @@ fn read_agenda(filename : String) -> Vec<Evenement> {
          
         // On recupere le mois
         let mois = match split_line[3] {
+            "June" => Mois::Juin,           
             "July" => Mois::Juillet,
             "August" => Mois::Aout, 
             "October" => Mois::Octobre,  
