@@ -122,7 +122,7 @@ fn main() {
         date: Date::new(30, Mois::Aout),
     };
 
-    // Creation d'un vecteur d'évenements vide
+    // Création d'un vecteur d'évènements vide
     let mut agenda_anniv: std::vec::Vec<Evenement> = Vec::new();
     agenda_anniv.push(hpl);
     agenda_anniv.push(ms);
@@ -155,14 +155,15 @@ fn main() {
     println!("{:?}", agenda_anniv);
 
     println!("\nprojet_agenda_7.2");
-    // Utilisation d'un iterateur
+    // Utilisation d'un itérateur
     // La boucle for utilise implicitement  la methode "into_iter" fournie par trait Iterator
     // https://blog.coolhead.in/difference-between-intoiter-iter-and-itermut-in-rust
     // into_iter() transmet l'owwnership du vecteur à l'itérateur.
-    // Il existe une autre méthode, iter() qui emprunte (borrowing)  le vecteur
-    // A la place de la boucle sur le vecteur, on peut utiliser explicitement l'iterateur:
-    let iterateur = agenda_anniv.iter(); // Et pas into_iter
-                                         //  Ensuite on fait la boucle sur l'itérateur
+    // Il existe une autre méthode, iter() qui emprunte (borrowing) le vecteur
+    // A la place de la boucle sur le vecteur, on peut utiliser explicitement l'itérateur:
+    // la méthode iter() renvoie un itérateur à partir d'une collection (par exemple un vecteur)
+    let iterateur = agenda_anniv.iter(); // Et pas into_iter() ! 
+    // Ensuite on fait la boucle sur l'itérateur
     for evenement in iterateur {
         println!(
             "Et encore, {} c'est toujours {}",
@@ -173,8 +174,14 @@ fn main() {
     // ca marche toujours
     println!("{:?}", agenda_anniv);
 
-    // les methodes associees aux  iterateurs sont nombreuses
+    // les méthodes associées aux  itérateurs sont nombreuses
     // https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.map
+    // Certaines méthodes prennent un itérateur comme arguments et renvoient
+    // un nouvel itérateur.
+
+    // "Functions which take an Iterator and return another Iterator are often
+    // called ‘iterator adapters’, as they’re a form of the ‘adapter pattern’.
+    // Common iterator adapters include map, take, and filter."
 
     // quelques exemples
     // ------------------

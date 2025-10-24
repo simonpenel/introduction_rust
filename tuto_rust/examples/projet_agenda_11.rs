@@ -51,7 +51,7 @@ impl std::fmt::Display for Jour {
         )
     }
 }
-
+// voir https://doc.rust-lang.org/std/iter/index.html
 // Implemente le trait "Iterator" pour  `Jour`.
 impl Iterator for Jour {
     type Item = Jour;

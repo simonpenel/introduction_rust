@@ -266,7 +266,7 @@ Exécuter le code:
 `cargo run --example projet_agenda_11`
 
 Exercice : définir le dernier élément de l'itérateur implémenté pour la structure.
-
+voir https://doc.rust-lang.org/std/iter/index.html
 
 ## Projet final
 

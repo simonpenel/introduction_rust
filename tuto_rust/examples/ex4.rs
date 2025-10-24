@@ -20,7 +20,7 @@ fn main() {
     let nb_de_o = calcule_nb_o(&hello);
     println!("Nombre de o dans {} = {}", hello, nb_de_o);
 
-    // La fonction peut renvoyer differents type de variables.
+    // La fonction peut renvoyer différents type de variables.
     // ici le type "tupple" : une liste de variables qui peuvent être de type
     // differents.
     // Utilisation du matching
@@ -131,7 +131,7 @@ fn main() {
         None => println!("On n'a rien trouvé."),
     }
 
-    // On peut aussi recuperer la variable option pour la traiter ulterieuremnt
+    // On peut aussi récupérer la variable option pour la traiter ulterieuremnt
     let _resu = extrait_chaine(&hello);
 
     //  Une fonction plus générale, qui renvoie la somme

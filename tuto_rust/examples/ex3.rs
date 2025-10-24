@@ -75,7 +75,7 @@ fn main() {
     println!("après {}", a);
     // on constate que la variable a bien  changé
 
-    // alternative : a est ici une reference vers une valeur mutable
+    // alternative : a est ici une référence vers une valeur mutable
     let a: &mut u32 = &mut 12;
     println!("a =  {}", a);
     *a = 24;
@@ -83,15 +83,15 @@ fn main() {
     ma_fonction_ref(a);
     println!("après {}", a);
 
-    //  Une fonction simple avec une chaine
+    //  Une fonction simple avec une chaîne
     fn ma_fonction_string_ref(x: &String) {
         println!("entrée = {}", x);
     }
     let hello = String::from("Hello");
     ma_fonction_string_ref(&hello);
-    println!(" {}", hello); // Ne genere plus d'erreur:
+    println!(" {}", hello); // Ne génère plus d'erreur:
 
-    // Modification de la chaine donnee en entree
+    // Modification de la chaîne donnée en entree
     fn ma_fonction_string_ref_mut(x: &mut String) {
         x.push_str(", world!");
     }

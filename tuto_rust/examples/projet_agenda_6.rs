@@ -87,7 +87,7 @@ pub struct Evenement {
 }
 
 fn main() {
-    // Instanciation d'1 evenement a partir d'une date
+    // Instanciation d'1 évènement à partir d'une date
     let date_hpl = Date {
         jour_mois: 20,
         mois: Mois::Aout,
@@ -120,7 +120,7 @@ fn main() {
         date: Date::new(30, Mois::Aout),
     };
 
-    // Creation d'un vecteur d'évenements vide
+    // Création d'un vecteur d'évenements vide
     let mut agenda_anniv: std::vec::Vec<Evenement> = Vec::new();
     println!("Avant : {:?}", agenda_anniv);
     // Peupler un vecteur
@@ -132,11 +132,11 @@ fn main() {
 
     println!("Apres : {:?}", agenda_anniv);
 
-    // La ligne suivante genere une erreur: la variable hpl a ete donnée au vecteur agenda_anniv, elle n'est plus accessible.
+    // La ligne suivante génère une erreur: la variable hpl a été donnée au vecteur agenda_anniv, elle n'est plus accessible.
     // println!("{:?}",hpl);
     // On la voit ici
     println!("{:?}", agenda_anniv[0]);
-    // println!("{}",agenda_anniv[0]); // Ceci genere une erreur car la structure Evenement n'a pas le trait Display,
+    // println!("{}",agenda_anniv[0]); // Ceci génère une erreur car la structure Evenement n'a pas le trait Display,
     // seulement le trait Debug
     println!(
         "{} c'est {}",
