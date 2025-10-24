@@ -15,7 +15,6 @@
 // La plupart des  types ont le trait Display, mais ici il faut que nous définissions comment la
 // stucture doit être affichée. Pour cela il faut que le trait Display soit implémenté.
 
-
 // All types which want to use std::fmt formatting traits require an implementation to be printable.
 // Automatic implementations are only provided for types such as in the std library.
 // All others must be manually implemented somehow.
@@ -26,48 +25,59 @@
 
 #[derive(Debug)]
 pub enum JourSemaine {
-	Lundi,
-	Mardi,
-	Mercredi,
-	Jeudi,
-	Vendredi,
-	Samedi,
-	Dimanche
+    Lundi,
+    Mardi,
+    Mercredi,
+    Jeudi,
+    Vendredi,
+    Samedi,
+    Dimanche,
 }
 
 #[derive(Debug)]
 pub enum Mois {
-	Octobre,
-	Novembre,
-	Decembre,
-	Juillet,
-	Aout,
+    Octobre,
+    Novembre,
+    Decembre,
+    Juillet,
+    Aout,
 }
 
 // On définit la structure Jour
 // ----------------------------
-#[derive(Debug)] 
+#[derive(Debug)]
 pub struct Jour {
-	/// jour de la semaine
-	jour_sem: JourSemaine,
-	/// jour du mois
-	jour_mois: u32,
-	/// mois
-	mois: Mois	
-	}
+    /// jour de la semaine
+    jour_sem: JourSemaine,
+    /// jour du mois
+    jour_mois: u32,
+    /// mois
+    mois: Mois,
+}
 
 // Le trait "Display" (nécessaire pour utiliser println!) n'existe pas pour
 // notre structure. Nous allons l'implémenter.
 // voir https://doc.rust-lang.org/std/fmt/trait.Display.html
 impl std::fmt::Display for Jour {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-    	write!(f, "le {:?} {} {:?}",self.jour_sem, self.jour_mois, self.mois) //<- définit comment println! va écrire Jour
+        write!(
+            f,
+            "le {:?} {} {:?}",
+            self.jour_sem, self.jour_mois, self.mois
+        ) //<- définit comment println! va écrire Jour
     }
 }
- 
+
 fn main() {
-    let ajd = Jour { jour_sem: JourSemaine::Vendredi, jour_mois: 13, mois: Mois::Octobre};
-    println!("Aujourd'hui c'est {:?}",ajd);
-	println!("Aujourd'hui c'est {:?}, le {} du mois d'{:?}",ajd.jour_sem,ajd.jour_mois,ajd.mois);
-	println!("Aujourd'hui c'est {}",ajd); // <- on peut utiliser println!
+    let ajd = Jour {
+        jour_sem: JourSemaine::Vendredi,
+        jour_mois: 13,
+        mois: Mois::Octobre,
+    };
+    println!("Aujourd'hui c'est {:?}", ajd);
+    println!(
+        "Aujourd'hui c'est {:?}, le {} du mois d'{:?}",
+        ajd.jour_sem, ajd.jour_mois, ajd.mois
+    );
+    println!("Aujourd'hui c'est {}", ajd); // <- on peut utiliser println!
 }

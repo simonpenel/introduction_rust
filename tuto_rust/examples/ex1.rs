@@ -1,15 +1,14 @@
-
 // =======================================================
 // VARIABLES MUTABLES ET NON MUTABLES, l'INFERENCE DE TYPE
 // =======================================================
-    
+
 fn main() {
     // ==================================
     // variables mutables et non mutables
     // ==================================
-    println!("Hello, world!");   // <- une instruction se termine par ';'.
-    let a = 32;             // <- déclaration d'une variable avec let
-    println!("{}",a);            // <- println! est une macro rust dédiée à l'affichage
+    println!("Hello, world!"); // <- une instruction se termine par ';'.
+    let a = 32; // <- déclaration d'une variable avec let
+    println!("{}", a); // <- println! est une macro rust dédiée à l'affichage
 
     // cette instruction engendre une erreur:
     // a = 42;
@@ -18,37 +17,34 @@ fn main() {
     // a = a + 10;
 
     let mut b = 32;
-    println!("{}",b);
+    println!("{}", b);
 
     // cette instruction est correcte:
     b = 42;
-    println!("{}",b);
+    println!("{}", b);
 
     // cette instruction est correcte:
     b = b + 10;
-    println!("{}",b);
+    println!("{}", b);
 
     // ==================================
     // L'inférence de type
     // ==================================
     let mut a = 21;
-    println!("{}",a);
+    println!("{}", a);
     a = a + 5;
-    println!("{}",a);
+    println!("{}", a);
     // Génére une erreur
     // a = a + 12.0;
 
-
     let mut b = 52.0;
     b = b + 10.0;
-    println!("{}",b);
-
+    println!("{}", b);
 
     // Spécifier le type: ici un entier positif ("unsigned") codé sur 32 bit : "u32"
-    let a: u32 = 12;    
-    println!("{}",a);
+    let a: u32 = 12;
+    println!("{}", a);
 
     // Quelques types : i8,u8, i16, u16, i32, u32,f32,f64 ...
     // https://doc.rust-lang.org/book/ch03-02-data-types.html
-
 }
