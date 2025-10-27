@@ -66,7 +66,7 @@ impl std::fmt::Display for Date {
         }
     }
 }
-// Implemente des fonctions pour la structure Date
+// Implémente des fonctions pour la structure Date
 impl Date {
     pub fn new(j: u32, m: Mois) -> Self {
         Self {
@@ -95,7 +95,7 @@ pub struct Evenement {
 fn main() {
     println!("\nprojet_agenda_8.1");
     let mut agenda_anniv: std::vec::Vec<Evenement> = Vec::new();
-    // On veut remplir un agenda a partir d'un fichier date_naissance.txt
+    // On veut remplir un agenda à partir d'un fichier date_naissance.txt
     // Ouverture d'un fichier:
     let file = File::open("date_naissance.txt");
     // file est du type Results, qui ressemble un peu au type Option
