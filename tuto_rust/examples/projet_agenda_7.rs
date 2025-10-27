@@ -156,12 +156,13 @@ fn main() {
 
     println!("\nprojet_agenda_7.2");
     // Utilisation d'un itérateur
-    // La boucle for utilise implicitement  la methode "into_iter" fournie par trait Iterator
-    // https://blog.coolhead.in/difference-between-intoiter-iter-and-itermut-in-rust
+    // La boucle "for" utilise implicitement  la methode "into_iter" fournie par trait Iterator
+    // la commande exécutée est en fait "for evenement in agenda_anniv.into_iter()"
+    // la méthode into_iter() renvoie un itérateur à partir d'une collection (par exemple un vecteur)
     // into_iter() transmet l'owwnership du vecteur à l'itérateur.
     // Il existe une autre méthode, iter() qui emprunte (borrowing) le vecteur
+    // https://blog.coolhead.in/difference-between-intoiter-iter-and-itermut-in-rust
     // A la place de la boucle sur le vecteur, on peut utiliser explicitement l'itérateur:
-    // la méthode iter() renvoie un itérateur à partir d'une collection (par exemple un vecteur)
     let iterateur = agenda_anniv.iter(); // Et pas into_iter() ! 
     // Ensuite on fait la boucle sur l'itérateur
     for evenement in iterateur {
@@ -186,7 +187,7 @@ fn main() {
     // quelques exemples
     // ------------------
 
-    // La methode enumerate
+    // La méthode enumerate
     println!("\nprojet_agenda_7.3");
     let iterateur = agenda_anniv.iter();
     let iterateur_avec_index = iterateur.enumerate();
@@ -201,14 +202,14 @@ fn main() {
         println!("Evnement numero {} : {:?}", i, eve);
     }
 
-    // La methode filter
+    // La méthode filter
     println!("\nprojet_agenda_7.5");
-    // necessite l'ajout de
+    // nécessite l'ajout de
     // #[derive(PartialEq)]
     // à la struture Mois
     let iterateur = agenda_anniv
         .iter()
-        .filter(|x| x.date.mois == Mois::Aout)
+        .filter(|x| x.date.mois == Mois::Aout) // <-  nécessite  #[derive(PartialEq)]
         .enumerate();
     for (i, eve) in iterateur {
         println!("Evenement en Aout numero {} : {:?}", i, eve);
