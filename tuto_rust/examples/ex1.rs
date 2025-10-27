@@ -1,6 +1,6 @@
-// =======================================================
-// VARIABLES MUTABLES ET NON MUTABLES, l'INFERENCE DE TYPE
-// =======================================================
+// ======================================================================
+// VARIABLES MUTABLES ET NON MUTABLES, LE SHADOWING,  l'INFERENCE DE TYPE
+// ======================================================================
 
 fn main() {
     // ==================================
@@ -47,4 +47,13 @@ fn main() {
 
     // Quelques types : i8,u8, i16, u16, i32, u32,f32,f64 ...
     // https://doc.rust-lang.org/book/ch03-02-data-types.html
+
+    // ============
+    // Le shadowing
+    // ============
+    let a = 10 ;
+    //  a = a + 10 ; // Erreur
+    let a = a + 10; // "shadowing"
+    println!("{}", a);
+
 }
