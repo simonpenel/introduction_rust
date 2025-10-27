@@ -1,5 +1,5 @@
-// PLUS LOIN AVEC LES ITERATORS, LECTURE DE FICHIER, METHODES EXPECT ET UNWRAP
-// ===========================================================================
+// PLUS LOIN AVEC LES ITERATORS, LECTURE DE FICHIER, METHODES EXPECT ET UNWRAP, SHADOWING
+// =======================================================================================
 
 use std::fs::File;
 use std::io::BufRead;
@@ -112,10 +112,10 @@ fn main() {
     println!("File : {:?}", file_resu);
 
     println!("\nprojet_agenda_8.2");
-    // On pourait aussi ecrire tout simplement avec le meme nom de variable
+    // On pourait aussi écrire tout simplement avec le même nom de variable
     let file = File::open("date_naissance.txt");
     let file = match file {
-        Ok(file) => file,
+        Ok(file) => file,  // "shadowing" de la variable file
         Err(erreur) => {
             eprintln!("Erreur : {:?}", erreur);
             panic!("Erreur a l'ouverture du fichier")
@@ -145,7 +145,7 @@ fn main() {
     };
     println!("File : {:?}", file);
 
-    // Mais c'est toujours un peu lourd d'ecrire ce code à chaque fois.
+    // Mais c'est toujours un peu lourd d'écrire ce code à chaque fois.
     // Si on veut un code plus compact on peut utiliser expect() (ou unwrap())
     // https://learning-rust.github.io/docs/unwrap-and-expect/
     // Unwrap in Rust returns the result of the operation for Option and Result enums.
@@ -165,39 +165,39 @@ fn main() {
         let line = line.expect("Probleme de lecture");
         // line est maintenant du type String
         println!("line = {:?}", line);
-        // Ici on utilise split() qui renvoie  un iterateur
-        // La methode collect() place tous les elements dans une collection
+        // Ici on utilise split() qui renvoie  un itérateur
+        // La méthode collect() place tous les éléments dans une collection
         // https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.collect
         let split_line: Vec<&str> = line.split(',').collect();
         println!("split_line = {:?}", split_line);
-        // On s'assure que l'on a 5 elements
-        assert_eq!(split_line.len(), 5); // assert_eq va renvoyer un erreur si les deux termes split_line.len() et 5 sont differents
-                                         // On recupere le prenom
+        // On s'assure que l'on a 5 élements
+        assert_eq!(split_line.len(), 5); // assert_eq va renvoyer une erreur si les deux termes split_line.len() et 5 sont différents
+                                         // On récupere le prénom
         let prenom = split_line[1];
         println!("prenom = {}", prenom);
-        // Virer les prenoms multiples:
-        // split est un iterator, la methode next renvoie le prochain element sous forme
-        // de Option: soit il y a un prochain element ( Some(x)) soit il n'y en a pas (None)
-        let prenom = prenom.split(' ').next();
+        // Virer les prénoms multiples:
+        // "split" renvoie  un itérateurr, la méthode "next" renvoie le prochain élément sous forme
+        // de Option: soit il y a un prochain élément ( Some(x)) soit il n'y en a pas (None)
+        let prenom = prenom.split(' ').next(); // shadowing
         println!("first element of splited prenom = {:?}", prenom);
-        // on recuper ce qu'il y a dans Option en utilisant unwrap
-        let prenom = prenom.unwrap();
+        // on récupere ce qu'il y a dans Option en utilisant "unwrap"
+        let prenom = prenom.unwrap(); // shadowing
         println!("first element of splited prenom = {:?}", prenom);
-        // On recupere le jour du mois
+        // On récupère le jour du mois
         let jour_mois = split_line[2];
-        // C'est une chaine de caracteres
-        // On veut etre sur que le jour du mois est un entier
-        let jour_mois = match jour_mois.parse::<u32>() {
+        // C'est une chaîne de caractères
+        // On veut être sûr que le jour du mois est un entier : on utilise la méthode "parse" avec le type u32
+        let jour_mois = match jour_mois.parse::<u32>() { // shadowing
             Ok(valeur) => valeur,
             Err(_err) => {
-                eprintln!("Erreur, le jour du mois doit etre un entier");
+                eprintln!("Erreur, le jour du mois doit être un entier.");
                 process::exit(1);
             }
         };
         println!("Jour du mois = {}", jour_mois);
         // On pourrait s'assurer que le jour du mois est <=31
 
-        // On recupere le mois avec le pattern matching
+        // On récupère le mois avec le pattern matching
         let mois = match split_line[3] {
             "June" => Mois::Juin,
             "July" => Mois::Juillet,
@@ -211,7 +211,7 @@ fn main() {
             }
         };
         println!("Mois = {:?}", mois);
-        // On definit une date a partir du mois et du jour du mois
+        // On définit une date a partir du mois et du jour du mois
         let date = Date {
             jour_mois: jour_mois,
             mois: mois,
@@ -225,4 +225,8 @@ fn main() {
         agenda_anniv.push(evt);
     }
     println!("\nAGENDA {:?}", agenda_anniv);
+
+    for anniv in agenda_anniv {
+        println!("{} : {}",anniv.date,anniv.description);
+    }
 }
