@@ -120,8 +120,10 @@ fn main() {
         date: Date::new(30, Mois::Aout),
     };
 
-    // Création d'un vecteur d'évenements vide:
-    // On définit le type de la variable au moment de la déclaration
+    // Création d'un vecteur d'évènements vide:
+    // On définit le type de la variable au moment de la déclaration:
+    // c'est un vecteur de structures Evenement.
+    // On utilise la méthode new() du type Vec pour créer un vceteur vide.
     let mut agenda_anniv: Vec<Evenement> = Vec::new();
     println!("Avant : {:?}", agenda_anniv);
     // Peupler un vecteur
