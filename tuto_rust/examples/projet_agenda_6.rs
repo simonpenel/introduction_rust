@@ -120,8 +120,9 @@ fn main() {
         date: Date::new(30, Mois::Aout),
     };
 
-    // Création d'un vecteur d'évenements vide
-    let mut agenda_anniv: std::vec::Vec<Evenement> = Vec::new();
+    // Création d'un vecteur d'évenements vide:
+    // On définit le type de la variable au moment de la déclaration
+    let mut agenda_anniv: Vec<Evenement> = Vec::new();
     println!("Avant : {:?}", agenda_anniv);
     // Peupler un vecteur
     agenda_anniv.push(hpl);

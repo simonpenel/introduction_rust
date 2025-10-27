@@ -123,7 +123,7 @@ fn main() {
     };
 
     // Création d'un vecteur d'évènements vide
-    let mut agenda_anniv: std::vec::Vec<Evenement> = Vec::new();
+    let mut agenda_anniv: Vec<Evenement> = Vec::new();
     agenda_anniv.push(hpl);
     agenda_anniv.push(ms);
     agenda_anniv.push(ulg);

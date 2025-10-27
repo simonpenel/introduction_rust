@@ -133,7 +133,7 @@ fn main() {
 
 // Fonction qui remplit l'agenda
 fn read_agenda(filename: String) -> Vec<Evenement> {
-    let mut agenda_anniv: std::vec::Vec<Evenement> = Vec::new();
+    let mut agenda_anniv: Vec<Evenement> = Vec::new();
     let file = File::open(filename).expect("Erreur à l'ouverture");
     let reader = BufReader::new(file);
     println!("\nLecture:");

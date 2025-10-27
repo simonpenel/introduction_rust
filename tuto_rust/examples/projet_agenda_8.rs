@@ -94,7 +94,7 @@ pub struct Evenement {
 
 fn main() {
     println!("\nprojet_agenda_8.1");
-    let mut agenda_anniv: std::vec::Vec<Evenement> = Vec::new();
+    let mut agenda_anniv: Vec<Evenement> = Vec::new();
     // On veut remplir un agenda à partir d'un fichier date_naissance.txt
     // Ouverture d'un fichier:
     let file = File::open("date_naissance.txt");
