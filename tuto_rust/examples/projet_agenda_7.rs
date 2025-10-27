@@ -192,15 +192,20 @@ fn main() {
     let iterateur = agenda_anniv.iter();
     let iterateur_avec_index = iterateur.enumerate();
     for (i, eve) in iterateur_avec_index {
-        println!("Evenement numero {} : {:?}", i, eve);
+        println!("Evènement numero {} : {:?}", i, eve);
     }
 
     println!("\nprojet_agenda_7.4");
     // On peut "chaîner" les méthodes:
     let iterateur = agenda_anniv.iter().enumerate();
     for (i, eve) in iterateur {
-        println!("Evnement numero {} : {:?}", i, eve);
+        println!("Evènement numero {} : {:?}", i, eve);
     }
+
+    // Encore plus compact:
+    for (i, eve) in agenda_anniv.iter().enumerate() {
+        println!("Evènement numero {} : {:?}", i, eve);
+    }   
 
     // La méthode filter
     println!("\nprojet_agenda_7.5");
@@ -212,6 +217,6 @@ fn main() {
         .filter(|x| x.date.mois == Mois::Aout) // <-  nécessite  #[derive(PartialEq)]
         .enumerate();
     for (i, eve) in iterateur {
-        println!("Evenement en Aout numero {} : {:?}", i, eve);
+        println!("Evènement en Aout numero {} : {:?}", i, eve);
     }
 }
