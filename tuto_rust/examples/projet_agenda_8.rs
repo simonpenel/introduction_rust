@@ -211,13 +211,13 @@ fn main() {
             }
         };
         println!("Mois = {:?}", mois);
-        // On définit une date a partir du mois et du jour du mois
+        // On définit une date à partir du mois et du jour du mois
         let date = Date {
             jour_mois: jour_mois,
             mois: mois,
         };
         println!("Date = {:?}", date);
-        // On definit un evenement a partir du prenom
+        // On definit un évènement à partir du prénom
         let evt = Evenement {
             description: prenom.to_string() + "'s birthday",
             date: date,
