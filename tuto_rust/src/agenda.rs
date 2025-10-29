@@ -38,7 +38,7 @@ pub struct Jour {
 }
 
 /// Le trait "Display" (necessaire pour utiliser println!) n'existe pas pour notre structure.
-/// Nous allons le definir
+/// Nous allons l'implémenter
 impl std::fmt::Display for Jour {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         write!(
@@ -49,10 +49,10 @@ impl std::fmt::Display for Jour {
     }
 }
 
-/// Implemente le trait "Iterator" pour  `Jour`.
+/// Implémente le trait "Iterator" pour  `Jour`.
 impl Iterator for Jour {
     type Item = Jour;
-    // La methode next renvoie le prochain et met a jour le courant
+    // La méthode "next" renvoie le prochain et met à jour le courant
     fn next(&mut self) -> Option<Self::Item> {
         let jsem = &self.jour_sem;
         let jmois = &self.jour_mois;
@@ -77,7 +77,7 @@ impl Iterator for Jour {
             jour_mois: self.jour_mois,
             mois: self.mois,
         };
-        // Cet iterateur n'a pas de dernier element.
+        // Cet itérateur n'a pas de dernier élément.
         Some(dem)
     }
 }
@@ -99,7 +99,7 @@ impl std::fmt::Display for Date {
         }
     }
 }
-/// Implemente des fonctions pour la structure Date
+/// Implémente des fonctions pour la structure Date
 impl Date {
     pub fn new(j: u32, m: Mois) -> Self {
         Self {
@@ -151,30 +151,30 @@ pub fn read_agenda(filename: String) -> Result<Vec<Evenement>, i32> {
     for line in reader.lines() {
         // Line est du type Results
         let line = line.expect("Probleme de lecture");
-        // Ici on utilise split() qui renvoie  un iterateur
-        // La methode collect() place tous les elements dans une collection
+        // Ici on utilise la méthode split() qui renvoie  un itérateur
+        // La méthode collect() place tous les éléments dans une collection
         // https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.collect
         let split_line: Vec<&str> = line.split(',').collect();
-        // On s'assure que l'on a 5 elements
+        // On s'assure que l'on a 5 éléments
         //assert_eq!(split_line.len(),5);
         if split_line.len() != 5 {
             eprintln!("Erreur  dans la ligne {}", line);
             return Err(2);
         }
 
-        // On recupere le prenom
+        // On récupère le prénom
         let prenom = split_line[1];
-        // Virer les prenome multiples:
-        // split est un iterator, la methode next renvoie le prochain element sous forme
-        // de Option: soit il y a un prochain element ( Some(x)) soit il n'y en a pas (None)
+        // Virer les prénoms multiples:
+        // "split" renvoie un iterator, la méthode "next" renvoie le prochain élément sous forme
+        // de Option: soit il y a un prochain élément ( Some(x)) soit il n'y en a pas (None)
         let prenom = prenom.split(' ').next();
-        // on recuper ce qu'il y a dans Option en utilisant unwrap
+        // on récupère ce qu'il y a dans Option en utilisant unwrap
         let prenom = prenom.unwrap();
 
-        // On recupere le jour du mois
+        // On récupère le jour du mois
         let jour_mois = split_line[2];
-        // C'est une chaine de caracteres
-        // On veut etre sur que le jour du mois est un entier
+        // C'est une chaîne de caractères
+        // On veut être sur que le jour du mois est un entier
         let jour_mois = match jour_mois.parse::<u32>() {
             Ok(valeur) => valeur,
             Err(e) => {
@@ -184,7 +184,7 @@ pub fn read_agenda(filename: String) -> Result<Vec<Evenement>, i32> {
         };
         // On pourrait s'assurer que le jour du mois est <=31
 
-        // On recupere le mois
+        // On récupère le mois
         let mois = match split_line[3] {
             "June" => Mois::Juin,
             "July" => Mois::Juillet,
@@ -197,16 +197,17 @@ pub fn read_agenda(filename: String) -> Result<Vec<Evenement>, i32> {
                 process::exit(1);
             }
         };
-        // On definit une date a partir du mois et du jour du mois
+        // On définit une date à partir du mois et du jour du mois
         let date = Date {
             jour_mois: jour_mois,
             mois: mois,
         };
-        // On definit un evenement a partir du prenom
-        // Pour concatener des chaine on doit avoir : String + &str
+        // On définit un évènement à partir du prénom
+        // Pour concatener des chaînes on doit avoir : String + &str
         // let evt =  Evenement{description:prenom.to_string()+"'s birthday",date:date};
-        // Plus complique d'ajouter prenom.to_string() a la suite :
-        // to_owned permt de passer de &str a String
+        // Plus compliqué d'ajouter prenom.to_string() à la suite :
+        // to_owned permet de passer d'une variable empruntée à une variable possédée de type
+        // différent, ici de passer de  &str à String
         let evt = Evenement {
             description: "Anniversaire de ".to_owned() + &prenom,
             date: date,
@@ -216,8 +217,8 @@ pub fn read_agenda(filename: String) -> Result<Vec<Evenement>, i32> {
     Ok(agenda_anniv)
 }
 
-/// Fonction qui renvoie un variable de type Jour qui est
-/// le lendemain du jour donne en entree par reference
+/// Fonction qui renvoie une variable de type Jour qui est
+/// le lendemain du jour donné en entrée par référence
 /// ------------------------------------------------------
 pub fn renvoie_demain(jour: &Jour) -> Jour {
     let jsem = &jour.jour_sem;
@@ -246,8 +247,8 @@ pub fn renvoie_demain(jour: &Jour) -> Jour {
     demain
 }
 
-/// Fonction qui renvoie un variable de type JourSemaine qui est
-/// le lendemain du jour  de la semaine donne en entree par reference
+/// Fonction qui renvoie une variable de type JourSemaine qui est
+/// le lendemain du jour  de la semaine donné en entrée par référence
 /// ------------------------------------------------------------------
 pub fn renvoie_demain_semaine(jour: &JourSemaine) -> JourSemaine {
     let demain = match *jour {
@@ -262,8 +263,8 @@ pub fn renvoie_demain_semaine(jour: &JourSemaine) -> JourSemaine {
     demain
 }
 
-/// Fonction qui renvoie un variable de type Mois qui est
-/// le mois suivant le mois en entree par reference
+/// Fonction qui renvoie une variable de type Mois qui est
+/// le mois suivant le mois en entrée par référence
 /// ------------------------------------------------------
 pub fn renvoie_mois_suivant(mois: &Mois) -> Mois {
     let mois_prochain = match *mois {
@@ -277,7 +278,7 @@ pub fn renvoie_mois_suivant(mois: &Mois) -> Mois {
     mois_prochain
 }
 
-/// Fonction qui renvoie les evenements dans l'agenda lies au jour
+/// Fonction qui renvoie les évènements dans l'agenda liés au jour
 /// --------------------------------------------------------------
 pub fn programme_du_jour(jour: &Jour, agenda: &Vec<Evenement>) -> Option<String> {
     let iterateur = agenda.iter();
@@ -298,8 +299,8 @@ pub fn programme_du_jour(jour: &Jour, agenda: &Vec<Evenement>) -> Option<String>
     }
 }
 
-/// Fonction qui renvoie les evenements dans l'agenda lies au jour.
-/// Utilise les methodes filter et map
+/// Fonction qui renvoie les évènements dans l'agenda liés au jour.
+/// Utilise les méthodes filter et map
 /// --------------------------------------------------------------
 pub fn programme_du_jour_map(jour: &Jour, agenda: &Vec<Evenement>) -> Option<String> {
     let iterateur = agenda.iter();
@@ -320,8 +321,8 @@ pub fn programme_du_jour_map(jour: &Jour, agenda: &Vec<Evenement>) -> Option<Str
     }
 }
 
-/// Fonction qui renvoie les evenements dans l'agenda lies au jour.
-/// Utilise les methodes filter map et fold
+/// Fonction qui renvoie les évènements dans l'agenda liés au jour.
+/// Utilise les méthodes filter map et fold
 /// --------------------------------------------------------------
 pub fn programme_du_jour_map_fold(jour: &Jour, agenda: &Vec<Evenement>) -> Option<String> {
     let iterateur = agenda.iter();
@@ -335,7 +336,7 @@ pub fn programme_du_jour_map_fold(jour: &Jour, agenda: &Vec<Evenement>) -> Optio
     }
 }
 
-/// Fonction qui renvoie un boolean indiquany si une date et un jour correspondent
+/// Fonction qui renvoie un boolean indiquant si une date et un jour correspondent
 /// ------------------------------------------------------------------------------
 pub fn evenement(jour: &Jour, date: &Date) -> bool {
     match jour.jour_mois == date.jour_mois {
