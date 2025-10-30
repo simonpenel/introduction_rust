@@ -7,7 +7,7 @@ use std::io::BufReader;
 use std::process;
 
 /// Enum JourSemaine
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone)]
 pub enum JourSemaine {
     Lundi,
     Mardi,
@@ -19,7 +19,7 @@ pub enum JourSemaine {
 }
 
 /// Enum Mois
-#[derive(Debug, PartialEq, Clone, Copy)]
+#[derive(Debug, PartialEq, Clone)]
 pub enum Mois {
     Octobre,
     Novembre,
@@ -66,18 +66,18 @@ impl Iterator for Jour {
             false => 1,
         };
         let mois_prochain = match *jmois < 30 {
-            true => *mois,
-            false => renvoie_mois_suivant(mois),
+            true => mois,
+            false => &renvoie_mois_suivant(mois),
         };
         self.jour_mois = jmois_prochain;
         self.jour_sem = jsem_prochain;
-        self.mois = mois_prochain;
+        self.mois = *mois_prochain;
         // Pour faire ça, il faut que  JourSemaine ait le trait Copy/Clone
         // Les perfomances du programme s'en ressentiront
         let dem = Jour {
-            jour_sem: self.jour_sem,
+            jour_sem: self.jour_sem.clone(),
             jour_mois: self.jour_mois,
-            mois: self.mois,
+            mois: self.mois.clone(),
         };
         // Cet itérateur n'a pas de dernier élément. (Exercice : à faire)
         Some(dem)

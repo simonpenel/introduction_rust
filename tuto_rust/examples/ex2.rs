@@ -1,8 +1,8 @@
 #[allow(unused)]
 
-// ============================
-//  L'OWNERSHIP ET LE BORROWING
-// ============================
+// ========================================
+//  L'OWNERSHIP ET LE BORROWING, LE CLONAGE
+// ========================================
 
 fn main() {
     println!("Hello, world!");
@@ -172,4 +172,19 @@ fn main() {
     // https://medium.com/@manikandan96372/rust-for-beginners-part-7-borrowing-reference-mutable-borrow-immutable-borrow-5c0e5c84e1ef
     // https://dhghomon.github.io/easy_rust/Chapter_17.html
     // https://users.rust-lang.org/t/why-is-this-println-s-treated-as-an-immutable-borrow/78870
+
+    // Le clonage: 
+    // ===========
+    // Cela permet de dupliquer une variable, mais cela a un coût en terme de performance
+
+    println!("Ex 2.11 ");
+    let hello = String::from("Hello, world!");
+    //  On duplique la variable:
+    let coucou = hello.clone();
+    // hello est toujours accessible
+    print!("{}",hello);
+    print!("{}",coucou);
+
+
+
 }

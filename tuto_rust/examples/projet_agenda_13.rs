@@ -52,6 +52,7 @@ impl std::fmt::Display for Jour {
     }
 }
 
+// https://dev.to/wrongbyte/implementing-iterator-and-intoiterator-in-rust-3nio
 // Implemente le trait "Iterator" pour  `Jour`.
 impl Iterator for Jour {
     type Item = Jour;
@@ -132,6 +133,9 @@ fn main() {
     // On peut donc faire une boucle dessus, et utiliser les méthodes liées au trait Iterator.
     // On utilise la methode take qui renvoie un iterateur des 160 premières iterations.
     for i in premier_jour() {
+        println!("> {}", i);
+    }
+    for i in premier_jour().into_iter().take(6) {
         println!("> {}", i);
     }
 }

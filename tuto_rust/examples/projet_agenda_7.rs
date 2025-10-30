@@ -157,6 +157,7 @@ fn main() {
     println!("\nprojet_agenda_7.2");
     // Utilisation d'un itérateur
     // La boucle "for" utilise implicitement  la methode "into_iter" fournie par trait Iterator
+    // https://doc.rust-lang.org/rust-by-example/flow_control/for.html
     // la commande exécutée est en fait "for evenement in agenda_anniv.into_iter()"
     // la méthode into_iter() renvoie un itérateur à partir d'une collection (par exemple un vecteur)
     // into_iter() transmet l'owwnership du vecteur à l'itérateur.
