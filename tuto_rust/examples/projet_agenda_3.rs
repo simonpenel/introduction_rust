@@ -68,17 +68,6 @@ impl std::fmt::Display for Jour {
     }
 }
 
-//  Une fonction simple avec une structure
-pub fn ma_fonction_jour_ref(x: &Jour) {
-    println!("entrée = {}", x);
-    let y = x.clone(); // erreur
-                       // let y = x.clone(); // ok
-    println!(
-        "Aujourd'hui c'est {:?}, le {} du mois d'{:?}",
-        y.jour_sem, y.jour_mois, y.mois
-    );
-}
-
 fn main() {
     let ajd = Jour {
         jour_sem: JourSemaine::Vendredi,
@@ -92,6 +81,4 @@ fn main() {
     );
     println!("Aujourd'hui c'est {}", ajd); // <- on peut utiliser println!
 
-    ma_fonction_jour_ref(&ajd);
-    println!("Aujourd'hui c'est {}", ajd); // <- on peut utiliser println!
 }
