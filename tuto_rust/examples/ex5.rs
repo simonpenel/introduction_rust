@@ -4,7 +4,6 @@
 //  LES TRAITS COPY ET CLONE
 // =========================
 
-
 //  Une fonction simple avec une chaîne
 pub fn ma_fonction_string_int(x: &u32) {
     println!("entrée = {}", x);
@@ -23,8 +22,4 @@ fn main() {
 
     let hello = 12;
     ma_fonction_string_int(&hello);
-
-
-
-
 }

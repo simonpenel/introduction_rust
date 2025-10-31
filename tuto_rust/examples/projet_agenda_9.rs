@@ -143,7 +143,7 @@ fn read_agenda(filename: String) -> Vec<Evenement> {
         // Ici on utilise split() qui renvoie  un itérateur
         // La methode collect() place tous les éléments dans une collection
         // https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.collect
-        //  split_line est un vecteur de &str. 
+        //  split_line est un vecteur de &str.
         let split_line: Vec<&str> = line.split(',').collect();
         // On s'assure que l'on a 5 éléments
         assert_eq!(split_line.len(), 5);
@@ -154,7 +154,7 @@ fn read_agenda(filename: String) -> Vec<Evenement> {
         // split est un iterator, la méthode next renvoie le prochain élément sous forme
         // de Option: soit il y a un prochain élément ( Some(x)) soit il n'y en a pas (None)
         let prenom = prenom.split(' ').next(); // shadowing
-        // on récupère ce qu'il y a dans Option en utilisant unwrap
+                                               // on récupère ce qu'il y a dans Option en utilisant unwrap
         let prenom = prenom.unwrap(); // shadowing
 
         // On récupère le jour du mois
@@ -195,7 +195,7 @@ fn read_agenda(filename: String) -> Vec<Evenement> {
         };
         agenda_anniv.push(evt);
     }
-    agenda_anniv // pas de ; ! 
+    agenda_anniv // pas de ; !
 }
 
 // Fonction qui renvoie une variable de type Jour qui est

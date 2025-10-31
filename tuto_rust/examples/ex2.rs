@@ -173,7 +173,7 @@ fn main() {
     // https://dhghomon.github.io/easy_rust/Chapter_17.html
     // https://users.rust-lang.org/t/why-is-this-println-s-treated-as-an-immutable-borrow/78870
 
-    // Le clonage: 
+    // Le clonage:
     // ===========
     // Cela permet de dupliquer une variable, mais cela a un coût en terme de performance
 
@@ -182,9 +182,6 @@ fn main() {
     //  On duplique la variable:
     let coucou = hello.clone();
     // hello est toujours accessible
-    print!("{}",hello);
-    print!("{}",coucou);
-
-
-
+    print!("{}", hello);
+    print!("{}", coucou);
 }

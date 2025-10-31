@@ -115,7 +115,7 @@ fn main() {
     // On pourait aussi écrire tout simplement avec le même nom de variable
     let file = File::open("date_naissance.txt");
     let file = match file {
-        Ok(file) => file,  // "shadowing" de la variable file
+        Ok(file) => file, // "shadowing" de la variable file
         Err(erreur) => {
             eprintln!("Erreur : {:?}", erreur);
             panic!("Erreur a l'ouverture du fichier")
@@ -187,7 +187,8 @@ fn main() {
         let jour_mois = split_line[2];
         // C'est une chaîne de caractères
         // On veut être sûr que le jour du mois est un entier : on utilise la méthode "parse" avec le type u32
-        let jour_mois = match jour_mois.parse::<u32>() { // shadowing
+        let jour_mois = match jour_mois.parse::<u32>() {
+            // shadowing
             Ok(valeur) => valeur,
             Err(_err) => {
                 eprintln!("Erreur, le jour du mois doit être un entier.");
@@ -227,6 +228,6 @@ fn main() {
     println!("\nAGENDA {:?}", agenda_anniv);
 
     for anniv in agenda_anniv {
-        println!("{} : {}",anniv.date,anniv.description);
+        println!("{} : {}", anniv.date, anniv.description);
     }
 }

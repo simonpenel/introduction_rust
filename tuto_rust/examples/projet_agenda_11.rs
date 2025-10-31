@@ -215,7 +215,6 @@ fn read_agenda(filename: String) -> Vec<Evenement> {
     agenda_anniv
 }
 
-
 // Fonction qui renvoie une variable de type JourSemaine qui est
 // le lendemain du jour  de la semaine donné en entrée par référence
 // ------------------------------------------------------------------

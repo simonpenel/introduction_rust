@@ -51,9 +51,8 @@ fn main() {
     // ============
     // Le shadowing
     // ============
-    let a = 10 ;
+    let a = 10;
     //  a = a + 10 ; // Erreur
     let a = a + 10; // "shadowing"
     println!("{}", a);
-
 }

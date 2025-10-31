@@ -164,8 +164,8 @@ fn main() {
     // Il existe une autre méthode, iter() qui emprunte (borrowing) le vecteur
     // https://blog.coolhead.in/difference-between-intoiter-iter-and-itermut-in-rust
     // A la place de la boucle sur le vecteur, on peut utiliser explicitement l'itérateur:
-    let iterateur = agenda_anniv.iter(); // Et pas into_iter() ! 
-    // Ensuite on fait la boucle sur l'itérateur
+    let iterateur = agenda_anniv.iter(); // Et pas into_iter() !
+                                         // Ensuite on fait la boucle sur l'itérateur
     for evenement in iterateur {
         println!(
             "Et encore, {} c'est toujours {}",
@@ -206,7 +206,7 @@ fn main() {
     // Encore plus compact:
     for (i, eve) in agenda_anniv.iter().enumerate() {
         println!("Evènement numero {} : {:?}", i, eve);
-    }   
+    }
 
     // La méthode filter
     println!("\nprojet_agenda_7.5");

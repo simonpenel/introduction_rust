@@ -33,7 +33,6 @@ pub struct Jour {
     mois: Mois,
 }
 
-
 fn main() {
     let ajd = Jour {
         jour_sem: JourSemaine::Vendredi,
@@ -47,4 +46,3 @@ fn main() {
     );
     // println!("Aujourd'hui c'est {}",ajd);	// <- on ne peut pas utiliser println!
 }
-
