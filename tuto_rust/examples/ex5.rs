@@ -23,14 +23,14 @@ pub fn ma_fonction_string_ref(x: &String) {
 //  Une fonction simple avec une chaîne
 pub fn ma_fonction_string(x: String) {
     println!("entrée = {}", x);
-    let y = *x;
-    // let y = x.clone(); // ok
+    // let y = *x;
+    let y = x;
 }
 
 fn main() {
     let hello = String::from("Hello");
     ma_fonction_string_ref(&hello);
-    // println!("{}",hello);
+    println!("{}",hello);
 
     let hello = String::from("Hello");
     ma_fonction_string(hello);
