@@ -7,10 +7,12 @@
 fn main() {
     // ==================================
     // variables mutables et non mutables
+    // ...
+    // mutable and immutable variables
     // ==================================
-    println!("Hello, world!"); // <- une instruction se termine par ';'.
-    let a = 32; // <- déclaration d'une variable avec let
-    println!("{}", a); // <- println! est une macro rust dédiée à l'affichage
+    println!("Hello, world!");  // <-  an instruction ends with ';'.
+    let a = 32;            // <- declaration of a  variable with 'let'
+    println!("{}", a);          // <- println! is a rust  macro dedicated to displaying text
 
     // cette instruction engendre une erreur:
     // a = 42;
