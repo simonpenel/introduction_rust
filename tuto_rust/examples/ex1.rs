@@ -1,5 +1,7 @@
 // ======================================================================
 // VARIABLES MUTABLES ET NON MUTABLES, LE SHADOWING,  l'INFERENCE DE TYPE
+// ...
+// MUTABLE AND IMMUTABLE VARIABLES, SHADOWING,  TYPE INFERENCE
 // ======================================================================
 
 fn main() {
