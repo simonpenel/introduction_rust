@@ -1,81 +1,85 @@
 #[allow(dead_code)]
 #[allow(unused)]
 // ===============
-//  LES FONCTIONS
+//  FUNCTIONS
 // ===============
-//  Voir https://doc.rust-lang.org/book/ch03-03-how-functions-work.htmlhttps://doc.rust-lang.org/book/ch03-03-how-functions-work.html
+//  See https://doc.rust-lang.org/book/ch03-03-how-functions-work.htmlhttps://doc.rust-lang.org/book/ch03-03-how-functions-work.html
 
 fn main() {
-    // Une fonction très simple qui prend un entier u32 comme paramètre
-    // (pour plus de clarté on déclare les fonctions ici, mais il serait mieux
-    // de les déclarer en dehors  de la fonction  main)
-    // Une fonction se déclare avec "fn" et on définit le type de l'argument :
+    // A very simple function that takes an u32 integer as a parameter
+    // (for clarity, we declare the functions here, but it would be better
+    // to declare them outside  the main function)
+    // A function is declared with ‘fn’ and  the type of the argument is defined:
     fn ma_fonction(x: u32) {
         println!("entrée = {}", x)
     }
-    let a: u32 = 12;
-    ma_fonction(a);
-    println!(" {}", a);
-
     ma_fonction(66); // Ok
-                     // ma_fonction(3.5);   // erreur
+    // this instruction causes an error:
+    // ma_fonction(3.5);  
 
-    // Si on veut modifier la variable donnée comme paramètre:
-    fn ma_fonction_2(x: u32) {
-        println!("entrée = {}", x);
-        // x = x + 5; // Génére une erreur
-    }
-    // La variable doit etre mutable
-    fn ma_fonction_3(mut x: u32) {
-        println!("entrée = {}", x);
-        x = x + 5;
-        println!("nouvelle entrée = {}", x);
-    }
-    println!("avant {}", a);
-    ma_fonction_3(a);
-    println!("après {}", a);
-    // On constate que la variable  n'a pas changé après la fonction
+    let a: u32 = 12;
+    println!("value of 'a' before : {}", a);
+    ma_fonction(a);
+    println!("value of 'a' after : {}", a);
 
-    // La même fonction très simple avec une chaine comme paramètre
-    fn ma_fonction_string(x: String) {
-        println!("entrée = {}", x)
+    // The same very simple function with a string as a parameter
+    fn ma_fonction_string(mut x: String) {
+        println!("x = {}", x)
     }
     let hello = String::from("world");
     println!("Hello  {}!", hello);
     ma_fonction_string(hello);
-    // let coucou = hello;  // Genere une erreur: la chaîne a été empruntée par
-    // la fonction: elle n'est plus accessible.
+    // this instruction causes an error:
+    // let coucou = hello; 
+    // the variable has been borrowed by the function and is threfeore not accessible anymore   
 
-    // Dans les examples précédents la fonction devient propriétaire de la
-    // variable donnée en entrée, il s'agit de ownership comme dans
-    // l'instruction 'coucou = hello'. (qui ne pose pas de problème avec les
-    // entiers). C'est la raison pour laquelle, dans le cas des entiers la
-    // variable n'est pas modifiée car il s'agit en fait d'une copie de la
-    // variable, et dans le cas des String il n'est plus possible d'accéder à
-    // la variable après qu'elle soit devenue la propriété de la fonction.
-    //
-    // La solution : l'appel par référence
 
-    // APPEL PAR REFERENCE
-    // ===================
+    // In the previous examples, the function becomes the owner of the
+    // variable given as input; this is ownership as in the statement 
+    // “coucou = hello”. This does not pose a problem with integers.
+    // This is why, in the case of integers, it is still  possible to access the variable after calling
+    // the fuction  because the variable given in argument is actually copied. In the case of strings,
+    // it is no longer possible to access the variable after it has become the property of the function.
+    // The solution: the call by reference
 
-    // On va utiliser une fonction qui prend la référence vers la variable
-    // plutot que la variable elle meme.
-    // Info sur les références :
+    
+    // We want to modify the variable  given as argument:
+    fn ma_fonction_2(x: u32) {
+        println!("x = {}", x);
+        // this instruction causes an error:
+        // x = x + 5; 
+    }
+    // the variable must be mutable:
+    fn ma_fonction_3(mut x: u32) {
+        println!("x = {}", x);
+        x = x + 5;
+        println!("modified  x = {}", x);
+    }
+    println!("value of 'a' before : {}", a);
+    ma_fonction_3(a);
+    println!("value of 'a' after : {}", a);
+    // We can see that the variable  has not changed after the function  
+    // The solution: the call by reference 
+
+    // CALL BY REFERENCE
+    // =================
+    // We will use a function that takes the reference to the variable
+    // rather than the variable itself.
+    // more info on references :
     // https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
 
     fn ma_fonction_ref(x: &mut u32) {
-        println!("entrée = {}", x);
-        *x = 54;
-        println!("nouvelle entrée = {}", x);
+        println!("x = {}", x);
+        *x = *x + 5;
+        println!("modified x  = {}", x);
     }
     let mut a: u32 = 12;
-    println!("avant {}", a);
+    println!("value of 'a' before : {}", a);
     ma_fonction_ref(&mut a);
-    println!("après {}", a);
-    // on constate que la variable a bien  changé
+    println!("value of 'a' after : {}", a);
+    // We can see that the variable  has changed after the function  
 
-    // alternative : a est ici une référence vers une valeur mutable
+    // alternative
     let a: &mut u32 = &mut 12;
     println!("a =  {}", a);
     *a = 24;
@@ -83,48 +87,55 @@ fn main() {
     ma_fonction_ref(a);
     println!("après {}", a);
 
-    //  Une fonction simple avec une chaîne
+    //  A  simple function  with a string as argument
     fn ma_fonction_string_ref(x: &String) {
-        println!("entrée = {}", x);
+        println!("x = {}", x);
     }
     let hello = String::from("Hello");
     ma_fonction_string_ref(&hello);
-    println!(" {}", hello); // Ne génère plus d'erreur:
+    // this instruction is correct:
+    let coucou = hello; 
 
     // Modification de la chaîne donnée en entree
     fn ma_fonction_string_ref_mut(x: &mut String) {
         x.push_str(", world!");
     }
     let mut hello = String::from("Hello");
+    println!("value of 'hello' before : {}", hello);
     ma_fonction_string_ref_mut(&mut hello);
-    println!(" {}", hello);
+    println!("value of 'hello' after : {}", hello);
 
-    // Le cas de  println!
-    // -------------------
-    // println! est une macro. Elle fonctionne un peu comme une fonction.
-    // Cependant
+    // About  println!
+    // ---------------
+    // println! is a macro. It works somewhat like a fonction.
+    // However: 
     let hello = String::from("Hello");
     println!(" {}", hello);
-    let coucou = hello; // Cette instruction marche. Alors  qu'on a fourni à
-                        // println!  une variable de type String sans passer par une référence. On
-                        // s'attend à ce que la variable "hello" soit  possédée par println! et
-                        // donc ne soit plus accessible. (cf ligne 47). En fait println! fait
-                        // automatiquement un appel par référence, pour des raisons pratiques. Mais
-                        // cela a des conséquuences:
+    let coucou = hello; // This instruction works. Although  we provided
+                        // println!  with a String type variable without going through a reference, we
+                        // expect the variable ‘hello’ to be  owned by println! and
+                        // therefore no longer accessible (see line 33). In fact, println!
+                        // automatically makes a call by reference, for practical reasons. But
+                        // this has consequences:
+    
+
     let mut variable = 3;
     println!("variable = {}", variable);
     let ref_variable = &mut variable;
     *ref_variable = 6;
     println!("variable = {}", variable);
-    // *ref_variable = 12; //<- cette instruction ne marche pas
-    // parce que println! emprunte "variable" en créant une référence mutable vers "variable".
-    // Cette action a supprimé  la référence mutable précédente "ref_variable".
+    // this instruction causes an error:
+    // *ref_variable = 12; 
+    // That's because println! borrows ‘variable’ by creating a mutable reference to ‘variable’.
+    // This action removed the previous mutable reference ‘ref_variable’.
 
-    // Pas de problème si on a une variable non mutable:
+    // No problem with a immutable variable
     let variable = 3;
     println!("variable = {}", variable);
     let ref_variable = &variable;
-    let test = *ref_variable + 6;
     println!("variable = {}", variable);
-    println!("ref_variable = {}", ref_variable); // <- cette instruction marche
+    // this instruction is correct:
+    let test = *ref_variable + 6;
+    println!("ref_variable = {}", ref_variable); 
+    println!("test = {}", test); 
 }
