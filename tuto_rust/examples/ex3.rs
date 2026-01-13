@@ -111,9 +111,9 @@ fn main() {
     // However: 
     let hello = String::from("Hello");
     println!(" {}", hello);
-    let coucou = hello; // This instruction works. Although  we provided
-                        // println!  with a String type variable without going through a reference, we
-                        // expect the variable ‘hello’ to be  owned by println! and
+    let coucou = hello; // This instruction works although  we provided
+                        // println!  with a String type variable without going through a reference.
+                        // We expect the variable ‘hello’ to be  owned by println! and
                         // therefore no longer accessible (see line 33). In fact, println!
                         // automatically makes a call by reference, for practical reasons. But
                         // this has consequences:
