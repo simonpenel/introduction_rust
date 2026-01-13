@@ -1,131 +1,136 @@
 #[allow(unused)]
 
 // ========================================
-//  L'OWNERSHIP ET LE BORROWING, LE CLONAGE
+//  OWNERSHIP AND BORROWING, CLONING
 // ========================================
 
 fn main() {
     println!("Hello, world!");
 
     // ===============
-    // L'"ownership"
+    // Ownership
     // ===============
     // https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html
     // https://doc.rust-lang.org/rust-by-example/scope/move.html
     //
-    // Rêgle de l'"ownership":
+    // Ownership rule:
     // ----------------------
-    // En  Rust  chaque variable est propriétaire d’un emplacement mémoire.
-    // Il ne peut y avoir qu’un seul propriétaire à la fois pour cet
-    // emplacement.
-    // Lorsqu’un emplacement est assigné à une autre variable, il est transféré
-    // de la variable source à la variable cible. La variable source n’a plus
-    // accès à l'emplacement mémoire et la variable cible devient le nouveau
-    // propriétaire.
-    // Dans quel but:  maintenir la mémoire propre:
-    // - éviter les comportements imprévisibles avec les opérations de
-    //   lectures/écritures
-    // - nettoyer rapidement les données inutilisées.
+    // In Rust, each variable owns a memory location.
+    // There can only be one owner at a time for this
+    // location.
+    // When a location is assigned to another variable, it is transferred
+    // from the source variable to the target variable. The source variable no longer
+    // has access to the memory location, and the target variable becomes the new
+    // owner.
+    // Purpose:  to keep memory clean:
+    // - avoid unpredictable behaviour with read/write operations
+    // - quickly clean up unused data.
+
 
     println!("Ex 2.1 ");
     let hello = String::from("Hello, world!");
     let coucou = hello;
-    // hello n'est plus accessible
-    // cette instruction engendre une erreur:
+    // the variable 'hello' is no longer accessible
+    // this instruction causes an error:
     // let salut  = hello;
 
-    // Cas des variables "simples"
+    // Case of ‘simple’ variables
     // --------------------------
-    // L'ownsership ne pose pas de problême avec les variables de type entier.
-    // Dans ces cas-là, la variable est en fait copiée automatiquement, car
-    // cela ne coûte pas cher, contrairement  à une variable  complexe
-    // (allocation dynamique, taille variable, structures,…).
+    // Ownership is not an issue with integer variables.
+    // In these cases, the variable is actually copied automatically, as
+    // this is inexpensive, unlike  copying a  complex variable
+    // (dynamic allocation, variable size, structures, etc.).
 
     println!("Ex 2.2 ");
     let hello = 1;
     let coucou = hello;
-    // hello est tojours accessible
-    // cette instruction marche:
+    // the variable 'hello' is still  accessible
+    // this instruction is correct:
     let salut = hello;
 
     // ==================================
-    // Les références et le borrowing
+    // References and borrowing
     // ==================================
-    // Si on veut garder l'accès à un emplacement mémoire, on utilise les références.
-    // Une réference est un type de données qui représente un emplacement mémoire.
-    // L'opérateur & permet d'obtenir l'emplacement mémoire assigné à une variable.
-    // &x est l'emplacement mémoire  de x
-    // L'action de créer une référence est appelée le "borrowing"
+    // If we want to keep access to a memory location, we use 'references'.
+    // A reference is a data type that represents a memory location.
+    // The & operator allows us to obtain the memory location assigned to a variable.
+    // &x is the memory location of x.
+    // The action of creating a reference is called ‘borrowing’.
+
+
     println!("Ex 2.3 ");
     let coucou = String::from("Hello, world!");
     let bonjour = &coucou;
     let salut = &coucou;
-    // Pour récupérer la valeur à l'emplacement mémoire décrit par la réference on utilise l'opérateur *
+    // To retrieve the value at the memory location described by the reference, we use the * operator.
     println!("{}", *bonjour);
-    // Pour afficher la réference:
+    // To display the reference:
     println!("{:p}", bonjour);
-    // Note on utilise {:p} pour forcer println! à ecrire l'adresse et non la valeur qui s'y trouve
-    // ce qui est le comportement par défaut de println!.
-    // La variable coucou est toujours disponible:
+    // Note that we use {:p} to force println! to write the address and not the value found there,
+    // which is the default behaviour of println!.
+    // the variable 'coucou' is still  accessible
     println!("{}", coucou);
     println!("{}", *salut);
 
-    // Rappel sur l'ownership avec les entiers  (mutables ou non)
-    // ===========================================================
+    // Reminder concerning ownership on integers (mutable or not)
+    // ==========================================================
     println!("Ex 2.4 ");
     let variable_1 = 3;
     let variable_2 = variable_1;
-    let variable_3 = variable_1; // Cette ligne ne génere pas d'erreur
+    // this instruction is correct:
+    let variable_3 = variable_1;
 
-    // Rappel sur l'ownership avec les String
-    // ======================================
+    // Reminder concerning ownership on Strings
+    // ========================================
     println!("Ex 2.5 ");
     let variable_1 = String::from("Hello, world!");
     let variable_2 = variable_1;
-    //let variable_3 = variable_1; // Cette ligne  génere une erreur
+    // this instruction causes an error:
+    //let variable_3 = variable_1; 
 
-    // Les réferences non mutables
-    // ============================
+    // Immutable references
+    // =====================
     println!("Ex 2.6 ");
     let variable = 3;
     let ref1_variable = &variable;
     println!("variable = {}", variable);
     println!("ref1_variable = {}", ref1_variable);
 
-    // Plusieures références non mutables : ok
-    // --------------------------------------
+    // It is allowed to use many immutable references to the same variable 
+    // --------------------------------------------------------------------
     let ref2_variable = &variable;
     let ref3_variable = &variable;
     println!("variable = {}", variable);
     println!("ref2_variable = {}", ref2_variable);
     println!("ref3_variable = {}", ref3_variable);
-    // variable est toujours  accessible
+    // variable 'variable' is still  accessible
     println!("variable = {}", variable);
 
-    // Les références mutables
-    // =======================
-
-    // ATTENTION:
-    // Lorsque l'on déclare une reference mutable
+    // Mutable references
+    // ==================
+    // WARNING:
+    // --------
+    // When declaring a mutable reference :
     // ref_variable_toto = &mut variable_toto
-    // &mut représente un accès exclusif, et interdit tout usage de la variable
-    // qui ne passe pas par la référence.
-    // Ici , ref_variable_toto a l'exclusivité de l'accès à variable_toto,
-    // jusqu'a sa dernière utilisation.
+    // &mut represents exclusive access and prohibits any use of the variable
+    // that does not go through the reference.
+    // Here, ref_variable_toto has exclusive access to variable_toto
+    // until it is last used.
 
-    // Une règle simple:
-    //  * une variable non mutable peut être empruntée par autant de références
-    //    non mutables que l'on veut
-    //  * une variable  mutable ne peut être empruntée que par une référence
-    //    mutable unique.
-    //  Pourquoi ? On peut faire le parallèle avec les fichiers en lecture ou
-    //  en lecture/écriture:
-    //  Un fichier en lecture seule peut etre accedé en même temps par
-    //  différentes parties du code
-    //  Un fichier en lecture/ecriture ne devrait  être accédé en même temps
-    //  que par une seule partie du code  pour éviter des erreurs potentielles.
+    // A simple rule:
+    //  * a non-mutable variable can be borrowed by as many non-mutable references
+    //    as desired
+    //  * a mutable variable can only be borrowed by a single mutable reference
+    //  
+    //  Why? We can draw a parallel with read-only or
+    //  read/write files:
+    //  A read-only file can be accessed at the same time by
+    //  different parts of the code.
+    //  A read/write file should only be accessed at the same time
+    //  by a single part of the code to avoid potential errors.
 
-    // une seule référence mutable : ok
+
+    // A single mutable reference : ok
     // ---------------------------------
     println!("Ex 2.8 ");
     let mut variable = 3;
@@ -133,55 +138,62 @@ fn main() {
     *ref_variable = 4;
     println!("variable = {}", variable);
 
-    // plusieures références mutables : erreur
-    // -------------------------------------
-
+    // Multiple  mutable references : error
+    // ------------------------------------
     println!("Ex 2.9 ");
-
     let mut variable = 3;
     let ref1_variable = &mut variable;
     let ref2_variable = &mut variable;
-
-    // *ref1_variable = 4; // <- Cette instruction va déclencher une erreur
-    // En effet la nouvelle référence "ref2_variable" emprunte la variable
-    // "variable", ce qui entraîne la disparition  de la référence précédente
-    // "ref1_variable".
-
+    // this instruction causes an error:
+    // *ref1_variable = 4;
+    // Indeed, the new reference ‘ref2_variable’ borrows the variable
+    // ‘variable’, which causes the previous reference
+    // ‘ref1_variable’ to disappear.
     *ref2_variable = 4;
     let test = ref2_variable;
 
-    // 1 référence mutable et une référence non mutable  : erreur aussi
+    // a mutable reference and a immutable reference  : error as well
     // ----------------------------------------------------------------
-
     println!("Ex 2.10 ");
     let mut variable = 3;
     let ref1_variable = &variable; // immutable borrow
     let ref2_variable = &mut variable; // mutable borrow
-
-    // let test =  ref1_variable; // <- Cette instruction va déclencher une erreur
-    // En effet la nouvelle référence "ref2_variable" emprunte la variable
-    // "variable", ce qui entraine la disparition  de la référence précédente
-    // "ref1_variable".
-
-    *ref2_variable = 4; // mutable borrow  <- Cette instruction ne  déclenche pas d'erreur
-
+    // this instruction causes an error:
+    // let test =  ref1_variable; 
+    // (Same reason)
+    *ref2_variable = 4;
     let test = ref2_variable; // Remarque : après ça, ref2_variable n'existe plus. (à cause de l'ownership!)
     println!("variable = {}", variable);
 
-    // Plus d'info
+    // a immutable reference to a mutable variable (?)
+    // --------------------------------------------
+    println!("Ex 2.11 ");
+    let mut variable = 3;
+    let ref1_variable = &variable; // immutable borrow
+    variable = 5;
+    // this instruction causes an error:
+    // let test =  ref1_variable; 
+    let mut variable = "Salut";
+    let ref1_variable = &variable; // immutable borrow
+    variable = "Bonjour";
+    // this instruction causes an error:
+    // let test =  ref1_variable; 
+
+    // rustc --explain E0506
+
+    // More info
     // https://medium.com/@manikandan96372/rust-for-beginners-part-7-borrowing-reference-mutable-borrow-immutable-borrow-5c0e5c84e1ef
     // https://dhghomon.github.io/easy_rust/Chapter_17.html
     // https://users.rust-lang.org/t/why-is-this-println-s-treated-as-an-immutable-borrow/78870
 
-    // Le clonage:
+    // Cloning:
     // ===========
-    // Cela permet de dupliquer une variable, mais cela a un coût en terme de performance
-
-    println!("Ex 2.11 ");
+    // This allows a variable to be duplicated, but it comes at a cost in terms of performance.
+    println!("Ex 2.12 ");
     let hello = String::from("Hello, world!");
-    //  On duplique la variable:
+    //  Variable 'hello' is duplicated:
     let coucou = hello.clone();
-    // hello est toujours accessible
+    // hello is still accessible
     print!("{}", hello);
     print!("{}", coucou);
 }
