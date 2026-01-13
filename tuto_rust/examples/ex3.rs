@@ -117,8 +117,6 @@ fn main() {
                         // therefore no longer accessible (see line 33). In fact, println!
                         // automatically makes a call by reference, for practical reasons. But
                         // this has consequences:
-    
-
     let mut variable = 3;
     println!("variable = {}", variable);
     let ref_variable = &mut variable;
