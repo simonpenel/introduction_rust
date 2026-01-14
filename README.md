@@ -74,7 +74,7 @@ For example:
 To uncomment a line, simply delete the  // in front of 'erroneous statement'.
 
 
-### Exercise 1: Mutable and immutable variables, type inference 
+### Exercise 1: mutable and immutable variables, type inference 
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex1.rs
 
 Run the code:
@@ -124,8 +124,6 @@ Observe  the error messages.
 
 Understand the use of functions, pattern matching, and the Option type.
 Understand the meaning of the absence of a ‘;’ in a function  to return a value.
-
-
 
 
 ## Agenda Project
