@@ -14,7 +14,7 @@ fn main() {
         println!("entrée = {}", x)
     }
     ma_fonction(66); // Ok
-    // this instruction causes an error:
+    // the following statement causes an error:
     // ma_fonction(3.5);  
 
     let a: u32 = 12;
@@ -29,7 +29,7 @@ fn main() {
     let hello = String::from("world");
     println!("Hello  {}!", hello);
     ma_fonction_string(hello);
-    // this instruction causes an error:
+    // the following statement causes an error:
     // let coucou = hello; 
     // the variable has been borrowed by the function and is threfeore not accessible anymore   
 
@@ -46,7 +46,7 @@ fn main() {
     // We want to modify the variable  given as argument:
     fn ma_fonction_2(x: u32) {
         println!("x = {}", x);
-        // this instruction causes an error:
+        // the following statement causes an error:
         // x = x + 5; 
     }
     // the variable must be mutable:
@@ -93,7 +93,7 @@ fn main() {
     }
     let hello = String::from("Hello");
     ma_fonction_string_ref(&hello);
-    // this instruction is correct:
+    // the following statement is correct:
     let coucou = hello; 
 
     // Modification de la chaîne donnée en entree
@@ -122,7 +122,7 @@ fn main() {
     let ref_variable = &mut variable;
     *ref_variable = 6;
     println!("variable = {}", variable);
-    // this instruction causes an error:
+    // the following statement causes an error:
     // *ref_variable = 12; 
     // That's because println! borrows ‘variable’ by creating a mutable reference to ‘variable’.
     // This action removed the previous mutable reference ‘ref_variable’.
@@ -132,7 +132,7 @@ fn main() {
     println!("variable = {}", variable);
     let ref_variable = &variable;
     println!("variable = {}", variable);
-    // this instruction is correct:
+    // the following statement is correct:
     let test = *ref_variable + 6;
     println!("ref_variable = {}", ref_variable); 
     println!("test = {}", test); 

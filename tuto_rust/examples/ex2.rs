@@ -31,7 +31,7 @@ fn main() {
     let hello = String::from("Hello, world!");
     let coucou = hello;
     // the variable 'hello' is no longer accessible
-    // this instruction causes an error:
+    // the following statement causes an error:
     // let salut  = hello;
 
     // Case of ‘simple’ variables
@@ -45,7 +45,7 @@ fn main() {
     let hello = 1;
     let coucou = hello;
     // the variable 'hello' is still  accessible
-    // this instruction is correct:
+    // the following statement is correct:
     let salut = hello;
 
     // ==================================
@@ -77,7 +77,7 @@ fn main() {
     println!("Ex 2.4 ");
     let variable_1 = 3;
     let variable_2 = variable_1;
-    // this instruction is correct:
+    // the following statement is correct:
     let variable_3 = variable_1;
 
     // Reminder concerning ownership on Strings
@@ -85,7 +85,7 @@ fn main() {
     println!("Ex 2.5 ");
     let variable_1 = String::from("Hello, world!");
     let variable_2 = variable_1;
-    // this instruction causes an error:
+    // the following statement causes an error:
     //let variable_3 = variable_1; 
 
     // Immutable references
@@ -144,7 +144,7 @@ fn main() {
     let mut variable = 3;
     let ref1_variable = &mut variable;
     let ref2_variable = &mut variable;
-    // this instruction causes an error:
+    // the following statement causes an error:
     // *ref1_variable = 4;
     // Indeed, the new reference ‘ref2_variable’ borrows the variable
     // ‘variable’, which causes the previous reference
@@ -158,7 +158,7 @@ fn main() {
     let mut variable = 3;
     let ref1_variable = &variable; // immutable borrow
     let ref2_variable = &mut variable; // mutable borrow
-    // this instruction causes an error:
+    // the following statement causes an error:
     // let test =  ref1_variable; 
     // (Same reason)
     *ref2_variable = 4;
@@ -171,12 +171,12 @@ fn main() {
     let mut variable = 3;
     let ref1_variable = &variable; // immutable borrow
     variable = 5;
-    // this instruction causes an error:
+    // the following statement causes an error:
     // let test =  ref1_variable; 
     let mut variable = "Salut";
     let ref1_variable = &variable; // immutable borrow
     variable = "Bonjour";
-    // this instruction causes an error:
+    // the following statement causes an error:
     // let test =  ref1_variable; 
 
     // rustc --explain E0506

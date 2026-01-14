@@ -6,24 +6,24 @@ fn main() {
     // ==================================
     // mutable and immutable variables
     // ==================================
-    println!("Hello, world!");  // <-  an instruction ends with ';'.
-    let a = 32;                 // <- declaration of a  variable with 'let'
+    println!("Hello, world!");  // <- expression ending with ';'.
+    let a = 32;                 // <- declaration of a  variable binding with 'let'
     println!("{}", a);          // <- println! is a rust  macro dedicated to displaying text
 
-    // this instruction causes an error:
+    // the following statement causes an error:
     // a = 42;
 
-    // this instruction causes an error:
+    // the following statement causes an error:
     // a = a + 10;
 
     let mut b = 32;
     println!("{}", b);
 
-    // this instruction is correct:
+    // the following statement is correct:
     b = 42;
     println!("{}", b);
 
-    // this instruction is correct:
+    // the following statement is correct:
     b = b + 10;
     println!("{}", b);
 
@@ -34,7 +34,7 @@ fn main() {
     println!("{}", a);
     a = a + 5;
     println!("{}", a);
-    // this instruction causes an error:
+    // the following statement causes an error:
     // a = a + 12.0;
 
     let mut b = 52.0;
