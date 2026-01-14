@@ -16,8 +16,7 @@ fn main() {
     // Ownership rule:
     // ----------------------
     // In Rust, each variable owns a memory location.
-    // There can only be one owner at a time for this
-    // location.
+    // There can only be one owner at a time for this location.
     // When a location is assigned to another variable, it is transferred
     // from the source variable to the target variable. The source variable no longer
     // has access to the memory location, and the target variable becomes the new
@@ -51,9 +50,9 @@ fn main() {
     // ==================================
     // References and borrowing
     // ==================================
-    // If we want to keep access to a memory location, we use 'references'.
+    // In order to keep access to a memory location, Rust  langage allows to use  'references'.
     // A reference is a data type that represents a memory location.
-    // The & operator allows us to obtain the memory location assigned to a variable.
+    // The & operator allows to obtain the memory location assigned to a variable.
     // &x is the memory location of x.
     // The action of creating a reference is called ‘borrowing’.
 
@@ -62,7 +61,7 @@ fn main() {
     let coucou = String::from("Hello, world!");
     let bonjour = &coucou;
     let salut = &coucou;
-    // To retrieve the value at the memory location described by the reference, we use the * operator.
+    // To retrieve the value at the memory location described by the reference, use the * operator.
     println!("{}", *bonjour);
     // To display the reference:
     println!("{:p}", bonjour);
@@ -71,6 +70,14 @@ fn main() {
     // the variable 'coucou' is still  accessible
     println!("{}", coucou);
     println!("{}", *salut);
+
+    // Using the * operator
+    let variable_1 = 12;
+    let ref_variable_1 = &variable_1;
+    let variable_2 = 2 * ref_variable_1;
+    println!("variable_1 = {}",variable_1);
+    println!("variable_2 = {}",variable_2);
+
 
     // Reminder concerning ownership on integers (mutable or not)
     // ==========================================================
@@ -114,16 +121,14 @@ fn main() {
     // ref_variable_toto = &mut variable_toto
     // &mut represents exclusive access and prohibits any use of the variable
     // that does not go through the reference.
-    // Here, ref_variable_toto has exclusive access to variable_toto
-    // until it is last used.
+    // Here, ref_variable_toto has exclusive access to variable_toto until it is last used.
 
     // A simple rule:
     //  * a non-mutable variable can be borrowed by as many non-mutable references
     //    as desired
     //  * a mutable variable can only be borrowed by a single mutable reference
     //  
-    //  Why? We can draw a parallel with read-only or
-    //  read/write files:
+    //  Why?  draw a parallel with read-only or read/write files:
     //  A read-only file can be accessed at the same time by
     //  different parts of the code.
     //  A read/write file should only be accessed at the same time
@@ -150,9 +155,9 @@ fn main() {
     // ‘variable’, which causes the previous reference
     // ‘ref1_variable’ to disappear.
     *ref2_variable = 4;
-    let test = ref2_variable;
+    println!("variable = {}", variable);
 
-    // a mutable reference and a immutable reference  : error as well
+    // A mutable reference and a immutable reference  : error as well
     // ----------------------------------------------------------------
     println!("Ex 2.10 ");
     let mut variable = 3;
@@ -162,8 +167,9 @@ fn main() {
     // let test =  ref1_variable; 
     // (Same reason)
     *ref2_variable = 4;
-    let test = ref2_variable; // Remarque : après ça, ref2_variable n'existe plus. (à cause de l'ownership!)
     println!("variable = {}", variable);
+
+
 
     // a immutable reference to a mutable variable (?)
     // --------------------------------------------
