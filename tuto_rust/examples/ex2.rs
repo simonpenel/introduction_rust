@@ -176,15 +176,9 @@ fn main() {
     println!("Ex 2.11 ");
     let mut variable = 3;
     let ref1_variable = &variable; // immutable borrow
-    variable = 5;
+    // variable = 5;
     // the following statement causes an error:
-    // let test =  ref1_variable; 
-    let mut variable = "Salut";
-    let ref1_variable = &variable; // immutable borrow
-    variable = "Bonjour";
-    // the following statement causes an error:
-    // let test =  ref1_variable; 
-
+    let test =  ref1_variable; 
     // rustc --explain E0506
 
     // More info
