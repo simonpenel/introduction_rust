@@ -23,7 +23,7 @@ Download the necessary files and test the installation:
 ```
 git clone https://github.com/simonpenel/introduction_rust.git
 cd introduction_rust
-cd tutorial_rust
+cd tuto_rust
 cargo run --example ex1
 ```
 
