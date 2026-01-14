@@ -33,7 +33,7 @@ cargo run --example ex1
 
 ## Getting started
 In this introduction to Rust, we will cover important aspects of the Rust language.
-First, we will run different Rust codes. Then we will see how to create an executable binary.
+We will run different Rust codes, then we will see how to create an executable binary.
 
 First, we will test the code provided in the files ex1.rs, ex2.rs, ex3.rs, and ex4.rs in the directory tuto_rust/examples/.
 
@@ -62,18 +62,16 @@ The code provided contains comments, indicated by “//”
 which explain the purpose of the exercise.
 
 Some lines are commented out to allow you to test changes to the code. 
-Theses lines are preceded by the comment "the following statement causes an error":
+Theses lines are preceded by the comment _the following statement causes an error:_
 
 For example:
 
-
-
 ```
 // the following statement causes an error:
-// erroneous code
+// erroneous statement
 ```
 
-To uncomment a line, simply delete the  // in front of 'erroneous code'.
+To uncomment a line, simply delete the  // in front of 'erroneous statement'.
 
 
 ### Exercise 1: Mutable and immutable variables, type inference 
@@ -83,13 +81,9 @@ Run the code:
 
 `cargo run --example ex1`
 
-Uncomment line  15 and run the code again.
+Uncomment the different erroneous statements  and run the code again.
 
-Observe  the error message.
-
-Do the same with line 18.
-
-Do the same with line 39.
+Observe  the error messages.
 
 
 
@@ -100,22 +94,9 @@ Run the code:
 
 `cargo run --example ex2`
 
-Uncomment line  33 and run the code again.
+Uncomment the different erroneous statements  and run the code again.
 
-Observe  the error message.
-
-Uncomment line  89 and run the code again.
-
-Observe  the error message.
-
-Uncomment line  148 and run the code again.
-
-Observe  the error message.
-
-Uncomment line  165 and run the code again.
-
-Observe  the error message.
-
+Observe  the error messages.
 
 Exercise 3: Simple functions, calling by reference
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex3.rs
@@ -124,19 +105,14 @@ Run the code:
 
 `cargo run --example ex3`
 
-Uncomment line 22 and run the code again.
+Uncomment the different erroneous statements  and run the code again.
 
-Observe  the error message.
-
-Uncomment line  42 and run the code again.
-
-Observe  the error message. This is a borrowing problem.
+Observe  the error messages.
 
 Explain why the function my_function_3 did not modify the variable.
 
 Understand what happens with String type variables.
 
-Uncomment line 111 and run the code again.
 
 ### Exercise 4: functions, pattern matching and use of the Option type 
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex4.rs
@@ -144,6 +120,10 @@ https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/e
 Run the code:
 
 `cargo run --example ex4`
+
+Uncomment the different erroneous statements  and run the code again.
+
+Observe  the error messages.
 
 Understand the use of functions, pattern matching, and the Option type.
 Understand the meaning of the absence of a ‘;’ in a function  to return a value.
@@ -178,7 +158,9 @@ Run the code:
 
 `cargo run --example projet_agenda_1`
 
-Uncomment lines  23, 24, and 25 and run the code again. 
+Uncomment the different erroneous statements  and run the code again.
+
+Observe  the error messages.
 
 
 
@@ -189,7 +171,9 @@ Run the code:
 
 `cargo run --example project_agenda_2`
 
-Uncomment line  40 and run the code again.
+Uncomment the different erroneous statements  and run the code again.
+
+Observe  the error messages.
 
 ### Project Agenda 3: Implement a trait to associate with a structure
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_3.rs
@@ -235,10 +219,9 @@ Run the code:
 `cargo run --example project_agenda_6`
 
 Different ways to instantiate a structure.
-Uncomment line  114 and run the code again.
+Uncomment the different erroneous statements  and run the code again.
 
-
-Uncomment line  117 and run the code again.
+Observe  the error messages.
 
 
 ### Project Agenda 7: Using iterators to process vectors, method chaining
@@ -248,7 +231,9 @@ Run the code:
 
 `cargo run --example projet_agenda_7`
 
-Uncomment lines 118, 119, and 120, then run the code again.
+Uncomment the different erroneous statements  and run the code again.
+
+Observe  the error messages.
 
 ### Project Agenda 8: Further with iterators, file reading, expect and unwrap methods
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_8.rs
