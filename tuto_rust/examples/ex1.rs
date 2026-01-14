@@ -41,7 +41,7 @@ fn main() {
     b = b + 10.0;
     println!("{}", b);
 
-    // Specifying type: here a unsigned  integer encoded on 32 bits : "u32"
+    // Specifying type: here an unsigned  integer encoded on 32 bits : "u32"
     let a: u32 = 12;
     println!("{}", a);
 
