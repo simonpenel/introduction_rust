@@ -98,7 +98,7 @@ Uncomment the different erroneous statements  and run the code again.
 
 Observe  the error messages.
 
-### Exercise 3: Simple functions, calling by reference
+### Exercise 3: simple functions, call by reference
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex3.rs
 
 Run the code:
