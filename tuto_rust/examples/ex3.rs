@@ -41,6 +41,7 @@ fn main() {
     // the fuction  because the variable given in argument is actually copied. In the case of strings,
     // it is no longer possible to access the variable after it has become the property of the function.
     // The solution: the call by reference
+    //               ---------------------
 
     
     // We want to modify the variable  given as argument:
@@ -58,13 +59,13 @@ fn main() {
     println!("value of 'a' before : {}", a);
     ma_fonction_3(a);
     println!("value of 'a' after : {}", a);
-    // We can see that the variable  has not changed after the function  
+    // The variable  has not changed after the function  
     // The solution: the call by reference 
+    //               ---------------------
 
     // CALL BY REFERENCE
     // =================
-    // We will use a function that takes the reference to the variable
-    // rather than the variable itself.
+    // The function takes the reference to the variable rather than the variable itself.
     // more info on references :
     // https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
 
@@ -77,7 +78,7 @@ fn main() {
     println!("value of 'a' before : {}", a);
     ma_fonction_ref(&mut a);
     println!("value of 'a' after : {}", a);
-    // We can see that the variable  has changed after the function  
+    // the variable  has changed after the function  
 
     // alternative
     let a: &mut u32 = &mut 12;

@@ -1,10 +1,10 @@
 // =========================================================
-//  LES FONCTIONS (SUITE) ,LE PATTERN MATCHING, LE TYPE OPTION
+// FUNCTIONS (CONTINUED), PATTERN MATCHING, TYPE OPTION
 // =========================================================
 fn main() {
     // =========================================================================
-    // Fonction qui prend une chaîne comme paramètre et renvoie une variable de
-    // type entier u32
+    // Function that takes a string as a parameter and returns a variable of
+    // type integer u32
     // =========================================================================
     fn calcule_nb_o(x: &String) -> u32 {
         let mut nb = 0;
@@ -14,16 +14,15 @@ fn main() {
                 nb = nb + 1;
             }
         }
-        nb // Attention, ici pas de ";" final !
+        nb // Please note, there is no final semicolon here!
     }
     let hello = String::from("Hello, world!");
     let nb_de_o = calcule_nb_o(&hello);
-    println!("Nombre de o dans {} = {}", hello, nb_de_o);
+    println!("Number of o in {} = {}", hello, nb_de_o);
 
-    // La fonction peut renvoyer différents type de variables.
-    // ici le type "tupple" : une liste de variables qui peuvent être de type
-    // differents.
-    // Utilisation du matching
+    // The function can return different types of variables.
+    // Here, the ‘tuple’ type: a list of variables that can be of different types.
+    // Use of pattern matching
     // =======================
     fn calcule_nb_voy(x: &String) -> (u32, u32, u32, u32, u32) {
         let mut nb_a = 0;
@@ -45,58 +44,53 @@ fn main() {
     }
 
     let nb_de_voyelles = calcule_nb_voy(&hello);
-    //(on utilise {:?} pour afficher des variables complexes)
-    println!("Nb de a, e, i, o, u dans {} : {:?}", hello, nb_de_voyelles);
+    //(use {:?} to display complex variables)
+    println!("Nb of a, e, i, o, u in {} : {:?}", hello, nb_de_voyelles);
 
     // On peut aussi écrire comme ça
     let (a, e, i, o, u) = calcule_nb_voy(&hello);
     println!(
-        "Nb de a : {} , de e : {}, de i : {}, de o : {}, de u : {}",
+        "Nb of a : {} , of e : {}, of i : {}, of o : {}, of u : {}",
         a, e, i, o, u
     );
 
-    // Utilisation du type Option
+    // Using the Option type
     // ==========================
-    // Imaginons que l'on veuille récupérer dans du texte une chaîne de
-    // caractères contenant des chiffres.
+    // Let's imagine we want to retrieve a string of characters containing numbers from some text.
     //
-    // Sans le type Option (ou équivalent):
-    // On définit la fonction f1 : f1("AZER0989TY") -> "0989"
+    // Without the Option type (or equivalent):
+    // We define the function f1: f1(‘AZER0989TY’) -> ‘0989’
     // ok!
-    // mais f1("AZERTYUIOP") -> ?
-    // on peut demander à la fonction de renvoyer une erreur , ou alors on dit
-    // f1("AZERTYUIOP") -> ""
-    // C'est génant: une chaine vide n'est pas l'absence de chaine.
-    // Et si ob veut sommer les chiffres de cette chaine:
-    // f2("0989") -> 26
-    // f2("") -> ?
-    // On peut dire f2("") -> 0
-    // Mais f2("00000") -> 0 aussi
-    // On a f2(f1("AZER0000TYUI000OP")) == f2(f1("AZERTYUIOP"))
-    // On peut plutot dire f2("") -> -1 comme -1 ne sera jamais trouvé dans la
-    // chaine, cela sert de signal.
-    // Il faut alors vérifier systematiquement si la valeur est -1 avant tout
-    // traitement. Si on est distrait et qu'on calcule le carré de f2 on a
-    // (f2(f1("AZERTYUIOP")))²  = (-1)² = 1
-    // Et aussi  (f2(f1("AZERT1YUIOP")))²  = (1)² = 1
-    // On voit qu'on traîne comme un boulet la vérification de la valeur entrée
-    // et que le risque d'erreur indetectée est réel.
+    // but f1(‘AZERTYUIOP’) -> ?
+    // we can ask the function to return an error, or we can do te following
+    // f1(‘AZERTYUIOP’) -> ‘’
+    // This is annoying: an empty string is not the absence of a string.
+    // And if we wants to sum the digits in this string:
+    // f2(‘0989’) -> 26
+    // f2(‘’) -> ?
+    // We can do the following :  f2(‘’) -> 0
+    // But f2(‘00000’) -> 0 too
+    // We have f2(f1(‘AZER0000TYUI000OP’)) == f2(f1(‘AZERTYUIOP’))
+    // We can instead do the following: f2(‘’) -> -1, as -1 will never be found in the
+    // string, which serves as a signal.
+    // We must therefore systematically check whether the value is -1 before any
+    // processing. If we are distracted and calculate the square of f2, we get
+    // (f2(f1(‘AZERTYUIOP’)))²  = (-1)² = 1
+    // And also  (f2(f1(‘AZERT1YUIOP’)))²  = (1)² = 1
+    // We can see that checking the entered value is a burden
+    // and that the risk of undetected errors is real.
     //
-    // Le type Option permet de resoudre ce probleme. Le type Option permet
-    // d'utiliser une valeur optionelle.
-    // Option peut être  :
-    //      - soit une valeur d'un type donnée
-    //      - soit rien
+    // The Option type solves this problem. The Option type allows
+    // the use of an optional value.
+    // Option can be:
+    //      - either a value of a given type
+    //      - either nothing
     //
-
-    // Dans cet exemple on ne cherche que les chiffres 0-4. On renvoie la
-    // chaîne de cararactères composée de ces chiffres.
-    // Utilisation de Option
-    // =====================
+    // In this example, we are only looking for the numbers 0-4. We return the
+    // string composed of these numbers.
     fn extrait_chaine(x: &String) -> Option<String> {
-        let mut chaine_0123 = String::new(); // Crée une chaîne vide
-        for c in x.chars() {
-            // boucle sur les caractères de la chaîne entrée
+        let mut chaine_0123 = String::new(); // Create an empty string
+        for c in x.chars() { // loop over characters in  x
             match c {
                 '0' => chaine_0123.push_str("0"),
                 '1' => chaine_0123.push_str("1"),
@@ -106,41 +100,41 @@ fn main() {
             }
         }
         match chaine_0123.len() > 0 {
-            true => Some(chaine_0123), // On renvoie une chaîne
-            false => None,             // On renvoie None
+            true => Some(chaine_0123), // return a string
+            false => None,             // return  None
         }
     }
     let hello = String::from("Hello, world!");
-    println!("traite la chaîne {}", hello);
-    println!("La fonction renvoie {:?}", extrait_chaine(&hello));
+    println!("Processing string {}", hello);
+    println!("The function returns {:?}", extrait_chaine(&hello));
     let hello = String::from("He12llo000, wo3455rl12d!");
-    println!("traite la chaîne {}", hello);
-    println!("La fonction renvoie {:?}", extrait_chaine(&hello));
+    println!("Processing string {}", hello);
+    println!("The function returns {:?}", extrait_chaine(&hello));
 
-    // On peut faire un matching sur la variable Option que l'on recupère:
+    // Pattern matching on the returned variable:
     let hello = String::from("Hello, world!");
-    println!("traite la chaîne {}", hello);
+    println!("Processing string {}", hello);
     match extrait_chaine(&hello) {
-        Some(chaine_de_chiffres) => println!("On a trouvé cette chaîne: {}.", chaine_de_chiffres),
-        None => println!("On n'a rien trouvé."),
+        Some(chaine_de_chiffres) => println!("Found string : {}.", chaine_de_chiffres),
+        None => println!("Nothing found."),
     }
     let hello = String::from("Hel12076lo, w21orld!");
-    println!("traite la chaîne {}", hello);
+    println!("Processing string {}", hello);
     match extrait_chaine(&hello) {
-        Some(chaine_de_chiffres) => println!("On a trouvé cette chaîne: {}.", chaine_de_chiffres),
-        None => println!("On n'a rien trouvé."),
+        Some(chaine_de_chiffres) => println!("Found string : {}.", chaine_de_chiffres),
+        None => println!("Nothing found."),
     }
 
-    // On peut aussi récupérer la variable option pour la traiter ulterieuremnt
+    // Store the option variable for further processing
     let _resu = extrait_chaine(&hello);
 
-    //  Une fonction plus générale, qui renvoie la somme
+    //  A more general function, which returns the sum
     fn extrait_chaine_somme(x: &String) -> Option<u32> {
         let mut somme = 0;
         let mut flag = false;
         for c in x.chars() {
             let valeur_de_c = c.to_digit(10);
-            // to_digit est une méthode du type char qui renvoie le type Option: la valeur numérique du char, ou rien
+            // "to_digit" is a  méthod  of the  'char' type which returns  an Option: the numerical value  of the char, or nothing
             match valeur_de_c {
                 Some(valeur) => {
                     somme = somme + valeur;
@@ -156,17 +150,17 @@ fn main() {
     }
 
     let hello = String::from("Hello, world!");
-    println!("Somme de {} = {:?}", hello, extrait_chaine_somme(&hello));
+    println!("Sum of {} = {:?}", hello, extrait_chaine_somme(&hello));
     let hello = String::from("H3ll0, w0r1d!");
-    println!("Somme de {} = {:?}", hello, extrait_chaine_somme(&hello));
+    println!("Sum of {} = {:?}", hello, extrait_chaine_somme(&hello));
 
-    // Info sur le type Option
+    // Info on Option type
     // pub enum Option<T> {
     //     None,
     //     Some(T),
     // }
     // https://doc.rust-lang.org/std/option/enum.Option.html
 
-    // Il existe un type similaire : Results
+    // A similar type : Results
     // https://doc.rust-lang.org/std/result/
 }

@@ -35,10 +35,10 @@ cargo run --example ex1
 In this introduction to Rust, we will cover important aspects of the Rust language.
 We will run different Rust codes, then we will see how to create an executable binary.
 
-First, we will test the code provided in the files ex1.rs, ex2.rs, ex3.rs, and ex4.rs in the directory tuto_rust/examples/.
+First, we will test the code provided in the files ex1.rs, ex2.rs, ex3.rs, and ex4.rs in the directory _tuto_rust/examples/_.
 
 
-To run the code in one of these files, for example ‘ex1.rs’, once in the tuto_rust directory, we use the command:
+To run the code in one of these files, for example ‘ex1.rs’, once in the _tuto_rust_ directory, use the command:
 
 `cargo run --example ex1`
 
@@ -109,9 +109,6 @@ Uncomment the different erroneous statements  and run the code again.
 
 Observe  the error messages.
 
-Explain why the function my_function_3 did not modify the variable.
-
-Understand what happens with String type variables.
 
 
 ### Exercise 4: functions, pattern matching and use of the Option type 
