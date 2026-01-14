@@ -1,27 +1,29 @@
+
+
 # introduction_rust
 
-## Installation de Rust
+## Installing Rust
 
-Installer cargo sous linux ou Mac:
+Install Cargo on Linux or Mac:
 
 `curl https://sh.rustup.rs -sSf | sh`
 
-pour  Windows voir  https://doc.rust-lang.org/cargo/getting-started/installation.html
+For Windows, see https://doc.rust-lang.org/cargo/getting-started/installation.html
 
 ## Documentation
 
-La documentation Rust est accessible ici : https://doc.rust-lang.org/book/title-page.html
+The Rust documentation is available here: https://doc.rust-lang.org/book/title-page.html
 
-## Exercices et exemples
+## Exercises and examples
 
-Les fichiers se trouvent  à  l'adresse  https://github.com/simonpenel/introduction_rust
+The files can be found at https://github.com/simonpenel/introduction_rust
 
-Récupérer les fichiers nécessaires et tester l'installation:
+Download the necessary files and test the installation:
 
 ```
 git clone https://github.com/simonpenel/introduction_rust.git
 cd introduction_rust
-cd tuto_rust
+cd tutorial_rust
 cargo run --example ex1
 ```
 
@@ -29,279 +31,299 @@ cargo run --example ex1
 
 
 
-## Premiers pas
-Dans cette introduction à Rust, on  va aborder des aspects importants du langage Rust.
-Dans un premier temps on va exécuter différents codes Rust. On verra ensuite comment créer un binaire exécutable.
+## Getting started
+In this introduction to Rust, we will cover important aspects of the Rust language.
+First, we will run different Rust codes. Then we will see how to create an executable binary.
 
-Tout d'abord on va tester les code proposés dans les  fichiers ex1.rs, ex2.rs ex3.rs et ex4.rs dans le répertoire tuto_rust/examples/
+First, we will test the code provided in the files ex1.rs, ex2.rs, ex3.rs, and ex4.rs in the directory tuto_rust/examples/.
 
 
-Pour exécuter le code de l'un ces fichiers, par exemple "ex1.rs", une fois dans le répertoire tuto_rust, on utilise la commande:
+To run the code in one of these files, for example ‘ex1.rs’, once in the tuto_rust directory, we use the command:
 
 `cargo run --example ex1`
 
-Les exemples ex1, ex2, ex3 et ex4 abordent:
+The examples ex1, ex2, ex3 and ex4 cover:
 
-- les variables mutables et non mutables
-- le "borrowing" et le "ownership"
-- les références (sortes de pointeur)
-- l'inférence de type
-- les fonctions
-- le matching
-- le type Option
+- mutable and immutable variables
+- borrowing and ownership
+- type inference
+- references (a sort of pointer)
+- functions
+- pattern matching
+- the Option type
 
-Les codes proposés contiennent des commentaires, signalés par '//'
+The code provided contains comments, indicated by “//”
+
 
 ```
-// Ceci est un commentaire
+// This is a comment
 ```
 
-qui présentent le but de l'exercice.
+which explain the purpose of the exercise.
 
-Certains lignes sont commentées pour vous permettre de tester des modifications du code.
-Pour décommenter une ligne, il suffit de supprimer le // initial.
+Some lines are commented out to allow you to test changes to the code. 
+Theses lines are preceded by the comment "the following statement causes an error":
+
+For example:
 
 
-### Exercice 1 : variables mutables et non mutables, l'inférence de type 
+
+```
+// the following statement causes an error:
+// erroneous code
+```
+
+To uncomment a line, simply delete the  // in front of 'erroneous code'.
+
+
+### Exercise 1: Mutable and immutable variables, type inference 
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex1.rs
 
-Exécuter le code:
+Run the code:
 
 `cargo run --example ex1`
 
-Décommenter la ligne  15 et exécuter le code à nouveau.
+Uncomment line  15 and run the code again.
 
-Observer  le message d'erreur.
+Observe  the error message.
 
-Même chose avec la ligne 18
+Do the same with line 18.
 
-Même chose avec la ligne 39
+Do the same with line 39.
 
 
 
-### Exercice 2 : l'ownership et le borrowing, les références
+### Exercise 2: ownership and borrowing, references
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex2.rs
 
-Exécuter le code:
+Run the code:
 
 `cargo run --example ex2`
 
-Décommenter la ligne  33 et exécuter le code à nouveau.
+Uncomment line  33 and run the code again.
 
-Observer  le message d'erreur.
+Observe  the error message.
 
-Décommenter la ligne  89 et exécuter le code à nouveau.
+Uncomment line  89 and run the code again.
 
-Observer  le message d'erreur.
+Observe  the error message.
 
-Décommenter la ligne  148 et exécuter le code à nouveau.
+Uncomment line  148 and run the code again.
 
-Observer  le message d'erreur.
+Observe  the error message.
 
-Décommenter la ligne  165 et exécuter le code à nouveau.
+Uncomment line  165 and run the code again.
 
-Observer  le message d'erreur.
+Observe  the error message.
 
 
-### Exercice 3 : fonctions simples, l'appel par référence
+Exercise 3: Simple functions, calling by reference
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex3.rs
 
-Exécuter le code:
+Run the code:
 
 `cargo run --example ex3`
 
-Décommenter la ligne  22 et exécuter le code à nouveau.
+Uncomment line 22 and run the code again.
 
-Observer  le message d'erreur.
+Observe  the error message.
 
-Décommenter la ligne  42 et exécuter le code à nouveau.
+Uncomment line  42 and run the code again.
 
-Observer  le message d'erreur. Il s'agit d'un problème de _borrowing_.
+Observe  the error message. This is a borrowing problem.
 
-Expliquer pourquoi la fonction ma_fonction_3 n'a pas modifié la variable.
+Explain why the function my_function_3 did not modify the variable.
 
-Comprendre ce qu'il se passe avec les variable de type String.
+Understand what happens with String type variables.
 
-Décommenter la ligne  111 et exécuter le code à nouveau.
+Uncomment line 111 and run the code again.
 
-### Exercice 4 : fonctions, pattern matching et utilisation du  type Option 
+### Exercise 4: functions, pattern matching and use of the Option type 
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/ex4.rs
 
-Exécuter le code:
+Run the code:
 
 `cargo run --example ex4`
 
-Comprendre l'utilisation des fonctions, du pattern matching et du type Option.
-Comprendre le sens de l'absence de ";" dans une fonction  pour renvoyer une valeur.
+Understand the use of functions, pattern matching, and the Option type.
+Understand the meaning of the absence of a ‘;’ in a function  to return a value.
 
 
-## Projet Agenda
-
-Dans les fichiers projet_agenda_[1-11].rs dans le répertoire tuto_rust/examples/ on va peu à peu écrire un code qui permet d'explorer un calendrier et vérifier si un événement est prévu dans un agenda.
-
-Pour éxecuter le code de l'un de ces fichiers, par exemple "projet_agenda_7.rs", une fois dans le répertoire tuto_rust, on utilise la commande:
-
-`cargo run --example projet_agenda_7`
-
-Ces exemples abordent :
-
-- les énumerations ("enum")
-- la notion de "Trait"
-- les structures ("struct")
-- les fonctions implementées pour une structure (et les méthodes)
-- la structure Vector, sa construction, son exploration via un itérateur ("iter")
-- les itérateurs (Iterator) et certaines méthodes associées ("filter", "enumerate", "collect", "map", "fold")
-- le chainage des méthodes "expect()" et "unwrap" après le type Option ou Result
-- l'implémentation d'un itérateur dédiée à une structure
 
 
-### projet agenda 1 : les énumérations (_enum_) et  leur utilisation avec le  pattern matching 
+## Agenda Project
+
+In the project_agenda_[1-11].rs files in the tuto_rust/examples/ directory, we will gradually write code that allows us to explore a calendar and check if an event is scheduled in an agenda.
+
+To execute the code in one of these files, for example ‘project_agenda_7.rs’, once in the tuto_rust directory, use the command:
+
+`cargo run --example project_agenda_7`
+
+These examples cover:
+
+- enumerations (‘enum’)
+- the concept of ‘Trait’
+- structures (‘struct’)
+- functions implemented for a structure (and methods)
+- the Vector structure, its construction, and its exploration via an iterator (‘iter’)
+- iterators (Iterator) and certain associated methods (‘filter’, ‘enumerate’, ‘collect’, “map”, ‘fold’)
+- chaining the ‘expect()’ and ‘unwrap’ methods after the Option or Result type
+- implementing an iterator dedicated to a structure
+
+
+### project agenda 1: enumerations (_enum_) and  their use with  pattern matching 
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_1.rs
 
-Exécuter le code:
+Run the code:
 
 `cargo run --example projet_agenda_1`
 
-Décommenter les lignes  23,24,25 et exécuter le code à nouveau. 
+Uncomment lines  23, 24, and 25 and run the code again. 
 
-### projet agenda 2 : créer ses structures (_struct_)
+
+
+### Project Agenda 2: Creating Structures (_struct_)
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_2.rs
 
-Exécuter le code:
+Run the code:
 
-`cargo run --example projet_agenda_2`
+`cargo run --example project_agenda_2`
 
-Décommenter la ligne  40 et exécuter le code à nouveau.
+Uncomment line  40 and run the code again.
 
-### projet agenda 3 : implémenter un trait à associer à une structure
+### Project Agenda 3: Implement a trait to associate with a structure
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_3.rs
 
-En savoir plus sur les traits: https://doc.rust-lang.org/rust-by-example/trait.html
+Learn more about traits: https://doc.rust-lang.org/rust-by-example/trait.html
 
-Un exemple de trait et le trait Display. Si une structure a ce trait, elle peut être affichée par avec _println!("{}")_.
-(Le trait Debug permet l'affichage "verbeux" avec  _println!("{:?}")_, ce trait n'a pas besoin d'être implémenté) 
-Ici on a créé une nouvelle structure, pour laquelle ce trait n'est bien sur pas défini.
-C'est à nous de l'implémenter si on veut afficher cette structure, et cela permettra de définir sous quelle forme la structure est affichée.
+An example of a trait is the Display trait. If a structure has this trait, it can be displayed using _println!(‘{}’)_.
+(The Debug trait allows ‘verbose’ display using _println!(‘{:?}’)_, this trait does not need to be implemented) 
+Here we have created a new structure, for which this trait is of course not defined.
+It is up to us to implement it if we want to display this structure, and this will allow us to define the form in which the structure is displayed.
 
-Exécuter le code:
+Run the code:
 
-`cargo run --example projet_agenda_3`
+`cargo run --example project_agenda_3`
 
 
-### projet agenda 4 : implémenter un trait à associer à une structure
+
+
+
+### Project Agenda 4: Implementing a trait to associate with a structure
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_4.rs
 
-Un autre exemple d'implémentation du trait Display pour une structure que nous avons définie, ici la structure _Date_.
-On utilise le pattern matching dans l'implémentation du trait.
-Exécuter le code:
+Another example of implementing the Display trait for a structure we have defined, in this case the _Date_ structure.
+We use pattern matching in the trait implementation.
+Run the code:
 
-`cargo run --example projet_agenda_4`
+`cargo run --example project_agenda_4`
 
-### projet agenda 5 : implémenter une fonction à associer à une structure
+### project agenda 5: implement a function to associate with a structure
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_5.rs
 
-Exemple de création de fonction. Différence entre les fonctions et les méthodes.
+Example of function creation. Difference between functions and methods.
 
-Exécuter le code:
+Run the code:
 
-`cargo run --example projet_agenda_5`
+`cargo run --example project_agenda_5`
 
-### projet agenda 6 : créer un vecteur de structures
+### project agenda 6: create a vector of structures
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_6.rs
 
-Exécuter le code:
+Run the code:
 
-`cargo run --example projet_agenda_6`
+`cargo run --example project_agenda_6`
 
-Différentes manière d'instancier une structure.
-Décommenter la ligne  114 et exécuter le code à nouveau.
+Different ways to instantiate a structure.
+Uncomment line  114 and run the code again.
 
 
-Décommenter la ligne  117 et exécuter le code à nouveau.
+Uncomment line  117 and run the code again.
 
-### projet agenda 7 : utiliser les itérateurs pour traiter des vecteurs, chaînage de méthode
+
+### Project Agenda 7: Using iterators to process vectors, method chaining
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_7.rs
 
-Exécuter le code:
+Run the code:
 
 `cargo run --example projet_agenda_7`
 
-Décommenter les lignes  118,119,120 et exécuter le code à nouveau.
+Uncomment lines 118, 119, and 120, then run the code again.
 
-### projet agenda 8 : plus loin avec les itérateurs, lecture de fichier, methodes expect et unwrap
+### Project Agenda 8: Further with iterators, file reading, expect and unwrap methods
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_8.rs
 
-Exécuter le code:
+Run the code:
 
-`cargo run --example projet_agenda_8`
+`cargo run --example project_agenda_8`
 
 
 
-### projet agenda 9 : définition de plusieurs fonctions pour gérer les dates 
+### project agenda 9: defining several functions to manage dates 
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_9.rs
 
-Exécuter le code:
+Run the code:
 
 `cargo run --example projet_agenda_9`
 
-Vérfier ce qui se passe si on supprime le trait Copy de Mois.
+Check what happens if we remove the Copy trait from Month.
 
 
-### projet agenda 10 : utilisation des methodes liées aux iterateurs 
+### Agenda project 10: using methods related to iterators 
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_10.rs
 
-On va découvrir la puissance des méthodes liées aux itérateurs : filter, map, fold.
+We will discover the power of iterator-related methods: filter, map, fold.
 
-Exécuter le code:
+Run the code:
 
-`cargo run --example projet_agenda_10`
+`cargo run --example project_agenda_10`
 
 
 
-### projet agenda 11 : implementer un iterateur pour une structure
+### Project Agenda 11: Implement an iterator for a structure
 https://github.com/simonpenel/introduction_rust/blob/master/tuto_rust/examples/projet_agenda_11.rs
 
-Exécuter le code:
+Run the code:
 
 `cargo run --example projet_agenda_11`
 
-Exercice : définir le dernier élément de l'itérateur implémenté pour la structure.
-voir https://doc.rust-lang.org/std/iter/index.html
+Exercise: define the last element of the iterator implemented for the structure.
+See https://doc.rust-lang.org/std/iter/index.html
 
-## Projet final
+## Final project
 
-Tous ces éléments sont regroupés dans le répertoire tuto_rust/src pour écrire un programme.
+All these elements are grouped together in the tuto_rust/src directory to write a programme.
 
 https://github.com/simonpenel/introduction_rust/tree/master/tuto_rust/src
 
 
-Dans  le répertoire tuto_rust, la commande
+In the tuto_rust directory, the command
 
 
 `cargo build`
 
-va créer le binaire exécutable
+will create the executable binary
 
 `tuto_rust/target/debug/tuto_rust`
 
-On peut voir l'organisation du code en modules, ici un seul module "agenda.rs" et le programme principal dans "main.rs".
+We can see how the code is organised into modules, in this case a single module ‘agenda.rs’ and the main programme in ‘main.rs’.
 
-On utilise le type Result pour gérer les erreur.
+We use the Result type to handle errors.
 
-On aborde un peu le problème de concaténation de chaînes de caractères.
+We briefly discuss the problem of concatenating character strings.
 
-Exécuter le code:
+Execute the code:
 
 `target/debug/tuto_rust date_naissance.txt`
 
-Vérifier la gestion des erreurs en donnant en parametre des fichiers erronés.
+Check error handling by passing incorrect files as parameters.
 
-On aborde la documentation du code. La commande
+We discuss code documentation. The command
 
 `cargo doc --open`
 
-permet de générer la documentation sous la forme html.
+command generates documentation in HTML format.
 
-Exercice : 
+Exercise: 
 
-écrire un programme qui classe un agenda  d'anniversaire avec différentes options: par ordre alphabétique du nom, du prénom, ou par date (jour/mois, jour/mois/année). Il faudra implémenter pour la structure Date un trait qui permette la comparaison.
+Write a programme that sorts a birthday calendar  with different options: alphabetically by surname, first name, or by date (day/month, day/month/year). You will need to implement a trait for the Date structure that allows comparison.
