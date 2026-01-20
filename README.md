@@ -27,8 +27,20 @@ cd tuto_rust
 cargo run --example ex1
 ```
 
+## Using Jupyter
+If you want to used Jupyter Notebook, you'll need to run the following commands:
 
+```
+cargo install --locked evcxr_jupyter
+evcxr_jupyter --install
+```
 
+To start Jupyter Notebook, run:
+
+```
+jupyter notebook
+```
+Once started, it should open a page in your web browser. Look for the "New" menu on the right and from it, select "Rust".
 
 
 ## Getting started
