@@ -319,3 +319,10 @@ command generates documentation in HTML format.
 Exercise: 
 
 Write a programme that sorts a birthday calendar  with different options: alphabetically by surname, first name, or by date (day/month, day/month/year). You will need to implement a trait for the Date structure that allows comparison.
+
+
+# Performances
+
+visit the "pi" directory
+
+
