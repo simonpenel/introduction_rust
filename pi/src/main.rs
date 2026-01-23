@@ -8,7 +8,7 @@ fn main() {
         Err(_e) => { panic!("Please enter an integer") }
     }; 
     while i < imax {
-        let val = (4 * i + 1) * (4*i + 3);
+        let val = (4 * i + 1) * (4 * i + 3);
         somme = somme + 1.0 / val as f64;
         i += 1;
     }
