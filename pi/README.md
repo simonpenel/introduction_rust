@@ -5,7 +5,7 @@ Build the binary
 Test the binary
 
 ```
-time ./target/release/pi  100000000
+time ./target/release/pi
 3.1415926445762157
 
 real	0m0,120s
@@ -16,7 +16,7 @@ sys	0m0,002s
 Compare with python :
 
 ```
-time python3 pi.py  -i 100000000
+time python3 pi.py
 3.1415926445762157
 
 real	0m15,018s
