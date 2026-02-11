@@ -61,6 +61,8 @@ We will run different Rust codes, then we will see how to create an executable b
 
 ### Using jupyter
 
+The first examples are available as jupyter notebooks
+
 The examples `notebook_ex[1-3].ipynb` are provied in the directory `examples`
 
 ### Using cargo
