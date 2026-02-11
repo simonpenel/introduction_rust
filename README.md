@@ -35,12 +35,23 @@ cargo install --locked evcxr_jupyter
 evcxr_jupyter --install
 ```
 
-To start Jupyter Notebook, run:
+To start Jupyter Notebook, [install uv](https://docs.astral.sh/uv/) with one of the following command:
+
+```shell
+# MacOS or Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+# Windows
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+Then run:
 
 ```
-jupyter notebook
+uv run --with jupyter jupyter lab
 ```
-Once started, it should open a page in your web browser. Look for the "New" menu on the right and from it, select "Rust".
+
+Once started, it should open a page in your web browser. From here you can open and use one of the notebooks in this repository, 
+or create a new one by selecting "Rust" in the "Notebook" section.
 
 
 ## Getting started
