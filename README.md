@@ -58,6 +58,13 @@ or create a new one by selecting "Rust" in the "Notebook" section.
 In this introduction to Rust, we will cover important aspects of the Rust language.
 We will run different Rust codes, then we will see how to create an executable binary.
 
+
+### Using jupyter
+
+The examples `notebook_ex[1-3].ipynb` are provied in the directory `examples`
+
+### Using cargo
+
 First, we will test the code provided in the files ex1.rs, ex2.rs, ex3.rs, and ex4.rs in the directory _tuto_rust/examples/_.
 
 
